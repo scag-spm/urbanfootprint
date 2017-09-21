@@ -167,6 +167,21 @@ Footprint.FeaturesAreReadyState = Footprint.RecordsAreReadyState.extend({
      * @param context
      */
     postSavePublishingFinished: function(context) {
+
+        if (context.get('class_key') == 'city_boundary') {
+
+            var library_key = 'result_library__application';
+            var resultLibraries = Footprint.resultLibrariesController.get('content').filter(function (library) {
+                return library.getPath('key') == library_key;
+            });
+            resultLibraries.forEach(function(library) {
+                library.get('results').forEach(function(result) {
+                    result.refresh();
+                })
+            });
+
+        }
+
         this.setPath('recordsEditController.recordsAreUpdating', NO);
         var dbEntityKey = context.get('class_key');
         var dbEntity = Footprint.dbEntitiesController.findProperty('key', dbEntityKey);

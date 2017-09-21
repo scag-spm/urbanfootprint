@@ -1,6 +1,6 @@
 /*
  * UrbanFootprint v1.5
- * Copyright (C) 2017 Calthorpe Analytics
+ * Copyright (C) 2016 Calthorpe Analytics
  *
  * This file is part of UrbanFootprint version 1.5
  *
@@ -11,36 +11,35 @@
  * Public License v3 for more details; see <http://www.gnu.org/licenses/>.
  */
 
-
+sc_require('properties/plural_property');
 sc_require('views/info_views/select_info_view');
 sc_require('views/info_views/editable_text_field_view');
-sc_require('properties/plural_property');
 
-Footprint.ExistingLandUseParcels2016EditorView = SC.View.extend({
-    classNames: ['footprint-existing-land-use-editor-view'],
-    childViews: ['existingLandUseView', 'secondaryLandUseView', 'commentView'],
+Footprint.ZoningParcelsEditorView = SC.View.extend({
+    classNames: ['footprint-zoning-editor-view'],
+    childViews: ['znCodeView', 'cityznCodeView', 'commentView'],
 
     activeLayer: null,
     activeLayerBinding: SC.Binding.oneWay('Footprint.layerActiveController.content'),
 
     content: null,
-    contentBinding: SC.Binding.from('Footprint.featuresEditController.content'),
+    contentBinding: SC.Binding.oneWay('Footprint.featuresEditController.content'),
 
-    existingLandUseView: SC.View.extend({
-        childViews: ['landUseTitleView', 'landUseSelectView'],
+    znCodeView: SC.View.extend({
+        childViews: ['zoningTitleView', 'zoningSelectView'],
         layout: {height: 40, left: 10, right: 30, top: 20},
         content: null,
         contentBinding: SC.Binding.from('.parentView.content'),
 
-        landUseTitleView: SC.LabelView.extend({
+        zoningTitleView: SC.LabelView.extend({
             classNames: ['footprint-bold-title-white-view'],
             textAlign: SC.ALIGN_CENTER,
             backgroundColor: '#3366CC',
             layout: {height: 16},
-            value: '2016 SCAG Existing Land Use'
+            value: '2016 SCAG Zoning Code'
         }),
 
-        landUseSelectView: Footprint.SelectInfoView.extend({
+        zoningSelectView: Footprint.SelectInfoView.extend({
             layout: {height: 24, top: 16},
             contentBinding: SC.Binding.oneWay('Footprint.clientLandUseDefinitionController.arrangedObjects'),
             menuWidth: 400,
@@ -70,48 +69,17 @@ Footprint.ExistingLandUseParcels2016EditorView = SC.View.extend({
         })
     }),
 
-    secondaryLandUseView: SC.View.extend({
-        childViews: ['landUseTitleView', 'landUseSelectView'],
+    cityznCodeView: Footprint.EditableTextFieldView.extend({
         layout: {height: 40, left: 10, right: 30, top: 80},
-        content: null,
-        contentBinding: SC.Binding.from('.parentView.content'),
-
-        landUseTitleView: SC.LabelView.extend({
-            classNames: ['footprint-bold-title-white-view'],
-            textAlign: SC.ALIGN_CENTER,
-            backgroundColor: '#3366CC',
-            layout: {height: 16},
-            value: '2016 SCAG Secondary Land Use'
-        }),
-
-        landUseSelectView: Footprint.SelectInfoView.extend({
-            layout: {height: 24, top: 16},
-            contentBinding: SC.Binding.oneWay('Footprint.clientLandUseDefinitionSecondaryController.arrangedObjects'),
-            menuWidth: 400,
-            // Controller and View selection remain in sync
-            selectionBinding: 'Footprint.clientLandUseDefinitionSecondaryController.selection',
-            recordType: Footprint.ClientLandUseDefinition,
-            itemTitleKey: 'land_use_description',
-
-            contentKey: 'features',
-            contentStatusKey: 'featuresStatus',
-            features: null,
-            featuresBinding: SC.Binding.oneWay('.parentView.content'),
-            featuresStatus: null,
-            featuresStatusBinding: SC.Binding.oneWay('*features.status'),
-
-            // The controller calls propertyDidChange on this when updates finish. We use it to update value
-            refreshValue: null,
-            refreshValueBinding: SC.Binding.oneWay('Footprint.featuresEditController.recordsDidUpdate'),
-
-            // Since scag_lu_secondary is a primitive id and not a foreign key, use valueProperty
-            // to resolve the feature's land_use_definition.land_use id
-            value: Footprint.pluralContentValuePropertyCreator('features', 'featuresStatus', 'land_use_definition_secondary', 'refreshValue'),
-
-            // The value updates the singleSelection of the controller (which updates the selection of Controller and View)
-            // Changing the selection in turn updates the value, which causes all current features values to update
-            valueBinding: 'Footprint.clientLandUseDefinitionSecondaryController.singleSelection'
-        })
+        title: '2016 City Zoning Code',
+        isEditable:YES,
+        contentBinding: SC.Binding.oneWay('.parentView.content'),
+        titleViewLayout: { height: 16 },
+        editableContentViewLayout: { top: 17 },
+        titleClassNames: ['footprint-bold-title-white-view'],
+        contentValueKey: 'city_zn_code16',
+        value: Footprint.pluralContentValueProperty,
+        backgroundColor: '#3366CC'
     }),
 
     commentView: Footprint.EditableTextFieldView.extend({
@@ -122,7 +90,6 @@ Footprint.ExistingLandUseParcels2016EditorView = SC.View.extend({
         titleViewLayout: { height: 17, top: 0 },
         isTextArea: YES,
         isEditable:YES,
-        coalesceChanges: YES,
         contentBinding: SC.Binding.oneWay('.parentView.content'),
         editableContentViewLayout: { top: 17, bottom: 0 },
         contentValueKey: 'notes',
@@ -131,4 +98,5 @@ Footprint.ExistingLandUseParcels2016EditorView = SC.View.extend({
         refreshValueBinding: SC.Binding.oneWay('Footprint.featuresEditController.recordsDidUpdate'),
         value: Footprint.pluralContentValueProperty
     })
+
 });

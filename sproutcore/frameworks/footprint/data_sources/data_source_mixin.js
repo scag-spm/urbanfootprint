@@ -71,7 +71,9 @@ Footprint.DataSourceMixin = {
         }
         else {
             // Map the recordType API name to another name, if toApiRecordType doesn't already do the job
+            console.log(recordType, parameters, method)
             var recordTypeName = recordType.apiRecordType(parameters, method).toString();
+            console.log(recordTypeName)
 
             var apiModelName = this.toApiResourceName(recordTypeName);
             var uriPath,

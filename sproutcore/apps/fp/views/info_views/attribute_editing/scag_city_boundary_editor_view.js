@@ -19,8 +19,8 @@ sc_require('views/info_views/attribute_editing/editable_layer_info_view');
 
 Footprint.CityBoundaryEditorView = SC.View.extend({
     classNames: ['footprint-jurisdiction-boundary-editor-view'],
-    childViews: ['basic12DemographicsView', 'basic20DemographicsView', 'basic35DemographicsView',
-        'basic40DemographicsView', 'commentView'],
+    childViews: ['basic16DemographicsView', 'basic20DemographicsView', 'basic30DemographicsView',
+                 'basic35DemographicsView', 'basic45DemographicsView', 'commentView'],
 
     activeLayer: null,
     activeLayerBinding: SC.Binding.oneWay('Footprint.layerActiveController.content'),
@@ -28,14 +28,14 @@ Footprint.CityBoundaryEditorView = SC.View.extend({
     content: null,
     contentBinding: SC.Binding.oneWay('Footprint.featuresEditController.content'),
 
-    basic12DemographicsView: Footprint.EditablePopHhEmpAttributeGroupView.extend({
+    basic16DemographicsView: Footprint.EditablePopHhEmpAttributeGroupView.extend({
         childViews: ['titleView', 'popView', 'hhView', 'empView'],
         layout: {height: 65, left: 10, right: 30, top: 20},
         contentBinding: SC.Binding.oneWay('.parentView.content'),
-        popKey: 'pop12',
-        hhKey: 'hh12',
-        empKey: 'emp12',
-        groupTitle: '2012'
+        popKey: 'pop16',
+        hhKey: 'hh16',
+        empKey: 'emp16',
+        groupTitle: '2016'
     }),
 
     basic20DemographicsView: Footprint.EditablePopHhEmpAttributeGroupView.extend({
@@ -48,9 +48,19 @@ Footprint.CityBoundaryEditorView = SC.View.extend({
         groupTitle: 2020
     }),
 
-    basic35DemographicsView: Footprint.EditablePopHhEmpAttributeGroupView.extend({
+    basic30DemographicsView: Footprint.EditablePopHhEmpAttributeGroupView.extend({
         childViews: ['titleView', 'popView', 'hhView', 'empView'],
         layout: {height: 65, left: 10, right: 30, top: 180},
+        contentBinding: SC.Binding.oneWay('.parentView.content'),
+        popKey: 'pop30',
+        hhKey: 'hh30',
+        empKey: 'emp30',
+        groupTitle: 2030
+    }),
+
+    basic35DemographicsView: Footprint.EditablePopHhEmpAttributeGroupView.extend({
+        childViews: ['titleView', 'popView', 'hhView', 'empView'],
+        layout: {height: 65, left: 10, right: 30, top: 260},
         contentBinding: SC.Binding.oneWay('.parentView.content'),
         popKey: 'pop35',
         hhKey: 'hh35',
@@ -58,19 +68,19 @@ Footprint.CityBoundaryEditorView = SC.View.extend({
         groupTitle: 2035
     }),
 
-    basic40DemographicsView: Footprint.EditablePopHhEmpAttributeGroupView.extend({
+    basic45DemographicsView: Footprint.EditablePopHhEmpAttributeGroupView.extend({
         childViews: ['titleView', 'popView', 'hhView', 'empView'],
-        layout: {height: 65, left: 10, right: 30, top: 260},
+        layout: {height: 65, left: 10, right: 30, top: 340},
         contentBinding: SC.Binding.oneWay('.parentView.content'),
-        popKey: 'pop40',
-        hhKey: 'hh40',
-        empKey: 'emp40',
-        groupTitle: 2040
+        popKey: 'pop45',
+        hhKey: 'hh45',
+        empKey: 'emp45',
+        groupTitle: 2045
     }),
 
     commentView: Footprint.EditableTextFieldView.extend({
-        layout: {left: 10, right: 30, height: 100, top: 340},
-        title: 'Comments',
+        layout: {left: 10, right: 30, height: 100, top: 420},
+        title: 'Notes',
         titleClassNames: ['footprint-bold-title-white-view'],
         titleBackgroundColor: '#3366CC',
         titleViewLayout: { height: 17, top: 0 },
@@ -78,7 +88,7 @@ Footprint.CityBoundaryEditorView = SC.View.extend({
         isEditable:YES,
         contentBinding: SC.Binding.oneWay('.parentView.content'),
         editableContentViewLayout: { top: 17, bottom: 0 },
-        contentValueKey: 'comment',
+        contentValueKey: 'notes',
         // The controller calls propertyDidChange on this when updates finish. We use it to update value
         refreshValue: null,
         refreshValueBinding: SC.Binding.oneWay('Footprint.featuresEditController.recordsDidUpdate'),

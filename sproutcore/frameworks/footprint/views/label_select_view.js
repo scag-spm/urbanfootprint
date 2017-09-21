@@ -63,6 +63,19 @@ Footprint.LabelSelectView = SC.PopupButtonView.extend({
     handleKeyUpFromFirstItem: function() {
 
     },
+
+    handleKeyDownFromLastItem: function() {
+
+    },
+
+    handleUpKey: function() {
+
+    },
+
+    handleDownKey: function() {
+
+    },
+
     /***
      * Called when the user is selected a menu item and hits the enter key
      * The idea of this is when something is selected the user hits enter and the menu closes,
@@ -412,11 +425,24 @@ Footprint.LabelSelectView = SC.PopupButtonView.extend({
                             var ret = sc_super();
                             if (evt.keyCode === SC.Event.KEY_UP && this.get('content').indexOf(selectedItem) == 0) {
                                 this.getPath('pane.anchor').handleKeyUpFromFirstItem();
+                                this.getPath('pane.anchor').handleUpKey();
                             }
                             else if (evt.keyCode === SC.Event.KEY_RETURN) {
                                 this.get('pane').remove();
                                 this.getPath('pane.anchor').handleEnterFromMenu();
                             }
+                            else if (evt.keyCode === SC.Event.KEY_DOWN && this.get('content').indexOf(selectedItem) == this.get('content').length - 1) {
+                                this.get('pane').remove();
+                                this.getPath('pane.anchor').handleKeyDownFromLastItem();
+                                this.getPath('pane.anchor').handleDownKey();
+                            }
+                            else if (evt.keyCode === SC.Event.KEY_UP) {
+                                this.getPath('pane.anchor').handleUpKey();
+                            }
+                            else if (evt.keyCode === SC.Event.KEY_DOWN) {
+                                this.getPath('pane.anchor').handleDownKey();
+                            }
+
                             return ret;
                         },
                         /***
@@ -427,8 +453,10 @@ Footprint.LabelSelectView = SC.PopupButtonView.extend({
                         mouseDown: function (evt) {
                             var ret = sc_super();
                             var labelSelectView = this.getPath('pane.anchor');
+                            labelSelectView.deselectAllFromMenu();
                             labelSelectView.removeMenu();
-                            return ret
+
+                            return ret;
                         },
 
                         frameDidChange: function () {

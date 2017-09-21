@@ -55,7 +55,8 @@ Footprint.mapController = SC.ObjectController.create({
 
 
     resetExtentToSelection: function () {
-        this.setMapExtent(this.get('layerSelectionBounds'));
+        // this.setMapExtent(this.get('layerSelectionBounds'));
+        this.setMapExtent(this.get('highlightedFeaturesBounds')); // yang
     },
 
 
@@ -104,7 +105,8 @@ Footprint.mapController = SC.ObjectController.create({
         if (this.get('layerSelection'))
             // Get tiles of the current zoom level
             return $.flatMap(this.get('highlightedFeatures'), function(highlightedFeature) {
-                return this._polygonBoundingBox(this.mapLayerFeature(highlightedFeature).data.geometry);
+                 console.log(highlightedFeature); // yang
+                 return this._polygonBoundingBox(this.mapLayerFeature(highlightedFeature).data.geometry);
             });
     }.property('.highlightedFeatures').cacheable(),
 

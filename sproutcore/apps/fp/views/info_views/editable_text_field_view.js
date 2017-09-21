@@ -83,7 +83,7 @@ Footprint.EditableTextFieldView = SC.View.extend({
             if (formatted_value && this.get('isNumber')) {
                 formatted_value = parseFloat(value).toFixed(this.get('significantDigits'));
             }
-            return value;
+            return formatted_value;
         },
         displayValue: null,
         displayValueBinding: '.parentView.value',

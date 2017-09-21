@@ -49,6 +49,10 @@ class DefaultBehaviorFixture(DefaultMixin, BehaviorFixture):
                 parents=[]
             ),
             Behavior(
+                key=key('reference_layers_editable_attribute'),
+                parents=[]
+            ),
+            Behavior(
                 key=key('tool'),
                 parents=[]
             ),

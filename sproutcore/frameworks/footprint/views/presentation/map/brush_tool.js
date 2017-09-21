@@ -74,7 +74,7 @@ Footprint.BrushTool = Footprint.PaintTool.extend({
 
     didEndShape: function() {
         var self = this;
-        //console.log("in BrushTool.didEndShape, L.DomEvent._getEvent().ctrlKey = " + String(L.DomEvent._getEvent().ctrlKey));
+        // console.log("in BrushTool.didEndShape, L.DomEvent._getEvent().ctrlKey = " + String(L.DomEvent._getEvent().ctrlKey));
 
         return function(event) {
             // self.set('geometry', self.getEventBounds(event));
@@ -95,7 +95,7 @@ Footprint.BrushTool = Footprint.PaintTool.extend({
      * takes in lat/lon and returns a very small square polygon based on arbitrary offset
      */
     pointToTinySquare: function(lat,lon) {
-        var offset = 0.0000005, tinySquareCoords = [], coodsArray = [];
+        var offset = 0.0001, tinySquareCoords = [], coodsArray = [];
         coodsArray.push([lat-offset,lon-offset]);   //,[lat+offset,lon-offset],[lat-offset,lon+offset],[lat+offset,lon+offset],[lat-offset,lon-offset]);
         coodsArray.push([lat+offset,lon-offset]);
         coodsArray.push([lat+offset,lon+offset]);

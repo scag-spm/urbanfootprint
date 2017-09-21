@@ -15,10 +15,26 @@
 sc_require('views/info_views/attribute_editing/scag_existing_land_use_parcels_editor_view');
 sc_require('views/info_views/attribute_editing/scag_tier2_taz_editor_view');
 sc_require('views/info_views/attribute_editing/scag_general_plan_parcels_editor_view');
+sc_require('views/info_views/attribute_editing/scag_specific_plan_parcels_editor_view');
+sc_require('views/info_views/attribute_editing/scag_zoning_parcels_editor_view.js');
 sc_require('views/info_views/attribute_editing/scag_city_boundary_editor_view');
 sc_require('views/info_views/attribute_editing/scag_scenario_planning_zones_editor_view');
+//sc_require('views/info_views/attribute_editing/scag_bike_lane_editor_view');
+sc_require('views/info_views/attribute_editing/scag_census_tracts_editor_view');
+sc_require('views/info_views/attribute_editing/scag_farmland_editor_view');
+sc_require('views/info_views/attribute_editing/scag_region_sphere_of_influence_editor_view');
+sc_require('views/info_views/attribute_editing/scag_endangered_species_editor_view');
+sc_require('views/info_views/attribute_editing/scag_habitat_conservation_areas_editor_view');
+sc_require('views/info_views/attribute_editing/scag_cpad_holdings_editor_view');
+sc_require('views/info_views/attribute_editing/scag_flood_zones_editor_view');
+sc_require('views/info_views/attribute_editing/scag_sea_level_rise_editor_view');
+sc_require('views/info_views/attribute_editing/scag_transit_priority_areas_editor_view');
+sc_require('views/info_views/attribute_editing/scag_major_transit_stops_editor_view');
+sc_require('views/info_views/attribute_editing/scag_high_quality_transit_corridors_editor_view');
+sc_require('views/info_views/attribute_editing/scag_existing_land_use_parcels_2012_editor_view');
 sc_require('views/info_views/attribute_editing/default_editor_view');
 sc_require('views/overlay_view');
+
 
 Footprint.EditSectionView = SC.View.extend({
     classNames: ['footprint-edit-section-view', 'footprint-map-overlay-section'],

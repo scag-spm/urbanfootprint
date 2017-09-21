@@ -530,8 +530,7 @@ Footprint.layerActiveController = SC.ObjectController.create({
 
             var activeLayerClassKey = this.getPath('content.dbEntityKey').toUpperCase()[0] + this.getPath('content.dbEntityKey').slice(1).camelize();
             var activeLayerBehaviorKey =this.getPath('content.db_entity.feature_behavior.behavior.key');
-
-            if ('behavior__editable_feature' == activeLayerBehaviorKey && activeLayerClassKey) {
+            if ('behavior__editable_feature' == activeLayerBehaviorKey && activeLayerClassKey || 'behavior__reference_layers_editable_attribute' == activeLayerBehaviorKey && activeLayerClassKey) {
                 return 'Footprint.%@EditorView'.fmt(activeLayerClassKey);
             }
             if ('behavior__scenario_end_state' == activeLayerBehaviorKey) {
@@ -556,6 +555,7 @@ Footprint.layerActiveController = SC.ObjectController.create({
         if (this.getPath('layerBehavior')) {
              var layer_behavior = this.getPath('layerBehavior');
              if (layer_behavior == 'behavior__editable_feature'
+                 || layer_behavior == 'behavior__reference_layers_editable_attribute'
                  || layer_behavior == 'behavior__scenario_end_state'
                  || layer_behavior == 'behavior__agriculture_scenario'
                  || layer_behavior == 'behavior__base_agriculture'

@@ -1,6 +1,6 @@
 /*
  * UrbanFootprint v1.5
- * Copyright (C) 2017 Calthorpe Analytics
+ * Copyright (C) 2016 Calthorpe Analytics
  *
  * This file is part of UrbanFootprint version 1.5
  *
@@ -15,10 +15,11 @@ sc_require('properties/plural_property');
 sc_require('views/info_views/select_info_view');
 sc_require('views/info_views/editable_text_field_view');
 
-Footprint.GeneralPlanParcelsEditorView = SC.View.extend({
-    classNames: ['footprint-general-plan-editor-view'],
-    childViews: ['gpCodeView', 'existingLandUseView', 'secondaryLandUseView',
-                'densityRangeView', 'yearAdoptView', 'commentView'],
+Footprint.SpecificPlanParcelsEditorView = SC.View.extend({
+    classNames: ['footprint-specific-plan-editor-view'],
+    childViews: ['densityRangeView', 'yearAdoptView', 'spCodeView',
+                 'spNameView', 'specificPlanView', 'secondarySpecificPlanView',
+                 'commentView'],
 
     activeLayer: null,
     activeLayerBinding: SC.Binding.oneWay('Footprint.layerActiveController.content'),
@@ -38,7 +39,7 @@ Footprint.GeneralPlanParcelsEditorView = SC.View.extend({
             layout: {height: 16},
             textAlign: SC.ALIGN_CENTER,
             backgroundColor: '#3366CC',
-            value: 'General Plan Densities'
+            value: 'Specific Plan Densities'
         }),
 
         densityView: Footprint.EditableTextFieldView.extend({
@@ -92,38 +93,51 @@ Footprint.GeneralPlanParcelsEditorView = SC.View.extend({
         titleViewLayout: { height: 16 },
         editableContentViewLayout: { top: 17 },
         titleClassNames: ['footprint-bold-title-white-view'],
-        contentValueKey: 'year_adopt',
+        contentValueKey: 'year_adopted',
         value: Footprint.pluralContentValueProperty,
         backgroundColor: '#3366CC'
     }),
 
-    gpCodeView: Footprint.EditableTextFieldView.extend({
+    spCodeView: Footprint.EditableTextFieldView.extend({
         layout: {left: 10, right: 30, top: 165, height: 40},
-        title: '2016 City GP Code',
+        title: '2016 City Specific Plan Code',
         isEditable:YES,
         contentBinding: SC.Binding.oneWay('.parentView.content'),
         titleViewLayout: { height: 16 },
         editableContentViewLayout: { top: 17 },
         titleClassNames: ['footprint-bold-title-white-view'],
-        contentValueKey: 'city_gp_code16',
+        contentValueKey: 'city_sp_code16',
         value: Footprint.pluralContentValueProperty,
         backgroundColor: '#3366CC'
     }),
 
-    existingLandUseView: SC.View.extend({
-        childViews: ['landUseTitleView', 'landUseSelectView'],
-        layout: {height: 40, left: 10, right: 30, top: 225},
+    spNameView: Footprint.EditableTextFieldView.extend({
+        layout: {left: 10, right: 30, top: 225, height: 40},
+        title: '2016 SCAG Specific Plan',
+        isEditable:YES,
+        contentBinding: SC.Binding.oneWay('.parentView.content'),
+        titleViewLayout: { height: 16 },
+        editableContentViewLayout: { top: 17 },
+        titleClassNames: ['footprint-bold-title-white-view'],
+        contentValueKey: 'sp_name',
+        value: Footprint.pluralContentValueProperty,
+        backgroundColor: '#3366CC'
+    }),
+
+    specificPlanView: SC.View.extend({
+        childViews: ['specificPlanTitleView', 'specificPlanSelectView'],
+        layout: {height: 40, left: 10, right: 30, top: 285},
         contentBinding: SC.Binding.oneWay('.parentView.content'),
 
-        landUseTitleView: SC.LabelView.extend({
+        specificPlanTitleView: SC.LabelView.extend({
             classNames: ['footprint-bold-title-white-view'],
             textAlign: SC.ALIGN_CENTER,
             backgroundColor: '#3366CC',
             layout: {height: 16},
-            value: '2016 SCAG Land Use'
+            value: '2016 SCAG Specific Plan'
         }),
 
-        landUseSelectView: Footprint.SelectInfoView.extend({
+        specificPlanSelectView: Footprint.SelectInfoView.extend({
             layout: {height: 24, top: 16},
             contentBinding: SC.Binding.oneWay('Footprint.clientLandUseDefinitionController.arrangedObjects'),
 
@@ -149,20 +163,20 @@ Footprint.GeneralPlanParcelsEditorView = SC.View.extend({
 
     }),
 
-    secondaryLandUseView: SC.View.extend({
-        childViews: ['landUseTitleView', 'landUseSelectView'],
-        layout: {height: 40, left: 10, right: 30, top: 285},
+    secondarySpecificPlanView: SC.View.extend({
+        childViews: ['specificPlanTitleView', 'specificPlanSelectView'],
+        layout: {height: 40, left: 10, right: 30, top: 345},
         contentBinding: SC.Binding.oneWay('.parentView.content'),
 
-        landUseTitleView: SC.LabelView.extend({
+        specificPlanTitleView: SC.LabelView.extend({
             classNames: ['footprint-bold-title-white-view'],
             textAlign: SC.ALIGN_CENTER,
             backgroundColor: '#3366CC',
             layout: {height: 16},
-            value: '2016 SCAG Secondary Land Use'
+            value: '2016 SCAG Secondary Specific Plan'
         }),
 
-        landUseSelectView: Footprint.SelectInfoView.extend({
+        specificPlanSelectView: Footprint.SelectInfoView.extend({
             layout: {height: 24, top: 16},
             contentBinding: SC.Binding.oneWay('Footprint.clientLandUseDefinitionSecondaryController.arrangedObjects'),
 
@@ -189,7 +203,7 @@ Footprint.GeneralPlanParcelsEditorView = SC.View.extend({
     }),
 
     commentView: Footprint.EditableTextFieldView.extend({
-        layout: {left: 10, right: 30, height: 100, top: 345},
+        layout: {left: 10, right: 30, height: 100, top: 405},
         title: 'Notes',
         titleClassNames: ['footprint-bold-title-white-view'],
         titleBackgroundColor: '#3366CC',

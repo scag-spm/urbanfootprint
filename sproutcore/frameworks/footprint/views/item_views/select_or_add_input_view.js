@@ -97,6 +97,20 @@ Footprint.SelectOrAddInputView = Footprint.EditableModelStringView.extend({
         return ret;
     },
 
+    setValueForMenuUPDOWN: function(value) {
+        var tmp = this.get('_value');
+        var remove_last_value = tmp.substring(0, tmp.lastIndexOf(value)).trim();
+        this.set('_value', remove_last_value);
+        return;
+    },
+
+    setValueForMenuUPDOWNENTER: function(value) {
+        var tmp = this.get('_value');
+        var remove_last_value = tmp.substring(0, tmp.lastIndexOf(value));
+        this.set('_value', remove_last_value.concat(value));
+        return;
+    },
+
     /***
      * This setter is used by the dropdown menu to update value
      * It's different than entering input text because the dropdown menu value is
@@ -111,16 +125,16 @@ Footprint.SelectOrAddInputView = Footprint.EditableModelStringView.extend({
 
             // TODO this will insert at the carrot or replace the selection if I can keep the clicking
             // or drop downs from activating select all
-        //var textSelection = this.get('selection');
-        //var val = this.get('_value') || '';
-        //var selectionStart = textSelection ? textSelection.get('start') : val.get('length');
-        //var selectionEnd = textSelection ? textSelection.get('end') : val.get('length');
-        //var textUpToStart = (this.get('_value') || '').slice(0, selectionStart);
-        //var textToToEnd = (this.get('_value') || '').slice(selectionEnd, -1);
-        //this.set(
-        //    '_value',
-        //    '%@%@%@'.fmt(textUpToStart, value, textToToEnd)
-        //);
+//        var textSelection = this.get('selection');
+//        var val = this.get('_value') || '';
+//        var selectionStart = textSelection ? textSelection.get('start') : val.get('length');
+//        var selectionEnd = textSelection ? textSelection.get('end') : val.get('length');
+//        var textUpToStart = (this.get('_value') || '').slice(0, selectionStart);
+//        var textToToEnd = (this.get('_value') || '').slice(selectionEnd, -1);
+//        this.set(
+//            '_value',
+//            '%@%@%@'.fmt(textUpToStart, value, textToToEnd)
+//        );
 
         if (this.get('appendSelectionToInput')) {
             this.set(

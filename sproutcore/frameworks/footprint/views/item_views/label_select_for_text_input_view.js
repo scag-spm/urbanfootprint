@@ -31,6 +31,7 @@ Footprint.LabelSelectForTextInputView = Footprint.LabelSelectView.extend({
      * Make selectable so the user can click items and scroll through them
      */
     isSelectable: YES,
+
     /***
      * YES by default. If YES, do not clear the selection when the user hits enter or clicks the
      * currently selected item. IF NO, clear the selection so that no selected item is maintained.
@@ -76,7 +77,7 @@ Footprint.LabelSelectForTextInputView = Footprint.LabelSelectView.extend({
         var selectedItemValue = this.get('selectedItemValue');
         var inputView = this.get('targetInputView');
         if (selectedItemValue && inputView) {
-            inputView.setValueForMenu(this.escapeValueIfNeeded(selectedItemValue));
+             inputView.setValueForMenuUPDOWNENTER(this.escapeValueIfNeeded(selectedItemValue));
         }
         // Finalize by setting value
         inputView.finalizeMenuValue();
@@ -118,5 +119,42 @@ Footprint.LabelSelectForTextInputView = Footprint.LabelSelectView.extend({
             this.set('value', this.get('searchString'));
         inputView.restoreFocus();
         this.deselectAllFromMenu();
+        this.removeMenu();
     },
+
+    handleKeyDownFromLastItem: function() {
+        var inputView = this.getPath('targetInputView');
+        if (this.get('searchString'))
+            this.set('value', this.get('searchString'));
+        inputView.restoreFocus();
+        this.deselectAllFromMenu();
+        this.removeMenu();
+    },
+
+    handleUpKey: function() {
+            var selectedItemValue = this.get('selectedItemValue');
+            var inputView = this.get('targetInputView');
+            if (selectedItemValue && inputView) {
+                inputView.setValueForMenuUPDOWN(this.escapeValueIfNeeded(selectedItemValue));
+            }
+            // Finalize by setting value
+            inputView.finalizeMenuValue();
+            // Clear the selection if should not be kept after hitting enter
+            if (!this.get('keepSelectionAfterChoosing'))
+                this.deselectAllFromMenu();
+    },
+
+    handleDownKey: function() {
+            var selectedItemValue = this.get('selectedItemValue');
+            var inputView = this.get('targetInputView');
+            if (selectedItemValue && inputView) {
+                inputView.setValueForMenuUPDOWN(this.escapeValueIfNeeded(selectedItemValue));
+            }
+            // Finalize by setting value
+            inputView.finalizeMenuValue();
+            // Clear the selection if should not be kept after hitting enter
+            if (!this.get('keepSelectionAfterChoosing'))
+                this.deselectAllFromMenu();
+    },
+
 });
