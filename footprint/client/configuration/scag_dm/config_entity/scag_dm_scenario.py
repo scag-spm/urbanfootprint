@@ -1,6 +1,6 @@
 
 # UrbanFootprint v1.5
-# Copyright (C) 2017 Calthorpe Analytics
+# Copyright (C) 2016 Calthorpe Analytics
 #
 # This file is part of UrbanFootprint version 1.5
 #
@@ -13,8 +13,9 @@
 from footprint.client.configuration.scag_dm.base.scenario_planning_zones import ScenarioPlanningZones
 from footprint.client.configuration.scag_dm.base.existing_land_use_parcel import ExistingLandUseParcel
 from footprint.client.configuration.scag_dm.base.general_plan_parcels import GeneralPlanParcels
+from footprint.client.configuration.scag_dm.base.specific_plan_parcels import SpecificPlanParcels
+from footprint.client.configuration.scag_dm.base.zoning_parcels import ZoningParcels
 from footprint.client.configuration.scag_dm.base.entitlement_parcels import EntitlementParcels
-from footprint.client.configuration.scag_dm.base.sphere_of_influence import SphereOfInfluence
 from footprint.client.configuration.scag_dm.base.tier2_taz import Tier2Taz
 from footprint.client.configuration.scag_dm.config_entity.scag_dm_config_entities import ScagDmDbEntityKey
 from footprint.main.models.category import Category
@@ -70,7 +71,7 @@ class ScagDmScenarioFixture(ScenarioFixture):
                 dict(
                     class_scope=BaseScenario,
                     value=DbEntity(
-                        name='SCAG Existing Land Use Parcels 2016',
+                        name='2016 SCAG Existing Land Use Parcels',
                         key=Key.EXISTING_LAND_USE_PARCELS_2016,
                         feature_class_configuration=FeatureClassConfiguration(
                             abstract_class=ExistingLandUseParcel,
@@ -84,7 +85,7 @@ class ScagDmScenarioFixture(ScenarioFixture):
                                 single=True,
                                 related_class_name='footprint.client.configuration.scag_dm.built_form.scag_dm_land_use_definition.ScagDmLandUseDefinition',
                                 related_class_join_field_name='land_use',
-                                source_class_join_field_name='scag_lu')
+                                source_class_join_field_name='scag_lu16')
                             )
                         ),
                         feature_behavior=FeatureBehavior(
@@ -98,6 +99,7 @@ class ScagDmScenarioFixture(ScenarioFixture):
                 dict(
                     class_scope=BaseScenario,
                     value=DbEntity(
+                        name='2016 SCAG General Plan Parcels',
                         key=Key.GENERAL_PLAN_PARCELS,
                         feature_class_configuration=FeatureClassConfiguration(
                             abstract_class=GeneralPlanParcels,
@@ -113,7 +115,65 @@ class ScagDmScenarioFixture(ScenarioFixture):
                                 # TODO not wired up yet
                                 resource_model_class_name='footprint.main.models.built_form.ClientLandUseDefinition',
                                 related_class_join_field_name='land_use',
-                                source_class_join_field_name='scag_gp_code')
+                                source_class_join_field_name='scag_gp_code16')
+                            )
+                        ),
+                        feature_behavior=FeatureBehavior(
+                            behavior=get_behavior('editable_feature'),
+                            intersection=AttributeIntersection()
+                        ),
+                        _categories=[Category(key=DbEntityCategoryKey.KEY_CLASSIFICATION,
+                                              value=DbEntityCategoryKey.EDITABLE_LAYER)]
+                    )
+                ),
+
+                dict(
+                    class_scope=BaseScenario,
+                    value=DbEntity(
+                        name='2016 SCAG Specific Plan Parcels',
+                        key=Key.SPECIFIC_PLAN_PARCELS,
+                        feature_class_configuration=FeatureClassConfiguration(
+                            abstract_class=SpecificPlanParcels,
+                            primary_key='source_id',
+                            primary_key_type='int',
+                            import_from_db_entity_key=Key.REGION_SPECIFIC_PLAN_PARCELS,
+                            filter_query=dict(city=project.name),
+                            fields=dict(),
+                            related_fields=dict(land_use_definition=dict(
+                                single=True,
+                                related_class_name='footprint.client.configuration.scag_dm.built_form.scag_dm_land_use_definition.ScagDmLandUseDefinition',
+                                resource_model_class_name='footprint.main.models.built_form.ClientLandUseDefinition',
+                                related_class_join_field_name='land_use',
+                                source_class_join_field_name='scag_sp_code16')
+                            )
+                        ),
+                        feature_behavior=FeatureBehavior(
+                            behavior=get_behavior('editable_feature'),
+                            intersection=AttributeIntersection()
+                        ),
+                        _categories=[Category(key=DbEntityCategoryKey.KEY_CLASSIFICATION,
+                                              value=DbEntityCategoryKey.EDITABLE_LAYER)]
+                    )
+                ),
+
+                dict(
+                    class_scope=BaseScenario,
+                    value=DbEntity(
+                        name='2016 SCAG Zoning Parcels',
+                        key=Key.ZONING_PARCELS,
+                        feature_class_configuration=FeatureClassConfiguration(
+                            abstract_class=ZoningParcels,
+                            primary_key='source_id',
+                            primary_key_type='int',
+                            import_from_db_entity_key=Key.REGION_ZONING_PARCELS,
+                            filter_query=dict(city=project.name),
+                            fields=dict(),
+                            related_fields=dict(land_use_definition=dict(
+                                single=True,
+                                related_class_name='footprint.client.configuration.scag_dm.built_form.scag_dm_land_use_definition.ScagDmLandUseDefinition',
+                                resource_model_class_name='footprint.main.models.built_form.ClientLandUseDefinition',
+                                related_class_join_field_name='land_use',
+                                source_class_join_field_name='scag_zn_code16')
                             )
                         ),
                         feature_behavior=FeatureBehavior(
@@ -162,24 +222,6 @@ class ScagDmScenarioFixture(ScenarioFixture):
                         ),
                         _categories=[Category(key=DbEntityCategoryKey.KEY_CLASSIFICATION,
                                               value=DbEntityCategoryKey.EDITABLE_LAYER)]
-                    )
-                ),
-
-                dict(
-                    class_scope=BaseScenario,
-                    value=DbEntity(
-                        key=Key.SPHERE_OF_INFLUENCE,
-                        feature_class_configuration=FeatureClassConfiguration(
-                            abstract_class=SphereOfInfluence,
-                            import_from_db_entity_key=Key.REGION_SPHERE_OF_INFLUENCE,
-                            filter_query=dict(city=project.name),
-                        ),
-                        feature_behavior=FeatureBehavior(
-                            behavior=get_behavior('reference'),
-                            intersection=GeographicIntersection.polygon_to_centroid
-                        ),
-                        _categories=[Category(key=DbEntityCategoryKey.KEY_CLASSIFICATION,
-                                              value=DbEntityCategoryKey.REFERENCE)]
                     )
                 ),
 

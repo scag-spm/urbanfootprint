@@ -1,6 +1,6 @@
 
 # UrbanFootprint v1.5
-# Copyright (C) 2017 Calthorpe Analytics
+# Copyright (C) 2016 Calthorpe Analytics
 #
 # This file is part of UrbanFootprint version 1.5
 #
@@ -18,8 +18,8 @@ __author__ = 'calthorpe_analytics'
 
 
 class EndangeredSpecies(Feature):
-    sname = models.CharField(max_length=50, null=True)
-    cname = models.CharField(max_length=50, null=True)
+    sname = models.CharField(max_length=60, null=True)
+    cname = models.CharField(max_length=60, null=True)
     elmcode = models.CharField(max_length=50, null=True)
     occnumber = models.CharField(max_length=50, null=True)
 
@@ -32,13 +32,13 @@ class EndangeredSpecies(Feature):
     fedlist = models.CharField(max_length=50, null=True)
     callist = models.CharField(max_length=50, null=True)
 
-    location = models.CharField(max_length=50, null=True)
-    locdetails = models.CharField(max_length=50, null=True)
-    ecological = models.CharField(max_length=50, null=True)
+    location = models.CharField(max_length=120, null=True)
+    locdetails = models.CharField(max_length=240, null=True)
+    ecological = models.CharField(max_length=240, null=True)
 
-    threat = models.CharField(max_length=50, null=True)
-    general = models.CharField(max_length=50, null=True)
-    symbology = models.CharField(max_length=50, null=True)
+    threat = models.CharField(max_length=120, null=True)
+    general = models.CharField(max_length=240, null=True)
+    notes = models.CharField(max_length=1024, null=True, blank=True)
 
 
     class Meta(object):

@@ -11,7 +11,7 @@
 # Public License v3 for more details; see <http://www.gnu.org/licenses/>.
 
 
-from footprint.client.configuration.scag_dm.base.bike_lane import BikeLane
+# from footprint.client.configuration.scag_dm.base.bike_lane import BikeLane
 from footprint.client.configuration.scag_dm.base.census_tracts import CensusTracts
 from footprint.client.configuration.scag_dm.base.city_boundary import CityBoundary
 from footprint.client.configuration.scag_dm.base.county_boundary import CountyBoundary
@@ -22,6 +22,8 @@ from footprint.client.configuration.scag_dm.base.existing_land_use_parcel import
 from footprint.client.configuration.scag_dm.base.farmland import Farmland
 from footprint.client.configuration.scag_dm.base.flood_zones import FloodZones
 from footprint.client.configuration.scag_dm.base.general_plan_parcels import GeneralPlanParcels
+from footprint.client.configuration.scag_dm.base.specific_plan_parcels import SpecificPlanParcels
+from footprint.client.configuration.scag_dm.base.zoning_parcels import ZoningParcels
 from footprint.client.configuration.scag_dm.base.habitat_conservation_areas import HabitatConservationAreas
 from footprint.client.configuration.scag_dm.base.high_quality_transit_areas import HighQualityTransitAreas
 from footprint.client.configuration.scag_dm.base.high_quality_transit_corridors import HighQualityTransitCorridors
@@ -35,3 +37,5 @@ from footprint.client.configuration.scag_dm.base.tier2_taz import Tier2Taz
 from footprint.client.configuration.scag_dm.base.transit_priority_areas import TransitPriorityAreas
 from footprint.client.configuration.scag_dm.built_form.scag_dm_land_use import ScagDmLandUse
 from footprint.client.configuration.scag_dm.built_form.scag_dm_land_use_definition import ScagDmLandUseDefinition
+from footprint.client.configuration.scag_dm.built_form.scag_dm_farmland_definition import ScagDmFarmlandDefinition
+

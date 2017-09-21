@@ -1,6 +1,6 @@
 
 # UrbanFootprint v1.5
-# Copyright (C) 2017 Calthorpe Analytics
+# Copyright (C) 2016 Calthorpe Analytics
 #
 # This file is part of UrbanFootprint version 1.5
 #
@@ -59,6 +59,20 @@ class ScagDmLayerConfigurationFixtures(LayerConfigurationFixture):
             ),
             LayerConfiguration(
                 library_keys=[LayerLibraryKey.APPLICATION],
+                db_entity_key=ScagDmDbEntityKey.SPECIFIC_PLAN_PARCELS,
+                column_alias_lookup=dict(land_use_definition__id='land_use_definition_id'),
+                built_form_set_key='scag_land_uses',
+                layer_style=primary_base_layer_style(ScagDmLandUseDefinition)
+            ),
+            LayerConfiguration(
+                library_keys=[LayerLibraryKey.APPLICATION],
+                db_entity_key=ScagDmDbEntityKey.ZONING_PARCELS,
+                column_alias_lookup=dict(land_use_definition__id='land_use_definition_id'),
+                built_form_set_key='scag_land_uses',
+                layer_style=primary_base_layer_style(ScagDmLandUseDefinition)
+            ),
+            LayerConfiguration(
+                library_keys=[LayerLibraryKey.APPLICATION],
                 db_entity_key=ScagDmDbEntityKey.ENTITLEMENT_PARCELS_2016,
                 layer_style=dict(
                     geometry_type=GeometryTypeKey.POLYGON,
@@ -104,7 +118,7 @@ class ScagDmLayerConfigurationFixtures(LayerConfigurationFixture):
             ),
             LayerConfiguration(
                 library_keys=[LayerLibraryKey.APPLICATION],
-                db_entity_key=ScagDmDbEntityKey.SPHERE_OF_INFLUENCE,
+                db_entity_key=ScagDmDbEntityKey.REGION_SPHERE_OF_INFLUENCE,
                 layer_style=dict(
                     geometry_type=GeometryTypeKey.POLYGON,
                     style_attributes=[
@@ -199,7 +213,7 @@ class ScagDmLayerConfigurationFixtures(LayerConfigurationFixture):
             ),
             LayerConfiguration(
                 library_keys=[LayerLibraryKey.APPLICATION],
-                name='Transit Priority Areas 2012',
+                name='2040 Transit Priority Areas',
                 db_entity_key=ScagDmDbEntityKey.TRANSIT_PRIORITY_AREAS,
                 layer_style=dict(
                     geometry_type=GeometryTypeKey.POLYGON,
@@ -217,7 +231,7 @@ class ScagDmLayerConfigurationFixtures(LayerConfigurationFixture):
             ),
             LayerConfiguration(
                 library_keys=[LayerLibraryKey.APPLICATION],
-                name='Major Transit Stops 2012',
+                name='2040 Major Transit Stops',
                 db_entity_key=ScagDmDbEntityKey.MAJOR_TRANSIT_STOPS,
                 layer_style=dict(
                     geometry_type=GeometryTypeKey.POINT,
@@ -238,7 +252,7 @@ class ScagDmLayerConfigurationFixtures(LayerConfigurationFixture):
             ),
             LayerConfiguration(
                 library_keys=[LayerLibraryKey.APPLICATION],
-                name='High Quality Transit Areas 2012',
+                name='2040 High Quality Transit Areas',
                 db_entity_key=ScagDmDbEntityKey.HIGH_QUALITY_TRANSIT_AREAS,
                 layer_style=dict(
                     geometry_type=GeometryTypeKey.POLYGON,
@@ -260,7 +274,7 @@ class ScagDmLayerConfigurationFixtures(LayerConfigurationFixture):
             ),
             LayerConfiguration(
                 library_keys=[LayerLibraryKey.APPLICATION],
-                name='High Quality Transit Corridors',
+                name='2040 High Quality Transit Corridors',
                 db_entity_key=ScagDmDbEntityKey.HIGH_QUALITY_TRANSIT_CORRIDORS,
                 layer_style=dict(
                     geometry_type=GeometryTypeKey.LINESTRING,
@@ -354,30 +368,30 @@ class ScagDmLayerConfigurationFixtures(LayerConfigurationFixture):
                 )
 
             ),
-            LayerConfiguration(
-                library_keys=[LayerLibraryKey.APPLICATION],
-                db_entity_key=ScagDmDbEntityKey.BIKE_LANE,
-                layer_style=dict(
-                    geometry_type=GeometryTypeKey.LINESTRING,
-                    style_attributes=[
-                        dict(
-                            attribute='status',
-                            style_type=StyleTypeKey.CATEGORICAL,
-                            style_value_contexts=[
-                                StyleValueContext(value='Existing', symbol='=', style=Style(
-                                    line_color='#00cc88',
-                                    line_width=4
-                                )),
-
-                                StyleValueContext(value='Proposed', symbol='=', style=Style(
-                                    line_color='#ff9a00',
-                                    line_width=4
-                                ))
-                            ]
-                        )
-                    ]
-                )
-            ),
+            # LayerConfiguration(
+            #     library_keys=[LayerLibraryKey.APPLICATION],
+            #     db_entity_key=ScagDmDbEntityKey.BIKE_LANE,
+            #     layer_style=dict(
+            #         geometry_type=GeometryTypeKey.LINESTRING,
+            #         style_attributes=[
+            #             dict(
+            #                 attribute='status',
+            #                 style_type=StyleTypeKey.CATEGORICAL,
+            #                 style_value_contexts=[
+            #                     StyleValueContext(value='Existing', symbol='=', style=Style(
+            #                         line_color='#00cc88',
+            #                         line_width=4
+            #                     )),
+            #
+            #                     StyleValueContext(value='Proposed', symbol='=', style=Style(
+            #                         line_color='#ff9a00',
+            #                         line_width=4
+            #                     ))
+            #                 ]
+            #             )
+            #         ]
+            #     )
+            # ),
 
             LayerConfiguration(
                 library_keys=[LayerLibraryKey.APPLICATION],
@@ -387,18 +401,18 @@ class ScagDmLayerConfigurationFixtures(LayerConfigurationFixture):
                     geometry_type=GeometryTypeKey.POLYGON,
                     style_attributes=[
                         dict(
-                            attribute='fld_zone',
+                            attribute='scag_fld_zone',
                             style_type=StyleTypeKey.CATEGORICAL,
                             style_value_contexts=[
                                 StyleValueContext(value='100 Year Flood Hazard', symbol='=', style=Style(
-                                    polygon_fill='#885ead',
+                                    polygon_fill='#A900E6',
                                     line_color='#d3d3d3',
                                     line_width=1,
                                     line_opacity=0.8,
                                     polygon_opacity=0.4,
                                 )),
                                 StyleValueContext(value='500 Year Flood Hazard', symbol='=', style=Style(
-                                    polygon_fill='#7cb0df',
+                                    polygon_fill='#73B2FF',
                                     line_color='#d3d3d3',
                                     line_width=1,
                                     line_opacity=0.8,
@@ -522,7 +536,7 @@ class ScagDmLayerConfigurationFixtures(LayerConfigurationFixture):
                     global_opacity=0.6,
                     style_attributes=[
                         dict(
-                            attribute='type_scag',
+                            attribute='scag_type',
                             style_type=StyleTypeKey.CATEGORICAL,
                             style_value_contexts=[
                                 StyleValueContext(value='P', symbol='=', style=Style(
@@ -584,7 +598,7 @@ class ScagDmLayerConfigurationFixtures(LayerConfigurationFixture):
                                 StyleValueContext(value='nv', symbol='=', style=Style(
                                     line_color='#594',
                                     line_width=1,
-                                    polygon_fill='#dbc49a',
+                                    polygon_fill='#DBC49A',
                                     polygon_opacity=0.4
                                 )),
                                 StyleValueContext(value='V', symbol='=', style=Style(
@@ -639,7 +653,7 @@ class ScagDmLayerConfigurationFixtures(LayerConfigurationFixture):
                                 StyleValueContext(value='Z', symbol='=', style=Style(
                                     line_color='#594',
                                     line_width=1,
-                                    polygon_fill='#ffffff',
+                                    polygon_fill='#D4CFC7',
                                     polygon_opacity=0.4
                                 )),
                             ]

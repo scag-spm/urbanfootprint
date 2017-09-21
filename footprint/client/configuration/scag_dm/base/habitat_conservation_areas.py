@@ -1,6 +1,6 @@
 
 # UrbanFootprint v1.5
-# Copyright (C) 2017 Calthorpe Analytics
+# Copyright (C) 2016 Calthorpe Analytics
 #
 # This file is part of UrbanFootprint version 1.5
 #
@@ -22,7 +22,8 @@ class HabitatConservationAreas(Feature):
     hcp = models.CharField(max_length=50, null=True)
     nccp = models.CharField(max_length=50, null=True)
     stage = models.CharField(max_length=50, null=True)
-    acreage = models.DecimalField(max_digits=14, decimal_places=2, null=True)
+    acres = models.DecimalField(max_digits=14, decimal_places=2, null=True)
+    notes = models.CharField(max_length=1024, null=True, blank=True)
 
     class Meta(object):
         abstract = True

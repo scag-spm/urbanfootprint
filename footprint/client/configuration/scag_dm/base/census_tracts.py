@@ -18,11 +18,10 @@ __author__ = 'calthorpe_analytics'
 
 
 class CensusTracts(Feature):
-    county_id = models.CharField(max_length=50, null=True)
-    tractce10 = models.CharField(max_length=50, null=True)
+
     geoid10 = models.CharField(max_length=50, null=True)
-    aland10 = models.DecimalField(max_digits=14, decimal_places=2, null=True)
-    awater10 = models.DecimalField(max_digits=14, decimal_places=2, null=True)
+    county = models.CharField(max_length=50, null=True)
+    notes = models.CharField(max_length=1024, null=True, blank=True)
 
     class Meta(object):
         abstract = True

@@ -1,6 +1,6 @@
 
 # UrbanFootprint v1.5
-# Copyright (C) 2017 Calthorpe Analytics
+# Copyright (C) 2016 Calthorpe Analytics
 #
 # This file is part of UrbanFootprint version 1.5
 #
@@ -34,27 +34,33 @@ class ScagDmDbEntityKey(DbEntityKey):
     HABITAT_CONSERVATION_AREA = 'habitat_conservation_areas'
     COUNTY_BOUNDARY = 'county_boundary'
     HIGH_QUALITY_TRANSIT_AREAS = 'high_quality_transit_areas'
-    HIGH_QUALITY_TRANSIT_AREAS_2012 = 'high_quality_transit_areas_2012'
-    HIGH_QUALITY_TRANSIT_AREAS_2040 = 'high_quality_transit_areas_2040'
+    # HIGH_QUALITY_TRANSIT_AREAS_2012 = 'high_quality_transit_areas_2012'
+    # HIGH_QUALITY_TRANSIT_AREAS_2040 = 'high_quality_transit_areas_2040'
     HIGH_QUALITY_TRANSIT_CORRIDORS = 'high_quality_transit_corridors'
-    HIGH_QUALITY_TRANSIT_CORRIDORS_2012 = 'high_quality_transit_corridors_2012'
-    HIGH_QUALITY_TRANSIT_CORRIDORS_2040 = 'high_quality_transit_corridors_2040'
+    # HIGH_QUALITY_TRANSIT_CORRIDORS_2012 = 'high_quality_transit_corridors_2012'
+    # HIGH_QUALITY_TRANSIT_CORRIDORS_2040 = 'high_quality_transit_corridors_2040'
     MAJOR_TRANSIT_STOPS = 'major_transit_stops'
-    MAJOR_TRANSIT_STOPS_2012 = 'major_transit_stops_2012'
-    MAJOR_TRANSIT_STOPS_2040 = 'major_transit_stops_2040'
+    # MAJOR_TRANSIT_STOPS_2012 = 'major_transit_stops_2012'
+    # MAJOR_TRANSIT_STOPS_2040 = 'major_transit_stops_2040'
     TRANSIT_PRIORITY_AREAS = 'transit_priority_areas'
-    TRANSIT_PRIORITY_AREAS_2012 = 'transit_priority_areas_2012'
-    TRANSIT_PRIORITY_AREAS_2040 = 'transit_priority_areas_2040'
+    # TRANSIT_PRIORITY_AREAS_2012 = 'transit_priority_areas_2012'
+    # TRANSIT_PRIORITY_AREAS_2040 = 'transit_priority_areas_2040'
     SUB_REGION = 'sub_region'
     CENSUS_TRACTS = 'census_tracts'
 
     EXISTING_LAND_USE_PARCELS_2012 = 'existing_land_use_parcels_2012'
     EXISTING_LAND_USE_PARCELS_2016 = 'existing_land_use_parcels_2016'
     REGION_EXISTING_LAND_USE_PARCELS = 'region_existing_land_use_parcels'
-    PROJECT_EXISTING_LAND_USE_PARCELS = 'project_existing_land_use_parcels'
+    # PROJECT_EXISTING_LAND_USE_PARCELS = 'project_existing_land_use_parcels'
 
     GENERAL_PLAN_PARCELS = 'general_plan_parcels'
     REGION_GENERAL_PLAN_PARCELS = 'region_general_plan_parcels'
+
+    SPECIFIC_PLAN_PARCELS = 'specific_plan_parcels'
+    REGION_SPECIFIC_PLAN_PARCELS = 'region_specific_plan_parcels'
+
+    ZONING_PARCELS = 'zoning_parcels'
+    REGION_ZONING_PARCELS = 'region_zoning_parcels'
 
     ENTITLEMENT_PARCELS_2016 = 'entitlement_parcels_2016'
     REGION_ENTITLEMENT_PARCELS_2016 = 'region_entitlement_parcels_2016'
@@ -65,7 +71,6 @@ class ScagDmDbEntityKey(DbEntityKey):
     JURISDICTION_BOUNDARY = 'jurisdiction_boundary'
     REGION_JURISDICTION_BOUNDARY = 'region_jurisdiction_boundary'
 
-    SPHERE_OF_INFLUENCE = 'sphere_of_influence'
     REGION_SPHERE_OF_INFLUENCE = 'region_sphere_of_influence'
 
     TIER2_TAZ = 'tier2_taz'
@@ -74,7 +79,7 @@ class ScagDmDbEntityKey(DbEntityKey):
     CITY_BOUNDARY = 'city_boundary'
     REGION_CITY_BOUNDARY = 'region_city_boundary'
     PROJECT_CITY_BOUNDARY = 'project_city_boundary'
-    BIKE_LANE = 'bike_lane'
+    # BIKE_LANE = 'bike_lane'
     SEA_LEVEL_RISE = 'sea_level_rise'
 
 
@@ -153,8 +158,9 @@ class ScagDmConfigEntitiesFixture(ConfigEntitiesFixture):
                             'San Buenaventura', 'Santa Paula', 'Simi Valley', 'Thousand Oaks',
                             'Unincorporated: Ventura']
 
-        jurisdictions = imperial + los_angeles + orange + riverside + san_bernardino + ventura
-
+        #jurisdictions = imperial + los_angeles + orange + riverside + san_bernardino + ventura
+        jurisdictions = ['City_%02d' % x for x in xrange(32)]
+        
         # Create only a small subset of jurisdictions for the dev environments
         if settings.USE_SAMPLE_DATA_SETS:
             jurisdictions = ["Anaheim", 'Irvine']

@@ -1,6 +1,6 @@
 
 # UrbanFootprint v1.5
-# Copyright (C) 2017 Calthorpe Analytics
+# Copyright (C) 2016 Calthorpe Analytics
 #
 # This file is part of UrbanFootprint version 1.5
 #
@@ -73,7 +73,7 @@ except:
 
 # This is used so that public tables specific to all clients are created by South
 # This allows us to have a single migration path across deployments (see models/__init__.py)
-ALL_CLIENTS = ['sacog', 'scag_dm']
+ALL_CLIENTS = ['scag_dm']
 
 DEBUG = False
 TEMPLATE_DEBUG = DEBUG
@@ -81,7 +81,7 @@ TEMPLATE_DEBUG = DEBUG
 # Use tables with _sample suffixes from the source database when importing feature data
 USE_SAMPLE_DATA_SETS = False
 # This is true for dev sites
-DEV = False
+DEV = True
 
 # Set the source for built form imports, or don't import them at all
 IMPORT_BUILT_FORMS = 'JSON'  # set to 'CSV' to run full import, 'JSON' to use fixtures, or 'FALSE' to skip import

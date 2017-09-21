@@ -1,6 +1,6 @@
 
 # UrbanFootprint v1.5
-# Copyright (C) 2017 Calthorpe Analytics
+# Copyright (C) 2016 Calthorpe Analytics
 #
 # This file is part of UrbanFootprint version 1.5
 #
@@ -19,7 +19,7 @@ __author__ = 'calthorpe_analytics'
 class EntitlementParcels(Feature):
 
     apn = models.CharField(max_length=1024, null=True, blank=True)
-    scaguid12 = models.CharField(max_length=1024, null=True, blank=True)
+    scaguid16 = models.CharField(max_length=1024, null=True, blank=True)
     city = models.CharField(max_length=1024, null=True, blank=True)
     county = models.CharField(max_length=1024, null=True, blank=True)
     acres = models.DecimalField(max_digits=14, decimal_places=2, null=True)

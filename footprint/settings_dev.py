@@ -1,6 +1,6 @@
 
 # UrbanFootprint v1.5
-# Copyright (C) 2017 Calthorpe Analytics
+# Copyright (C) 2016 Calthorpe Analytics
 #
 # This file is part of UrbanFootprint version 1.5
 #
@@ -18,7 +18,7 @@ from .default_settings import *
 
 TILE_CACHE = "Disk"
 
-USE_SAMPLE_DATA_SETS = True
+USE_SAMPLE_DATA_SETS = False
 
 # Run celery as the main process. False means run celery as normal.
 # If you want to run footprint_init, which requires CELERY_ALWAYS_EAGER = True,
@@ -36,15 +36,15 @@ warnings.filterwarnings(
     RuntimeWarning, r'django\.db\.models\.fields')
 
 DEV = True
-DEBUG = True
-TASTYPIE_FULL_DEBUG = True
+DEBUG = False
+TASTYPIE_FULL_DEBUG = False
 CONSOLE_DEBUG = DEBUG
 TEMPLATE_DEBUG = DEBUG
 
 REUSE_DB = 1
 
 # Set the source for built form imports, or don't import them at all
-IMPORT_BUILT_FORMS = 'CSV'  # set to 'CSV' to run full import, 'JSON' to use fixtures, or 'FALSE' to skip import
+IMPORT_BUILT_FORMS = 'JSON'  # set to 'CSV' to run full import, 'JSON' to use fixtures, or 'FALSE' to skip import
 
 # Skip slow calculations for testing
 SKIP_ALL_BUILT_FORMS = False

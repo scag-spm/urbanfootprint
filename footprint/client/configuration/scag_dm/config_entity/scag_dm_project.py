@@ -1,6 +1,6 @@
 
 # UrbanFootprint v1.5
-# Copyright (C) 2017 Calthorpe Analytics
+# Copyright (C) 2016 Calthorpe Analytics
 #
 # This file is part of UrbanFootprint version 1.5
 #
@@ -47,7 +47,7 @@ class ScagDmProjectFixture(ProjectFixture):
         return super(ScagDmProjectFixture, self).default_db_entities() + [
 
         update_or_create_db_entity(project, DbEntity(
-                name='SCAG Existing Land Use Parcels 2012',
+                name='2012 SCAG Existing Land Use Parcels',
                 key=Key.EXISTING_LAND_USE_PARCELS_2012,
                 feature_class_configuration=FeatureClassConfiguration(
                     abstract_class=ExistingLandUseParcel,
@@ -58,11 +58,11 @@ class ScagDmProjectFixture(ProjectFixture):
                         single=True,
                         related_class_name='footprint.client.configuration.scag_dm.built_form.scag_dm_land_use_definition.ScagDmLandUseDefinition',
                         related_class_join_field_name='land_use',
-                        source_class_join_field_name='scag_lu')
+                        source_class_join_field_name='scag_lu12')
                     )
                 ),
                 feature_behavior=FeatureBehavior(
-                    behavior=get_behavior('reference')
+                    behavior=get_behavior('reference_layers_editable_attribute')
                 ),
                 _categories=[Category(key=DbEntityCategoryKey.KEY_CLASSIFICATION, value=DbEntityCategoryKey.REFERENCE)]
             )
@@ -77,10 +77,11 @@ class ScagDmProjectFixture(ProjectFixture):
                     use_for_bounds=True
                   ),
                 feature_behavior=FeatureBehavior(
-                    behavior=get_behavior('reference'),
+                    behavior=get_behavior('reference_layers_editable_attribute'),
                     intersection=GeographicIntersection.polygon_to_centroid
                 ),
                 _categories=[Category(key=DbEntityCategoryKey.KEY_CLASSIFICATION, value=DbEntityCategoryKey.REFERENCE)]
             )
         )
+
         ]

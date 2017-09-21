@@ -1,6 +1,6 @@
 
 # UrbanFootprint v1.5
-# Copyright (C) 2017 Calthorpe Analytics
+# Copyright (C) 2016 Calthorpe Analytics
 #
 # This file is part of UrbanFootprint version 1.5
 #
@@ -21,6 +21,7 @@ class SubRegion(Feature):
 
     subregion = models.CharField(max_length=50, null=True)
     name = models.CharField(max_length=50, null=True)
+    county = models.CharField(max_length=15, null=True)
     acres = models.DecimalField(max_digits=14, decimal_places=2, null=True)
     year = models.IntegerField(null=True, blank=True)
 

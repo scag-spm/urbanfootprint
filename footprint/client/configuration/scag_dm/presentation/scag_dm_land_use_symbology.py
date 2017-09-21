@@ -1,6 +1,6 @@
 
 # UrbanFootprint v1.5
-# Copyright (C) 2017 Calthorpe Analytics
+# Copyright (C) 2016 Calthorpe Analytics
 #
 # This file is part of UrbanFootprint version 1.5
 #
@@ -16,13 +16,8 @@ __author__ = 'calthorpe_analytics'
 
 
 class ScagDmLandUseSymbology(LandUseSymbologyFixture):
-    """
-    a resource for translating SACOG's land uses into UF Built Forms
-    """
     def land_use_color_lookup(self):
         return {
-            '1000': '#CD6666',
-            '1100': '#E3C400',
             '1110': '#FFFF00',
             '1111': '#FFFF00',
             '1112': '#FFFF00',
@@ -33,15 +28,17 @@ class ScagDmLandUseSymbology(LandUseSymbologyFixture):
             '1123': '#FFAA00',
             '1124': '#FFAA00',
             '1125': '#FFAA00',
-            '1130': '#FFEBAA',
-            '1131': '#FFEBAA',
-            '1132': '#FFEBAA',
+            '1130': '#FFEBAF',
+            '1131': '#FFEBAF',
+            '1132': '#FFEBAF',
+            '1100': '#E3C400',
             '1140': '#E3C400',
-            '1200': '#FF0000',
+            '1150': '#CDAA66',
             '1210': '#9C0000',
             '1211': '#9C0000',
             '1212': '#9C0000',
             '1213': '#9C0000',
+            '1200': '#FF0000',
             '1220': '#FF0000',
             '1221': '#FF0000',
             '1222': '#FF0000',
@@ -62,13 +59,13 @@ class ScagDmLandUseSymbology(LandUseSymbologyFixture):
             '1251': '#7A8EF5',
             '1252': '#7A8EF5',
             '1253': '#7A8EF5',
-            '1260': '#77B3D7',
-            '1261': '#77B3D7',
-            '1262': '#77B3D7',
-            '1263': '#77B3D7',
-            '1264': '#77B3D7',
-            '1265': '#77B3D7',
-            '1266': '#77B3D7',
+            '1260': '#C2B3D7',
+            '1261': '#C2B3D7',
+            '1262': '#C2B3D7',
+            '1263': '#C2B3D7',
+            '1264': '#C2B3D7',
+            '1265': '#C2B3D7',
+            '1266': '#C2B3D7',
             '1270': '#8400A8',
             '1271': '#8400A8',
             '1272': '#8400A8',
@@ -119,7 +116,8 @@ class ScagDmLandUseSymbology(LandUseSymbologyFixture):
             '1460': '#9C9C9C',
             '1500': '#DF73FF',
             '1600': '#A87000',
-            '1700': '#595959',
+            '1610': '#A87000',
+            '1620': '#A87000',
             '1800': '#4CE600',
             '1810': '#4CE600',
             '1820': '#4CE600',
@@ -129,7 +127,6 @@ class ScagDmLandUseSymbology(LandUseSymbologyFixture):
             '1860': '#4CE600',
             '1870': '#4CE600',
             '1880': '#4CE600',
-            '1900': '#A8A800',
             '2000': '#267300',
             '2100': '#267300',
             '2110': '#267300',
@@ -140,6 +137,7 @@ class ScagDmLandUseSymbology(LandUseSymbologyFixture):
             '2500': '#267300',
             '2600': '#267300',
             '2700': '#267300',
+            '1900': '#A8A800',
             '3000': '#A8A800',
             '3100': '#A8A800',
             '3200': '#A8A800',
@@ -151,6 +149,8 @@ class ScagDmLandUseSymbology(LandUseSymbologyFixture):
             '4300': '#BEFFE8',
             '4400': '#BEFFE8',
             '4500': '#BEFFE8',
+            '7777': '#735E00',
+            '1700': '#595959',
             '8888': '#D1FF73',
             '9999': '#CCCCCC'
         }

@@ -1,6 +1,6 @@
 
 # UrbanFootprint v1.5
-# Copyright (C) 2017 Calthorpe Analytics
+# Copyright (C) 2016 Calthorpe Analytics
 #
 # This file is part of UrbanFootprint version 1.5
 #
@@ -15,6 +15,8 @@ from django.core.management import call_command
 from django.conf import settings
 from footprint.client.configuration.fixture import InitFixture
 from footprint.client.configuration.scag_dm.built_form.scag_dm_land_use_definition import ScagDmLandUseDefinition
+from footprint.client.configuration.scag_dm.built_form.scag_dm_farmland_definition import ScagDmFarmlandDefinition
+
 import logging
 logger = logging.getLogger(__name__)
 
@@ -37,7 +39,8 @@ class ScagDmInitFixture(InitFixture):
         """
         return [
             ("built_form", "land_use_definition"),
-            ("built_form", "land_use")
+            ("built_form", "land_use"),
+            ("built_form", "farmland_definition")
         ]
 
     def populate_models(self):
@@ -48,6 +51,14 @@ class ScagDmInitFixture(InitFixture):
             call_command('loaddata', fixture_path)
         else:
             logger.info("Skipping because of " + str(ScagDmLandUseDefinition.objects.count()) + " objects already there")
+
+        if ScagDmFarmlandDefinition.objects.count() == 0:
+            logger.info("Loading SCAG farmland definitions")
+            fixture_path = os.path.join(settings.ROOT_PATH, 'footprint', 'client', 'configuration',
+                                        'scag_dm', 'built_form', 'scag_farmland_definitions.json')
+            call_command('loaddata', fixture_path)
+        else:
+            logger.info("Skipping because of " + str(ScagDmFarmlandDefinition.objects.count()) + " objects already there")
 
     def groups(self):
         return self.parent_fixture.groups()

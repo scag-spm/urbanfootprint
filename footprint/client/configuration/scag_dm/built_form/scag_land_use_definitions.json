@@ -1,24 +1,6 @@
 [
     {
         "fields": {
-            "land_use_description": "1000: Urban or Built-Up",
-            "land_use_type": "Urban or Built-Up",
-            "land_use": 1000
-        },
-        "model": "main.scagdmlandusedefinition",
-        "pk": 1000
-    },
-    {
-        "fields": {
-            "land_use_description": "1100: Residential",
-            "land_use_type": "Mixed Residential",
-            "land_use": 1100
-        },
-        "model": "main.scagdmlandusedefinition",
-        "pk": 1100
-    },
-    {
-        "fields": {
             "land_use_description": "1110: Single Family Residential",
             "land_use_type": "Single Family Residential",
             "land_use": 1110
@@ -28,7 +10,7 @@
     },
     {
         "fields": {
-            "land_use_description": "1111: High-Density Single Family Residential",
+            "land_use_description": "1111: High-Density Single Family Residential (9 or more DUs/ac)",
             "land_use_type": "Single Family Residential",
             "land_use": 1111
         },
@@ -37,7 +19,7 @@
     },
     {
         "fields": {
-            "land_use_description": "1112: Low-Density Single Family Residential",
+            "land_use_description": "1112: Medium-Density Single Family Residential (3-8 DUs/ac)",
             "land_use_type": "Single Family Residential",
             "land_use": 1112
         },
@@ -46,7 +28,7 @@
     },
     {
         "fields": {
-            "land_use_description": "1113: Rural Residential",
+            "land_use_description": "1113: Low-Density Single Family Residential (2 or less DUs/ac)",
             "land_use_type": "Single Family Residential",
             "land_use": 1113
         },
@@ -55,7 +37,7 @@
     },
     {
         "fields": {
-            "land_use_description": "1120: Multi-Family Residential (Medium-High Density Residential) ",
+            "land_use_description": "1120: Multi-Family Residential",
             "land_use_type": "Multi-Family Residential",
             "land_use": 1120
         },
@@ -73,7 +55,7 @@
     },
     {
         "fields": {
-            "land_use_description": "1122: Duplexes, Triplexes and 2- or 3-Unit Condominiums and Townhouses ",
+            "land_use_description": "1122: Duplexes, Triplexes and 2- or 3-Unit Condominiums and Townhouses",
             "land_use_type": "Multi-Family Residential",
             "land_use": 1122
         },
@@ -91,7 +73,7 @@
     },
     {
         "fields": {
-            "land_use_description": "1124: Medium-Rise Apartments and Condominiums ",
+            "land_use_description": "1124: Medium-Rise Apartments and Condominiums",
             "land_use_type": "Multi-Family Residential",
             "land_use": 1124
         },
@@ -100,7 +82,7 @@
     },
     {
         "fields": {
-            "land_use_description": "1125: High-Rise Apartments and Condominiums ",
+            "land_use_description": "1125: High-Rise Apartments and Condominiums",
             "land_use_type": "Multi-Family Residential",
             "land_use": 1125
         },
@@ -136,7 +118,7 @@
     },
     {
         "fields": {
-            "land_use_description": "1140: Mixed Residential (single and multiple residential)",
+            "land_use_description": "1140: Mixed Residential",
             "land_use_type": "Mixed Residential",
             "land_use": 1140
         },
@@ -145,12 +127,21 @@
     },
     {
         "fields": {
-            "land_use_description": "1200: Commercial and Services",
-            "land_use_type": "Commercial and Services",
-            "land_use": 1200
+            "land_use_description": "1100: Residential",
+            "land_use_type": "Mixed Residential",
+            "land_use": 1100
         },
         "model": "main.scagdmlandusedefinition",
-        "pk": 1200
+        "pk": 1100
+    },
+    {
+        "fields": {
+            "land_use_description": "1150: Rural Residential",
+            "land_use_type": "Rural Residential",
+            "land_use": 1150
+        },
+        "model": "main.scagdmlandusedefinition",
+        "pk": 1150
     },
     {
         "fields": {
@@ -187,6 +178,15 @@
         },
         "model": "main.scagdmlandusedefinition",
         "pk": 1213
+    },
+	{
+        "fields": {
+            "land_use_description": "1200: Commercial and Services",
+            "land_use_type": "Commercial and Services",
+            "land_use": 1200
+        },
+        "model": "main.scagdmlandusedefinition",
+        "pk": 1200
     },
     {
         "fields": {
@@ -350,7 +350,7 @@
         "model": "main.scagdmlandusedefinition",
         "pk": 1251
     },
-    {
+	{
         "fields": {
             "land_use_description": "1252: Special Care Facilities",
             "land_use_type": "Facilities",
@@ -367,7 +367,7 @@
         },
         "model": "main.scagdmlandusedefinition",
         "pk": 1253
-    },
+    }, 
     {
         "fields": {
             "land_use_description": "1260: Educational Institutions",
@@ -523,7 +523,7 @@
     },
     {
         "fields": {
-            "land_use_description": "1312: Picture and Television Production Lots",
+            "land_use_description": "1312: Motion Picture and Television Studio Lots",
             "land_use_type": "Industrial",
             "land_use": 1312
         },
@@ -685,7 +685,7 @@
     },
     {
         "fields": {
-            "land_use_description": "1414: Carpool and Rideshare Facilities",
+            "land_use_description": "1414: Park-and-Ride Lots",
             "land_use_type": "Transportation, Communications, and Utilities",
             "land_use": 1414
         },
@@ -694,7 +694,7 @@
     },
     {
         "fields": {
-            "land_use_description": "1415: Bus Terminals and Transit Centers",
+            "land_use_description": "1415: Bus Terminals and Yards",
             "land_use_type": "Transportation, Communications, and Utilities",
             "land_use": 1415
         },
@@ -874,22 +874,31 @@
     },
     {
         "fields": {
-            "land_use_description": "1600: Mixed Residential and Commercial Services",
+            "land_use_description": "1600: Mixed Residential and Commercial",
             "land_use_type": "Mixed Residential and Commercial",
             "land_use": 1600
         },
         "model": "main.scagdmlandusedefinition",
         "pk": 1600
-    },
+    },	
     {
         "fields": {
-            "land_use_description": "1700: Under Construction",
-            "land_use_type": "Under Construction",
-            "land_use": 1700
+            "land_use_description": "1610: Residential-Oriented Residential/Commercial Mixed Use",
+            "land_use_type": "Mixed Residential and Commercial",
+            "land_use": 1610
         },
         "model": "main.scagdmlandusedefinition",
-        "pk": 1700
-    },
+        "pk": 1610
+    }, 
+    {
+        "fields": {
+            "land_use_description": "1620: Commercial-Oriented Residential/Commercial Mixed Use",
+            "land_use_type": "Mixed Residential and Commercial",
+            "land_use": 1620
+        },
+        "model": "main.scagdmlandusedefinition",
+        "pk": 1620
+    }, 
     {
         "fields": {
             "land_use_description": "1800: Open Space and Recreation",
@@ -901,7 +910,7 @@
     },
     {
         "fields": {
-            "land_use_description": "1810: Golf Courses ",
+            "land_use_description": "1810: Golf Courses",
             "land_use_type": "Open Space and Recreation",
             "land_use": 1810
         },
@@ -919,7 +928,7 @@
     },
     {
         "fields": {
-            "land_use_description": "1830: State and National Parks and Recreation",
+            "land_use_description": "1830: Regional Parks and Recreation",
             "land_use_type": "Open Space and Recreation",
             "land_use": 1830
         },
@@ -955,7 +964,7 @@
     },
     {
         "fields": {
-            "land_use_description": "1870: Beach Parks ",
+            "land_use_description": "1870: Beach Parks",
             "land_use_type": "Open Space and Recreation",
             "land_use": 1870
         },
@@ -964,21 +973,12 @@
     },
     {
         "fields": {
-            "land_use_description": "1880: Other Open Space and Recreation ",
+            "land_use_description": "1880: Other Open Space and Recreation",
             "land_use_type": "Open Space and Recreation",
             "land_use": 1880
         },
         "model": "main.scagdmlandusedefinition",
         "pk": 1880
-    },
-    {
-        "fields": {
-            "land_use_description": "1900: Urban Vacant (developable)",
-            "land_use_type": "Vacant",
-            "land_use": 1900
-        },
-        "model": "main.scagdmlandusedefinition",
-        "pk": 1900
     },
     {
         "fields": {
@@ -1072,7 +1072,7 @@
     },
     {
         "fields": {
-            "land_use_description": "3000: Vacant (developable)",
+            "land_use_description": "3000: Vacant",
             "land_use_type": "Vacant",
             "land_use": 3000
         },
@@ -1108,13 +1108,22 @@
     },
     {
         "fields": {
-            "land_use_description": "3400: Beaches (vacant)",
+            "land_use_description": "3400: Beaches (Vacant)",
             "land_use_type": "Vacant",
             "land_use": 3400
         },
         "model": "main.scagdmlandusedefinition",
         "pk": 3400
     },
+	{
+        "fields": {
+            "land_use_description": "1900: Urban Vacant",
+            "land_use_type": "Vacant",
+            "land_use": 1900
+        },
+        "model": "main.scagdmlandusedefinition",
+        "pk": 1900
+    }, 
     {
         "fields": {
             "land_use_description": "4000: Water",
@@ -1133,7 +1142,7 @@
         "model": "main.scagdmlandusedefinition",
         "pk": 4100
     },
-    {
+	{
         "fields": {
             "land_use_description": "4200: Harbor Water Facilities",
             "land_use_type": "Water",
@@ -1162,7 +1171,7 @@
     },
     {
         "fields": {
-            "land_use_description": "4500: Area of Inundation (High Water) (1990 Database only)",
+            "land_use_description": "4500: Area of Inundation (High Water)",
             "land_use_type": "Water",
             "land_use": 4500
         },
@@ -1171,7 +1180,25 @@
     },
     {
         "fields": {
-            "land_use_description": "8888: Undevelopable or protected Land ",
+            "land_use_description": "7777: Specific Plan",
+            "land_use_type": "Specific Plan",
+            "land_use": 7777
+        },
+        "model": "main.scagdmlandusedefinition",
+        "pk": 7777
+    },
+    {
+        "fields": {
+            "land_use_description": "1700: Under Construction",
+            "land_use_type": "Under Construction",
+            "land_use": 1700
+        },
+        "model": "main.scagdmlandusedefinition",
+        "pk": 1700
+    },
+    {
+        "fields": {
+            "land_use_description": "8888: Undevelopable or Protected Land ",
             "land_use_type": "Undevelopable or Protected Land",
             "land_use": 8888
         },
@@ -1180,7 +1207,7 @@
     },
     {
         "fields": {
-            "land_use_description": "9999: No Photo Coverage/Not in Update Study Area",
+            "land_use_description": "9999: Unknown",
             "land_use_type": "Unknown",
             "land_use": 9999
         },

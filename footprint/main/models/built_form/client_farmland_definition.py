@@ -1,4 +1,3 @@
-# coding=utf-8
 
 # UrbanFootprint v1.5
 # Copyright (C) 2016 Calthorpe Analytics
@@ -12,18 +11,26 @@
 # Public License v3 for more details; see <http://www.gnu.org/licenses/>.
 
 from django.contrib.gis.db import models
-
-from footprint.main.models.geospatial.feature import Feature
+from footprint.main.managers.geo_inheritance_manager import GeoInheritanceManager
 
 __author__ = 'calthorpe_analytics'
 
 
-class ScenarioPlanningZones(Feature):
-    spzid = models.CharField(max_length=30, null=True)
-    t2aid = models.CharField(max_length=50, null=True)
-    county = models.CharField(max_length=50, null=True)
-    city = models.CharField(max_length=100, null=True)
-    notes = models.CharField(max_length=1024, null=True, blank=True)
+class ClientFarmlandDefinition(models.Model):
+    """
+        A generic farmland definition class for clients to subclass
+    """
+    objects = GeoInheritanceManager()
+
+    api_include = None
+
+    @property
+    def label(self):
+        """
+            For display in the API
+            Override this in the subclass to delegate to a property that represents the instance
+        """
+        return None
 
     class Meta(object):
         abstract = True

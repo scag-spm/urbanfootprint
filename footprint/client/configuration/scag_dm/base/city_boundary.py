@@ -1,6 +1,6 @@
 
 # UrbanFootprint v1.5
-# Copyright (C) 2017 Calthorpe Analytics
+# Copyright (C) 2016 Calthorpe Analytics
 #
 # This file is part of UrbanFootprint version 1.5
 #
@@ -18,24 +18,28 @@ __author__ = 'calthorpe_analytics'
 
 
 class CityBoundary(Feature):
+
     city = models.CharField(max_length=50, null=True)
     city_id = models.CharField(max_length=50, null=True)
     county = models.CharField(max_length=50, null=True)
-    county_id = models.CharField(max_length=50, null=True)
-    acres = models.DecimalField(max_digits=14, decimal_places=2, null=True)
+    pop16 = models.IntegerField(null=True, blank=True)
+    pop20 = models.IntegerField(null=True, blank=True)
+    pop30 = models.IntegerField(null=True, blank=True)
+    pop35 = models.IntegerField(null=True, blank=True)
+    pop45 = models.IntegerField(null=True, blank=True)
+    hh16 = models.IntegerField(null=True, blank=True)
+    hh20 = models.IntegerField(null=True, blank=True)
+    hh30 = models.IntegerField(null=True, blank=True)
+    hh35 = models.IntegerField(null=True, blank=True)
+    hh45 = models.IntegerField(null=True, blank=True)
+    emp16 = models.IntegerField(null=True, blank=True)
+    emp20 = models.IntegerField(null=True, blank=True)
+    emp30 = models.IntegerField(null=True, blank=True)
+    emp35 = models.IntegerField(null=True, blank=True)
+    emp45 = models.IntegerField(null=True, blank=True)
+    acres = models.IntegerField(null=True, blank=True)
     year = models.IntegerField(null=True, blank=True)
-    pop12 = models.DecimalField(max_digits=14, decimal_places=2, null=True)
-    pop20 = models.DecimalField(max_digits=14, decimal_places=2, null=True)
-    pop35 = models.DecimalField(max_digits=14, decimal_places=2, null=True)
-    pop40 = models.DecimalField(max_digits=14, decimal_places=2, null=True)
-    hh12 = models.DecimalField(max_digits=14, decimal_places=2, null=True)
-    hh20 = models.DecimalField(max_digits=14, decimal_places=2, null=True)
-    hh35 = models.DecimalField(max_digits=14, decimal_places=2, null=True)
-    hh40 = models.DecimalField(max_digits=14, decimal_places=2, null=True)
-    emp12 = models.DecimalField(max_digits=14, decimal_places=2, null=True)
-    emp20 = models.DecimalField(max_digits=14, decimal_places=2, null=True)
-    emp35 = models.DecimalField(max_digits=14, decimal_places=2, null=True)
-    emp40 = models.DecimalField(max_digits=14, decimal_places=2, null=True)
+    notes = models.CharField(max_length=1024, null=True, blank=True)
 
     class Meta(object):
         abstract = True

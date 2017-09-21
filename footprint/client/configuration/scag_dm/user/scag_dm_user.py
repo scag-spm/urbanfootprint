@@ -1,6 +1,6 @@
 
 # UrbanFootprint v1.5
-# Copyright (C) 2017 Calthorpe Analytics
+# Copyright (C) 2016 Calthorpe Analytics
 #
 # This file is part of UrbanFootprint version 1.5
 #
@@ -68,9 +68,9 @@ class ScagDmUserFixture(UserFixture):
         #   fixtures in order to test footprint_init performance without
         #   as many users. For now, we simply return pass as emtpty array
         #   to FixtureList()
-        # return FixtureList([
-        #     region_admin,
-        #     project_manager,
-        #     user
-        # ]).matching_scope(class_scope=self.config_entity.__class__, delete_scope_keys=True)
-        return FixtureList([]).matching_scope(class_scope=self.config_entity.__class__, delete_scope_keys=True)
+        return FixtureList([
+            region_admin,
+            project_manager,
+            user
+        ]).matching_scope(class_scope=self.config_entity.__class__, delete_scope_keys=True)
+        #return FixtureList([]).matching_scope(class_scope=self.config_entity.__class__, delete_scope_keys=True)
