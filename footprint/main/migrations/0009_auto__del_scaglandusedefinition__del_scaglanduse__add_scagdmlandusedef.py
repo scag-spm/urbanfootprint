@@ -35,6 +35,14 @@ class Migration(SchemaMigration):
         ))
         db.send_create_signal('main', ['ScagDmLandUseDefinition'])
 
+        db.create_table(u'main_scagdmfarmlanddefinition', (
+            (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
+            ('farmland_description', self.gf('django.db.models.fields.CharField')(max_length=100, null=True, blank=True)),
+            ('farmland_type', self.gf('django.db.models.fields.CharField')(max_length=100, null=True, blank=True)),
+            ('farmland_code', self.gf('django.db.models.fields.CharField')(max_length=10, null=True, blank=True)),
+        ))
+        db.send_create_signal('main', ['ScagDmFarmlandDefinition'])
+
         # Adding model 'ScagDmLandUse'
         db.create_table(u'main_scagdmlanduse', (
             (u'builtform_ptr', self.gf('django.db.models.fields.related.OneToOneField')(to=orm['main.BuiltForm'], unique=True, primary_key=True)),
