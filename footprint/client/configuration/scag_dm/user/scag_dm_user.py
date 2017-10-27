@@ -30,10 +30,10 @@ class ScagDmUserFixture(UserFixture):
             'groups': [self.config_entity.user_group_name(UserGroupKey.ADMIN)],
             'class_scope': Region,
             'username': 'scag_admin',
-            'password': 'scag_admin@uf',
+            'password': 'scag_admin@spm',
             'first_name': 'scag_dm',
             'last_name': 'admin',
-            'email': 'scag_admin@example.com'
+            'email': 'scag_admin@scag.ca.gov'
         }
 
         # A Project level user for each city
@@ -42,25 +42,32 @@ class ScagDmUserFixture(UserFixture):
             'class_scope': Project,
             # User name is [city]_manager
             'username': '%s_manager' % self.config_entity.key,
-            'password': '%s@uf' % self.config_entity.key,
+            'password': '%s@spm' % self.config_entity.key,
             'first_name': self.config_entity.name,
             'last_name': 'Manager',
-            'email': '%s_manager@example.com' % self.config_entity.key,
+            'email': '%s_manager@scag.ca.gov' % self.config_entity.key,
         }
 
         # A Scenario level user for each city
         user = {
             # Make sure to include the groups of all sibling scenarios. Even if they haven't all been
             # created yet, the final scenario will capture all scenario groups
-            'groups': [scenario.user_group_name(UserGroupKey.USER) for
-                       scenario in self.config_entity.parent_config_entity.children()],
-            'class_scope': Scenario,
+            #'groups': [scenario.user_group_name(UserGroupKey.USER) for
+            #           scenario in self.config_entity.parent_config_entity.children()],
+            #'class_scope': Scenario,
             # User name is [city]_[i]
-            'username': '%s' % self.config_entity.parent_config_entity.name.replace(" ", "").lower(),
-            'password': '%s@uf' % self.config_entity.parent_config_entity.name.replace(" ", "").strip(),
-            'first_name': self.config_entity.parent_config_entity.name,
+            #'username': '%s' % self.config_entity.parent_config_entity.name.replace(" ", "").lower(),
+            #'password': '%s@uf' % self.config_entity.parent_config_entity.name.replace(" ", "").strip(),
+            #'first_name': self.config_entity.parent_config_entity.name,
+            #'last_name': 'Planner',
+            #'email': '%s_planner@example.com' % self.config_entity.parent_config_entity.name.replace(" ", "").lower()
+            'groups': [self.config_entity.user_group_name(UserGroupKey.USER)],
+            'class_scope': Project,
+            'username': '%s01' % self.config_entity.key,
+            'password': '%s@spm' % self.config_entity.key,
+            'first_name': self.config_entity.name,
             'last_name': 'Planner',
-            'email': '%s_planner@example.com' % self.config_entity.parent_config_entity.name.replace(" ", "").lower()
+            'email': '%s_01@scag.ca.gov' % self.config_entity.key,
         }
 
         # TODO:
