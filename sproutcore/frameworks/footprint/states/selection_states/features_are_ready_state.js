@@ -1,6 +1,6 @@
 /*
  * UrbanFootprint v1.5
- * Copyright (C) 2017 Calthorpe Analytics
+ * Copyright (C) 2016 Calthorpe Analytics
  *
  * This file is part of UrbanFootprint version 1.5
  *
@@ -179,8 +179,9 @@ Footprint.FeaturesAreReadyState = Footprint.RecordsAreReadyState.extend({
                     result.refresh();
                 })
             });
-
         }
+
+        Footprint.mapLayerGroupsController.refreshLayers(['jurisdiction_boundary']);
 
         this.setPath('recordsEditController.recordsAreUpdating', NO);
         var dbEntityKey = context.get('class_key');

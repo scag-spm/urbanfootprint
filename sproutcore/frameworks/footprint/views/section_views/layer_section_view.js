@@ -1,6 +1,6 @@
 /*
  * UrbanFootprint v1.5
- * Copyright (C) 2017 Calthorpe Analytics
+ * Copyright (C) 2016 Calthorpe Analytics
  *
  * This file is part of UrbanFootprint version 1.5
  *
@@ -79,7 +79,7 @@ Footprint.LayerSectionView = Footprint.SectionView.extend({
     listView: SC.View.design({
         layout: {},
         fillRatio: 5,
-        childViews: ['overlayView', 'scrollView', 'testView'],
+        childViews: ['overlayView', 'scrollView'],
         content: null,
         contentBinding: SC.Binding.oneWay('.parentView.content'),
         status: null,
@@ -127,25 +127,15 @@ Footprint.LayerSectionView = Footprint.SectionView.extend({
         })
     }),
 
-    linkToUrlView: SC.View.design({
-        layout: {height: 70},
-        childViews: ['titleView', 'clickView'],
-        titleView: Footprint.LabelView.extend({
-            value: "Feature Service"
-        }),
-        clickView: SC.ButtonView.design({
-            title: 'IGR Projects',
-            classNames: ['theme-button-gray', 'theme-button', 'theme-button-shorter'],
-            layout: {height: 20, width: 80, left: 20, centerY: 0},
-            action: function(sender) {
-                window.open('http://www.arcgis.com/home/webmap/viewer.html?url=https%3A%2F%2Fmaps.scag.ca.gov%2Fscaggis%2Frest%2Fservices%2FIGR_Final%2FFeatureServer%2F0&source=sd');
-            }
-        })
+    linkToUrlView: SC.LabelView.extend({
+        layout: {left: 8, height: 24},
+        escapeHTML: NO,
+        value: '<a target="_blank" style="text-decoration:none; color:#000000" href="http://www.arcgis.com/home/webmap/viewer.html?url=https%3A%2F%2Fmaps.scag.ca.gov%2Fscaggis%2Frest%2Fservices%2FIGR_Final%2FFeatureServer%2F0&source=sd">METRO Toolkit</a>'
     }),
 
     addDataView: SC.View.design({
         layout: { height: 70, bottom: 0 }, // TODO bottom shouldn't be needed
-    
+
         // TODO: add back connectToArcGISLayerView when the feature is ready.
         childViews: ['titleView',
                      'uploadView',

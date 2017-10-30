@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 # UrbanFootprint v1.5
-# Copyright (C) 2017 Calthorpe Analytics
+# Copyright (C) 2016 Calthorpe Analytics
 #
 # This file is part of UrbanFootprint version 1.5
 #
@@ -929,6 +929,10 @@ class Migration(SchemaMigration):
         },
         'main.scenarioupdatertool': {
             'Meta': {'object_name': 'ScenarioUpdaterTool', '_ormbases': ['main.AnalysisTool']},
+            u'analysistool_ptr': ('django.db.models.fields.related.OneToOneField', [], {'to': "orm['main.AnalysisTool']", 'unique': 'True', 'primary_key': 'True'})
+        },
+        'main.sedupdatertool': {
+            'Meta': {'object_name': 'SEDUpdaterTool', '_ormbases': ['main.AnalysisTool']},
             u'analysistool_ptr': ('django.db.models.fields.related.OneToOneField', [], {'to': "orm['main.AnalysisTool']", 'unique': 'True', 'primary_key': 'True'})
         },
         'main.sorttype': {

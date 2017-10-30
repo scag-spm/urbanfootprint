@@ -1,6 +1,6 @@
 /*
  * UrbanFootprint v1.5
- * Copyright (C) 2017 Calthorpe Analytics
+ * Copyright (C) 2016 Calthorpe Analytics
  *
  * This file is part of UrbanFootprint version 1.5
  *
@@ -530,7 +530,8 @@ Footprint.layerActiveController = SC.ObjectController.create({
 
             var activeLayerClassKey = this.getPath('content.dbEntityKey').toUpperCase()[0] + this.getPath('content.dbEntityKey').slice(1).camelize();
             var activeLayerBehaviorKey =this.getPath('content.db_entity.feature_behavior.behavior.key');
-            if ('behavior__editable_feature' == activeLayerBehaviorKey && activeLayerClassKey || 'behavior__reference_layers_editable_attribute' == activeLayerBehaviorKey && activeLayerClassKey) {
+            if ('behavior__editable_feature' == activeLayerBehaviorKey && activeLayerClassKey || 'behavior__reference_layers_editable_attribute' == activeLayerBehaviorKey && activeLayerClassKey
+                 || 'behavior__sed_editor_tool' == activeLayerBehaviorKey && activeLayerClassKey) {
                 return 'Footprint.%@EditorView'.fmt(activeLayerClassKey);
             }
             if ('behavior__scenario_end_state' == activeLayerBehaviorKey) {
@@ -559,6 +560,7 @@ Footprint.layerActiveController = SC.ObjectController.create({
                  || layer_behavior == 'behavior__scenario_end_state'
                  || layer_behavior == 'behavior__agriculture_scenario'
                  || layer_behavior == 'behavior__base_agriculture'
+                 || layer_behavior == 'behavior__sed_editor_tool'
                  || this.get('value') === YES) {
                  return YES;
              }

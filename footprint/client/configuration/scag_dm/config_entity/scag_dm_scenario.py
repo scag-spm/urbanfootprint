@@ -235,8 +235,8 @@ class ScagDmScenarioFixture(ScenarioFixture):
                             filter_query=dict(city=project.name),
                         ),
                         feature_behavior=FeatureBehavior(
-                            behavior=get_behavior('editable_feature'),
-                            intersection=GeographicIntersection.polygon_to_centroid
+                            behavior=get_behavior('sed_editor_tool'),
+                            intersection=AttributeIntersection()
                         ),
                         _categories=[Category(key=DbEntityCategoryKey.KEY_CLASSIFICATION,
                                               value=DbEntityCategoryKey.EDITABLE_LAYER)]
