@@ -1,6 +1,6 @@
 /*
  * UrbanFootprint v1.5
- * Copyright (C) 2017 Calthorpe Analytics
+ * Copyright (C) 2016 Calthorpe Analytics
  *
  * This file is part of UrbanFootprint version 1.5
  *
@@ -55,8 +55,7 @@ Footprint.mapController = SC.ObjectController.create({
 
 
     resetExtentToSelection: function () {
-        // this.setMapExtent(this.get('layerSelectionBounds'));
-        this.setMapExtent(this.get('highlightedFeaturesBounds')); // yang
+         this.setMapExtent(this.get('layerSelectionBounds'));
     },
 
 
@@ -105,7 +104,6 @@ Footprint.mapController = SC.ObjectController.create({
         if (this.get('layerSelection'))
             // Get tiles of the current zoom level
             return $.flatMap(this.get('highlightedFeatures'), function(highlightedFeature) {
-                 console.log(highlightedFeature); // yang
                  return this._polygonBoundingBox(this.mapLayerFeature(highlightedFeature).data.geometry);
             });
     }.property('.highlightedFeatures').cacheable(),

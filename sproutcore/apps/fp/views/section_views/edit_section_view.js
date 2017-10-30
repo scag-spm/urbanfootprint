@@ -1,6 +1,6 @@
 /*
  * UrbanFootprint v1.5
- * Copyright (C) 2017 Calthorpe Analytics
+ * Copyright (C) 2016 Calthorpe Analytics
  *
  * This file is part of UrbanFootprint version 1.5
  *
@@ -225,15 +225,27 @@ Footprint.EditSectionView = SC.View.extend({
                 layout: {left: 5, height: 16, top: 5, width: 25},
                 value: 'User:'
             }),
+
+            userBinding: SC.Binding.oneWay('Footprint.userController.content.firstObject'),
+            userTitle: function() {
+                var first_name = this.getPath('user.first_name');
+                var last_name = this.getPath('user.last_name');
+                if (first_name) {
+                    if (last_name) {
+                        return '%@ %@'.fmt(first_name, last_name);
+                    }
+                    return first_name;
+                }
+
+                return this.getPath('user.username');
+            }.property('user').cacheable(),
+
             userNameView: SC.LabelView.extend({
                 classNames: ['footprint-editable-9font-title-view'],
                 layout: {left: 30, height: 16, top: 5, width: 70},
-                valueBinding: SC.Binding.oneWay('Footprint.userController.content.firstObject.username').transform(function (user) {
-                    if (user) {
-                        return user.capitalize();
-                    }
-                }),
+                valueBinding: SC.Binding.oneWay('.parentView.userTitle'),
             }),
+
         }),
 
         recordsView: SC.View.extend({

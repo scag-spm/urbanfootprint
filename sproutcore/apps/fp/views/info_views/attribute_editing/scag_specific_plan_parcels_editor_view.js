@@ -113,7 +113,7 @@ Footprint.SpecificPlanParcelsEditorView = SC.View.extend({
 
     spNameView: Footprint.EditableTextFieldView.extend({
         layout: {left: 10, right: 30, top: 225, height: 40},
-        title: '2016 SCAG Specific Plan',
+        title: '2016 SCAG Specific Plan Name',
         isEditable:YES,
         contentBinding: SC.Binding.oneWay('.parentView.content'),
         titleViewLayout: { height: 16 },

@@ -18,11 +18,11 @@ __author__ = 'calthorpe_analytics'
 
 
 class HabitatConservationAreas(Feature):
-    name = models.CharField(max_length=50, null=True)
-    hcp = models.CharField(max_length=50, null=True)
-    nccp = models.CharField(max_length=50, null=True)
-    stage = models.CharField(max_length=50, null=True)
-    acres = models.DecimalField(max_digits=14, decimal_places=2, null=True)
+    name = models.CharField(max_length=100, null=True)
+    hcp = models.CharField(max_length=3, null=True)
+    nccp = models.CharField(max_length=3, null=True)
+    stage = models.CharField(max_length=12, null=True)
+    acres = models.IntegerField(null=True, blank=True)
     notes = models.CharField(max_length=1024, null=True, blank=True)
 
     class Meta(object):

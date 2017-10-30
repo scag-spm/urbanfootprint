@@ -18,7 +18,7 @@ __author__ = 'calthorpe_analytics'
 
 
 class FloodZones(Feature):
-    scag_fld_zone = models.CharField(max_length=50, null=True)
+    scag_fld_zone = models.CharField(max_length=30, null=True)
     notes = models.CharField(max_length=1024, null=True, blank=True)
 
     class Meta(object):

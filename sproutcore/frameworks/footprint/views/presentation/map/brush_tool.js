@@ -1,6 +1,6 @@
 /*
  * UrbanFootprint v1.5
- * Copyright (C) 2017 Calthorpe Analytics
+ * Copyright (C) 2016 Calthorpe Analytics
  *
  * This file is part of UrbanFootprint version 1.5
  *
@@ -95,7 +95,7 @@ Footprint.BrushTool = Footprint.PaintTool.extend({
      * takes in lat/lon and returns a very small square polygon based on arbitrary offset
      */
     pointToTinySquare: function(lat,lon) {
-        var offset = 0.0001, tinySquareCoords = [], coodsArray = [];
+        var offset = 0.00001, tinySquareCoords = [], coodsArray = [];
         coodsArray.push([lat-offset,lon-offset]);   //,[lat+offset,lon-offset],[lat-offset,lon+offset],[lat+offset,lon+offset],[lat-offset,lon-offset]);
         coodsArray.push([lat+offset,lon-offset]);
         coodsArray.push([lat+offset,lon+offset]);

@@ -188,6 +188,7 @@ class ScagDmScenarioFixture(ScenarioFixture):
                 dict(
                     class_scope=BaseScenario,
                     value=DbEntity(
+                        name='2016 SCAG Entitlement Parcels',
                         key=Key.ENTITLEMENT_PARCELS_2016,
                         feature_class_configuration=FeatureClassConfiguration(
                             abstract_class=EntitlementParcels,
@@ -221,13 +222,14 @@ class ScagDmScenarioFixture(ScenarioFixture):
                             intersection=GeographicIntersection.polygon_to_centroid
                         ),
                         _categories=[Category(key=DbEntityCategoryKey.KEY_CLASSIFICATION,
-                                              value=DbEntityCategoryKey.EDITABLE_LAYER)]
+                                              value=DbEntityCategoryKey.REFERENCE)]
                     )
                 ),
 
                 dict(
                     class_scope=BaseScenario,
                     value=DbEntity(
+                        name='City/Tier2 TAZ',
                         key=Key.TIER2_TAZ,
                         feature_class_configuration=FeatureClassConfiguration(
                             abstract_class=Tier2Taz,

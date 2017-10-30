@@ -1,6 +1,6 @@
 
 # UrbanFootprint v1.5
-# Copyright (C) 2017 Calthorpe Analytics
+# Copyright (C) 2016 Calthorpe Analytics
 #
 # This file is part of UrbanFootprint version 1.5
 #
@@ -79,8 +79,14 @@ class FeatureResource(FeatureResourceMixin, DynamicResource, RevisionableResourc
         :return:
         """
         updater = bundle.data.get('updater')
-        return updater.data['username'] if updater else None
-
+        if not updater:
+            return None
+        elif (updater.data['first_name'] and updater.data['last_name']):
+            return '{first} {last}'.format(first=updater.data['first_name'], last=updater.data['last_name'])
+        elif (updater.data['first_name']):
+            return updater.data['first_name']
+        else:
+            return updater.data['username']
 
     def hydrate_comment(self, bundle):
         # Also write to the base feature table comments field if it exists

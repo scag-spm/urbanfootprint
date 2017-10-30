@@ -33,19 +33,19 @@ class ScagDmLayerConfigurationFixtures(LayerConfigurationFixture):
     def layers(self, class_scope=None):
         # Combine parent fixture layers with the layers matching the given ConfigEntity scope
         return self.parent_fixture.layers() + FixtureList([
-            LayerConfiguration(
-                library_keys=[LayerLibraryKey.APPLICATION],
-                name='Existing Land Use Parcels 2012',
-                db_entity_key=ScagDmDbEntityKey.EXISTING_LAND_USE_PARCELS_2012,
-                column_alias_lookup=dict(land_use_definition__id='land_use_definition_id'),
-                built_form_set_key='scag_land_uses',
-                layer_style=primary_base_layer_style(ScagDmLandUseDefinition, True)
-            ),
+            # LayerConfiguration(
+            #     library_keys=[LayerLibraryKey.APPLICATION],
+            #     name='Existing Land Use Parcels 2012',
+            #     db_entity_key=ScagDmDbEntityKey.EXISTING_LAND_USE_PARCELS_2012,
+            #     column_alias_lookup=dict(land_use_definition__id='land_use_definition_id'),
+            #     built_form_set_key='scag_land_uses',
+            #     layer_style=primary_base_layer_style(ScagDmLandUseDefinition, True)
+            # ),
             LayerConfiguration(
                 library_keys=[LayerLibraryKey.APPLICATION],
                 name='Existing Land Use Parcels 2016',
                 db_entity_key=ScagDmDbEntityKey.EXISTING_LAND_USE_PARCELS_2016,
-                visible=True,
+                # visible=True,
                 column_alias_lookup=dict(land_use_definition__id='land_use_definition_id'),
                 built_form_set_key='scag_land_uses',
                 layer_style=primary_base_layer_style(ScagDmLandUseDefinition, True)
@@ -53,6 +53,7 @@ class ScagDmLayerConfigurationFixtures(LayerConfigurationFixture):
             LayerConfiguration(
                 library_keys=[LayerLibraryKey.APPLICATION],
                 db_entity_key=ScagDmDbEntityKey.GENERAL_PLAN_PARCELS,
+                visible=True,
                 column_alias_lookup=dict(land_use_definition__id='land_use_definition_id'),
                 built_form_set_key='scag_land_uses',
                 layer_style=primary_base_layer_style(ScagDmLandUseDefinition)
@@ -404,14 +405,14 @@ class ScagDmLayerConfigurationFixtures(LayerConfigurationFixture):
                             attribute='scag_fld_zone',
                             style_type=StyleTypeKey.CATEGORICAL,
                             style_value_contexts=[
-                                StyleValueContext(value='100 Year Flood Hazard', symbol='=', style=Style(
+                                StyleValueContext(value='100-year Flood Hazard Zone', symbol='=', style=Style(
                                     polygon_fill='#A900E6',
                                     line_color='#d3d3d3',
                                     line_width=1,
                                     line_opacity=0.8,
                                     polygon_opacity=0.4,
                                 )),
-                                StyleValueContext(value='500 Year Flood Hazard', symbol='=', style=Style(
+                                StyleValueContext(value='500-year Flood Hazard Zone', symbol='=', style=Style(
                                     polygon_fill='#73B2FF',
                                     line_color='#d3d3d3',
                                     line_width=1,

@@ -1,6 +1,6 @@
 /*
  * UrbanFootprint v1.5
- * Copyright (C) 2017 Calthorpe Analytics
+ * Copyright (C) 2016 Calthorpe Analytics
  *
  * This file is part of UrbanFootprint version 1.5
  *
@@ -242,11 +242,8 @@ FootprintScagDm.ScagZoningParcelFeature = Footprint.Feature.extend({
 
 FootprintScagDm.ScagEntitlementParcelFeature = Footprint.Feature.extend({
 
+    scaguid16 : SC.Record.attr(String),
     apn: SC.Record.attr(String),
-    scaguid16 : SC.Record.attr(Number),
-    city: SC.Record.attr(String),
-    county: SC.Record.attr(String),
-    acres: SC.Record.attr(Number),
     tract_no: SC.Record.attr(String),
     dev_agmt: SC.Record.attr(String),
     address: SC.Record.attr(String),
@@ -262,6 +259,9 @@ FootprintScagDm.ScagEntitlementParcelFeature = Footprint.Feature.extend({
     emp_sqft: SC.Record.attr(Number),
     proj_phase: SC.Record.attr(String),
     time_limit: SC.Record.attr(String),
+    acres: SC.Record.attr(Number),
+    city: SC.Record.attr(String),
+    county: SC.Record.attr(String),
     notes: SC.Record.attr(String),
     is_modified: SC.Record.attr(String),
 
@@ -371,6 +371,7 @@ FootprintScagDm.ScagEndangeredSpeciesFeature = Footprint.Feature.extend({
 	sname: SC.Record.attr(String),
 	cname: SC.Record.attr(String),
 	elmcode: SC.Record.attr(String),
+	occnumber: SC.Record.attr(Number),
 	kquadname: SC.Record.attr(String),
 	keycounty: SC.Record.attr(String),
 	accuracy: SC.Record.attr(String),
@@ -391,7 +392,7 @@ FootprintScagDm.ScagHabitatConservationAreasFeature = Footprint.Feature.extend({
 	hcp: SC.Record.attr(String),
 	nccp: SC.Record.attr(String),
 	stage: SC.Record.attr(String),
-	acres: SC.Record.attr(String),
+	acres: SC.Record.attr(Number),
 	notes: SC.Record.attr(String),
 });
 
