@@ -1,6 +1,6 @@
 /*
  * UrbanFootprint v1.5
- * Copyright (C) 2017 Calthorpe Analytics
+ * Copyright (C) 2016 Calthorpe Analytics
  *
  * This file is part of UrbanFootprint version 1.5
  *
@@ -93,10 +93,11 @@ Footprint.ToolSectionView = SC.View.extend({
         activeLayerBinding: SC.Binding.oneWay('.parentView.activeLayer'),
         activeLayerStatusBinding: SC.Binding.oneWay('.parentView.activeLayerStatus'),
         activeTopView: null,
-        activeTopViewBinding: SC.Binding.oneWay('Footprint.topSectionVisibleViewController.content'),
+        activeTopViewBinding: SC.Binding.oneWay('Footprint.topSectionVisibleViewController.view'),
         globalLayerConfig: function() {
-            if (this.getPath('activeTopView') == 'approval')
-                return ['zoomToProjectExtent', 'navigate'];
+        if (this.getPath('activeTopView') == 'Footprint.ApprovalTopSectionView') {
+                return ['zoomToProjectExtent', 'navigate', 'identify', 'doExportMap', 'zoomToSelectionExtent'];
+            }
         }.property('activeTopView').cacheable(),
 
         /**
@@ -108,6 +109,7 @@ Footprint.ToolSectionView = SC.View.extend({
             var layerConfig = this.get('globalLayerConfig') ?
                 this.get('globalLayerConfig') :
                 this.get('activeLayerConfig');
+
             // Find the optional toolController boolean for this item type
             var controllerEnabled = Footprint.toolController.get('%@IsEnabled'.fmt(item.get('type')));
             // Check if the items are limited by the layerConfig or the standardItems
