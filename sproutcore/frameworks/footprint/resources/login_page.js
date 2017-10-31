@@ -1,6 +1,6 @@
 /*
  * UrbanFootprint v1.5
- * Copyright (C) 2017 Calthorpe Analytics
+ * Copyright (C) 2016 Calthorpe Analytics
  *
  * This file is part of UrbanFootprint version 1.5
  *
@@ -22,14 +22,15 @@ Footprint.loginPage = SC.Page.design({
         loginContainerView: SC.View.extend({
             layout: { width: 350, height: 600, centerX: 0, centerY: 0},
 
-            childViews: 'loginForm ufLogoView clientLogoView logoView scagLogoView'.w(),
+            childViews: 'loginForm scagLogoView clientLogoView'.w(),
 
-            ufLogoView: SC.ImageView.extend({
+            scagLogoView: SC.ImageView.extend({
                 classNames:'client-logo-image'.w(),
                 useCanvas:NO,
-                layout: {centerX: 0, top: 0, width:200, height:200},
-                value:  sc_static('images/loading.png'),
+                layout: {centerX: 0, top: 0, width:300, height:200},
+                value:  sc_static('images/client_login_page_logo_lower_2016.png'),
             }),
+
             clientLogoView: SC.ImageView.extend({
                 classNames:'client-logo-image'.w(),
                 useCanvas: NO,
@@ -67,27 +68,6 @@ Footprint.loginPage = SC.Page.design({
                     isDefault: YES,
 
                 }),
-            }),
-
-            scagLogoView: SC.ImageView.extend({
-                classNames:'logo-image'.w(),
-                useCanvas:NO,
-                layout: {centerX: 5, top: 505, width:210, height:37},
-                value: sc_static('images/client_login_page_logo_lower.png'),
-            }),
-
-            logoView: SC.ImageView.extend({
-                classNames:'logo-image'.w(),
-                useCanvas:NO,
-                layout: {centerX: 0, top: 548, width:200, height:35},
-                cursor: SC.Cursor.create({
-                    cursorStyle: SC.HAND_CURSOR,
-                }),
-                value: sc_static('images/Analytics_Logo_GreyLetters.png'),
-                click: function() {
-                    window.open('http://calthorpeanalytics.com/');
-                    return YES;
-                },
             }),
         }),
     }),

@@ -1,6 +1,6 @@
 /*
  * UrbanFootprint v1.5
- * Copyright (C) 2017 Calthorpe Analytics
+ * Copyright (C) 2016 Calthorpe Analytics
  *
  * This file is part of UrbanFootprint version 1.5
  *
@@ -23,8 +23,8 @@ Footprint.LoadingPane = SC.MainPane.extend({
     loadingView: SC.ImageView.extend({
         classNames:'loading-image'.w(),
         useCanvas:NO,
-        layout: {centerX: 0, centerY:-150, width:300, height:300},
-        value: sc_static('images/loading.png')
+        layout: {centerX: 0, centerY:-150, width:300, height:200},
+        value: sc_static('images/client_login_page_logo_lower_2016.png')
     }),
     clientLogoView: Footprint.ClientImageView.extend({
         classNames:'client-logo-image'.w(),

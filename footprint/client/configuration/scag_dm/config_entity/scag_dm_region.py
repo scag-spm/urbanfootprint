@@ -377,7 +377,7 @@ class ScagDmRegionFixture(RegionFixture):
                     abstract_class=CityBoundary,
                 ),
                 feature_behavior=FeatureBehavior(
-                    behavior=get_behavior('reference_layers_editable_attribute'),
+                    behavior=get_behavior('editable_feature'),
                     intersection=GeographicIntersection.polygon_to_centroid
                 ),
                 _categories=[Category(key=DbEntityCategoryKey.KEY_CLASSIFICATION, value=DbEntityCategoryKey.REFERENCE)]

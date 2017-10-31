@@ -77,10 +77,10 @@ class ScagDmProjectFixture(ProjectFixture):
                     use_for_bounds=True
                   ),
                 feature_behavior=FeatureBehavior(
-                    behavior=get_behavior('reference_layers_editable_attribute'),
+                    behavior=get_behavior('editable_feature'),
                     intersection=GeographicIntersection.polygon_to_centroid
                 ),
-                _categories=[Category(key=DbEntityCategoryKey.KEY_CLASSIFICATION, value=DbEntityCategoryKey.REFERENCE)]
+                _categories=[Category(key=DbEntityCategoryKey.KEY_CLASSIFICATION, value=DbEntityCategoryKey.EDITABLE_LAYER)]
             )
         )
 
