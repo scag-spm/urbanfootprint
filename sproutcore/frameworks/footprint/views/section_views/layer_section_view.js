@@ -63,7 +63,7 @@ Footprint.LayerSectionView = Footprint.SectionView.extend({
         expandButtonView: SC.ButtonView.extend({
             layout: { centerY: 0, right: 6, width: 26, height: 18 },
             classNames: ['theme-button-gray', 'theme-button', 'theme-button-shorter'],
-            toolTip: 'Order Layers',
+            toolTip: 'Reorder Layers',
             icon: function() {
                 if (this.get('value')) return sc_static('images/section_toolbars/pullleft.png');
                 else return sc_static('images/section_toolbars/pullright.png');
@@ -128,9 +128,10 @@ Footprint.LayerSectionView = Footprint.SectionView.extend({
     }),
 
     linkToUrlView: SC.LabelView.extend({
-        layout: {left: 8, height: 24},
+        layout: {height: 24},
         escapeHTML: NO,
-        value: '<a target="_blank" style="text-decoration:none; color:#000000" href="http://www.arcgis.com/home/webmap/viewer.html?url=https%3A%2F%2Fmaps.scag.ca.gov%2Fscaggis%2Frest%2Fservices%2FIGR_Final%2FFeatureServer%2F0&source=sd">METRO Toolkit</a>'
+        backgroundColor: '#d0dae3',
+        value: '<a target="_blank" style="text-decoration:none; color:#4a4a4a; font-family:Helvetica, sans-serif; font-weight:bold; font-size:12px" href="http://scagspapp3:2222/Pages/Transit-Supportive-Toolkit.aspx"> &nbsp;&nbsp; Transit Supportive Policies </a>'
     }),
 
     addDataView: SC.View.design({
