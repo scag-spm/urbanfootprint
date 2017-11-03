@@ -19,10 +19,10 @@ __author__ = 'calthorpe_analytics'
 
 
 class ScenarioPlanningZones(Feature):
-    spzid = models.CharField(max_length=30, null=True)
-    t2aid = models.CharField(max_length=50, null=True)
-    county = models.CharField(max_length=50, null=True)
-    city = models.CharField(max_length=100, null=True)
+    spzid = models.CharField(max_length=15, null=True)
+    t2id = models.CharField(max_length=8, null=True)
+    county = models.CharField(max_length=15, null=True)
+    city = models.CharField(max_length=30, null=True)
     notes = models.CharField(max_length=1024, null=True, blank=True)
 
     class Meta(object):

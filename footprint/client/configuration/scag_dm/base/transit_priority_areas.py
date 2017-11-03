@@ -18,8 +18,7 @@ __author__ = 'calthorpe_analytics'
 
 class TransitPriorityAreas(Feature):
 
-    city = models.CharField(max_length=30, null=True)
-    county = models.CharField(max_length=15, null=True)
+    name = models.CharField(max_length=40, null=True)
     notes = models.CharField(max_length=1024, null=True, blank=True)
 
     class Meta(object):

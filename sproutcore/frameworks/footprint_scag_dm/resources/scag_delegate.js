@@ -1,6 +1,6 @@
 /*
  * UrbanFootprint v1.5
- * Copyright (C) 2017 Calthorpe Analytics
+ * Copyright (C) 2016 Calthorpe Analytics
  *
  * This file is part of UrbanFootprint version 1.5
  *
@@ -30,7 +30,6 @@ FootprintScagDm.ScagDmDelegate = Footprint.DefaultDelegate.extend({
             scenario_planning_zones: FootprintScagDm.ScagScenarioPlanningZones,
             entitlement_parcels_2016: FootprintScagDm.ScagEntitlementParcelFeature,
             city_boundary: FootprintScagDm.ScagJurisdictionBoundary,
-//            bike_lane: FootprintScagDm.ScagBikeLaneFeature,
             census_tracts: FootprintScagDm.ScagCensusTractsFeature,
             farmland: FootprintScagDm.ScagFarmlandFeature,
             region_sphere_of_influence: FootprintScagDm.ScagRegionSphereOfInfluenceFeature,
@@ -44,6 +43,9 @@ FootprintScagDm.ScagDmDelegate = Footprint.DefaultDelegate.extend({
             high_quality_transit_areas: FootprintScagDm.ScagHighQualityTransitAreasFeature,
             high_quality_transit_corridors: FootprintScagDm.ScagHighQualityTransitCorridorsFeature,
             existing_land_use_parcels_2012: FootprintScagDm.ScagExistingLandUseParcelFeature,
+            infill_parcels: FootprintScagDm.ScagInfillParcelFeature,
+            truck_routes: FootprintScagDm.ScagTruckRoutesFeature,
+            bike_lanes: FootprintScagDm.ScagBikeLanesFeature,
 
         }, sc_super())
     }.property('parentDelegate').cacheable(),

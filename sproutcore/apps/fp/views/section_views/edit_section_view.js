@@ -16,11 +16,12 @@ sc_require('views/info_views/attribute_editing/scag_existing_land_use_parcels_ed
 sc_require('views/info_views/attribute_editing/scag_tier2_taz_editor_view');
 sc_require('views/info_views/attribute_editing/scag_general_plan_parcels_editor_view');
 sc_require('views/info_views/attribute_editing/scag_specific_plan_parcels_editor_view');
+sc_require('views/info_views/attribute_editing/scag_infill_parcels_editor_view');
 sc_require('views/info_views/attribute_editing/scag_zoning_parcels_editor_view.js');
 sc_require('views/info_views/attribute_editing/scag_city_boundary_editor_view');
 sc_require('views/info_views/attribute_editing/scag_scenario_planning_zones_editor_view');
-//sc_require('views/info_views/attribute_editing/scag_bike_lane_editor_view');
-sc_require('views/info_views/attribute_editing/scag_census_tracts_editor_view');
+sc_require('views/info_views/attribute_editing/scag_truck_routes_editor_view');
+sc_require('views/info_views/attribute_editing/scag_bike_lanes_editor_view');
 sc_require('views/info_views/attribute_editing/scag_farmland_editor_view');
 sc_require('views/info_views/attribute_editing/scag_region_sphere_of_influence_editor_view');
 sc_require('views/info_views/attribute_editing/scag_endangered_species_editor_view');

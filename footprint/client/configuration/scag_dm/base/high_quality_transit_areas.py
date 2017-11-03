@@ -19,8 +19,6 @@ __author__ = 'calthorpe_analytics'
 
 class HighQualityTransitAreas(Feature):
 
-    city = models.CharField(max_length=30, null=True)
-    county = models.CharField(max_length=15, null=True)
     notes = models.CharField(max_length=1024, null=True, blank=True)
 
 

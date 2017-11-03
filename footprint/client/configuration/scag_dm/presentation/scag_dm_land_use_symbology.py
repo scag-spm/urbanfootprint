@@ -127,6 +127,7 @@ class ScagDmLandUseSymbology(LandUseSymbologyFixture):
             '1860': '#4CE600',
             '1870': '#4CE600',
             '1880': '#4CE600',
+            '1890': '#4CE600',
             '2000': '#267300',
             '2100': '#267300',
             '2110': '#267300',

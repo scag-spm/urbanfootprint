@@ -19,7 +19,7 @@ __author__ = 'calthorpe_analytics'
 
 class SubRegion(Feature):
 
-    subregion = models.CharField(max_length=50, null=True)
+    subregion = models.IntegerField(null=True, blank=True)
     name = models.CharField(max_length=50, null=True)
     county = models.CharField(max_length=15, null=True)
     acres = models.DecimalField(max_digits=14, decimal_places=2, null=True)

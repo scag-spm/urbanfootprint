@@ -18,11 +18,10 @@ __author__ = 'calthorpe_analytics'
 
 
 class Farmland(Feature):
-    scag_type = models.CharField(max_length=50, null=True)
-    fmmp_type = models.CharField(max_length=50, null=True)
-    county = models.CharField(max_length=50, null=True)
+    scag_type = models.CharField(max_length=5, null=True)
+    fmmp_type = models.CharField(max_length=5, null=True)
+    county = models.CharField(max_length=15, null=True)
     acres = models.DecimalField(max_digits=14, decimal_places=2, null=True)
-    year = models.IntegerField(null=True)
     notes = models.CharField(max_length=1024, null=True, blank=True)
 
 

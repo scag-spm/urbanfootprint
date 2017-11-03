@@ -142,15 +142,6 @@
         },
         "model": "main.scagdmfarmlanddefinition",
         "pk": 16
-    },		
-	
-    {
-        "fields": {
-            "farmland_description": "Z: Out of Survey Area",
-            "farmland_type": "Out of Survey Area",
-            "farmland_code": "Z"
-        },
-        "model": "main.scagdmfarmlanddefinition",
-        "pk": 17
-    } 
+    }
+
 ]

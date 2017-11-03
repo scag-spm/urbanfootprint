@@ -59,6 +59,9 @@ class ScagDmDbEntityKey(DbEntityKey):
     SPECIFIC_PLAN_PARCELS = 'specific_plan_parcels'
     REGION_SPECIFIC_PLAN_PARCELS = 'region_specific_plan_parcels'
 
+    INFILL_PARCELS = 'infill_parcels'
+    REGION_INFILL_PARCELS = 'region_infill_parcels'
+
     ZONING_PARCELS = 'zoning_parcels'
     REGION_ZONING_PARCELS = 'region_zoning_parcels'
 
@@ -79,8 +82,9 @@ class ScagDmDbEntityKey(DbEntityKey):
     CITY_BOUNDARY = 'city_boundary'
     REGION_CITY_BOUNDARY = 'region_city_boundary'
     PROJECT_CITY_BOUNDARY = 'project_city_boundary'
-    # BIKE_LANE = 'bike_lane'
+    BIKE_LANES = 'bike_lanes'
     SEA_LEVEL_RISE = 'sea_level_rise'
+    TRUCK_ROUTES = 'truck_routes'
 
 
 class ScagDmConfigEntitiesFixture(ConfigEntitiesFixture):

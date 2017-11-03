@@ -1,3 +1,4 @@
+# coding=utf-8
 
 # UrbanFootprint v1.5
 # Copyright (C) 2016 Calthorpe Analytics
@@ -13,13 +14,18 @@
 from django.contrib.gis.db import models
 from footprint.main.models.geospatial.feature import Feature
 
+
 __author__ = 'calthorpe_analytics'
 
 
-class HighQualityTransitCorridors(Feature):
+class InfillParcels(Feature):
 
+    scaguid16 = models.CharField(max_length=10, null=True, blank=True)
+    apn = models.CharField(max_length=15, null=True, blank=True)
+    inf_index = models.CharField(max_length=10, null=True, blank=True)
+    city = models.CharField(max_length=30, null=True, blank=True)
+    county = models.CharField(max_length=15, null=True, blank=True)
     notes = models.CharField(max_length=1024, null=True, blank=True)
-
 
     class Meta(object):
         abstract = True

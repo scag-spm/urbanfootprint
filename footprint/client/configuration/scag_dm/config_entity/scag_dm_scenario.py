@@ -14,6 +14,7 @@ from footprint.client.configuration.scag_dm.base.scenario_planning_zones import 
 from footprint.client.configuration.scag_dm.base.existing_land_use_parcel import ExistingLandUseParcel
 from footprint.client.configuration.scag_dm.base.general_plan_parcels import GeneralPlanParcels
 from footprint.client.configuration.scag_dm.base.specific_plan_parcels import SpecificPlanParcels
+from footprint.client.configuration.scag_dm.base.infill_parcels import InfillParcels
 from footprint.client.configuration.scag_dm.base.zoning_parcels import ZoningParcels
 from footprint.client.configuration.scag_dm.base.entitlement_parcels import EntitlementParcels
 from footprint.client.configuration.scag_dm.base.tier2_taz import Tier2Taz
@@ -146,6 +147,25 @@ class ScagDmScenarioFixture(ScenarioFixture):
                                 related_class_join_field_name='land_use',
                                 source_class_join_field_name='scag_sp_code16')
                             )
+                        ),
+                        feature_behavior=FeatureBehavior(
+                            behavior=get_behavior('editable_feature'),
+                            intersection=AttributeIntersection()
+                        ),
+                        _categories=[Category(key=DbEntityCategoryKey.KEY_CLASSIFICATION,
+                                              value=DbEntityCategoryKey.EDITABLE_LAYER)]
+                    )
+                ),
+
+                dict(
+                    class_scope=BaseScenario,
+                    value=DbEntity(
+                        name='2016 SCAG Infill Parcels',
+                        key=Key.INFILL_PARCELS,
+                        feature_class_configuration=FeatureClassConfiguration(
+                            abstract_class=InfillParcels,
+                            import_from_db_entity_key=Key.REGION_INFILL_PARCELS,
+                            filter_query=dict(city=project.name),
                         ),
                         feature_behavior=FeatureBehavior(
                             behavior=get_behavior('editable_feature'),

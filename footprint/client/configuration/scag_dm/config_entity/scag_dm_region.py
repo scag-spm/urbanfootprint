@@ -17,8 +17,10 @@ from footprint.client.configuration.scag_dm.base.endangered_species import Endan
 from footprint.client.configuration.scag_dm.base.existing_land_use_parcel import ExistingLandUseParcel
 from footprint.client.configuration.scag_dm.base.farmland import Farmland
 from footprint.client.configuration.scag_dm.base.flood_zones import FloodZones
+from footprint.client.configuration.scag_dm.base.truck_routes import TruckRoutes
 from footprint.client.configuration.scag_dm.base.general_plan_parcels import GeneralPlanParcels
 from footprint.client.configuration.scag_dm.base.specific_plan_parcels import SpecificPlanParcels
+from footprint.client.configuration.scag_dm.base.infill_parcels import InfillParcels
 from footprint.client.configuration.scag_dm.base.zoning_parcels import ZoningParcels
 from footprint.client.configuration.scag_dm.base.entitlement_parcels import EntitlementParcels
 from footprint.client.configuration.scag_dm.base.habitat_conservation_areas import HabitatConservationAreas
@@ -30,7 +32,7 @@ from footprint.client.configuration.scag_dm.base.sub_region import SubRegion
 from footprint.client.configuration.scag_dm.base.tier2_taz import Tier2Taz
 from footprint.client.configuration.scag_dm.base.transit_priority_areas import TransitPriorityAreas
 from footprint.client.configuration.scag_dm.base.city_boundary import CityBoundary
-# from footprint.client.configuration.scag_dm.base.bike_lane import BikeLane
+from footprint.client.configuration.scag_dm.base.bike_lanes import BikeLanes
 from footprint.client.configuration.scag_dm.base.sea_level_rise import SeaLevelRise
 from footprint.client.configuration.scag_dm.config_entity.scag_dm_config_entities import ScagDmDbEntityKey
 from footprint.client.configuration.scag_dm.base.census_tracts import CensusTracts
@@ -117,6 +119,19 @@ class ScagDmRegionFixture(RegionFixture):
                 ),
                 _categories=[Category(key=DbEntityCategoryKey.KEY_CLASSIFICATION, value=DbEntityCategoryKey.REFERENCE)]
             )),
+
+            update_or_create_db_entity(config_entity, DbEntity(
+                key=Key.TRUCK_ROUTES,
+                feature_class_configuration=FeatureClassConfiguration(
+                    abstract_class=TruckRoutes
+                ),
+                feature_behavior=FeatureBehavior(
+                    behavior=get_behavior('reference_layers_editable_attribute'),
+                    intersection=GeographicIntersection.polygon_to_centroid
+                ),
+                _categories=[Category(key=DbEntityCategoryKey.KEY_CLASSIFICATION, value=DbEntityCategoryKey.REFERENCE)]
+            )),
+
             update_or_create_db_entity(config_entity, DbEntity(
                 key=Key.ENDANGERED_SPECIES,
                 feature_class_configuration=FeatureClassConfiguration(
@@ -274,7 +289,17 @@ class ScagDmRegionFixture(RegionFixture):
                 ),
                 _categories=[Category(key=DbEntityCategoryKey.KEY_CLASSIFICATION, value=DbEntityCategoryKey.REFERENCE)]
             )),
-
+            update_or_create_db_entity(config_entity, DbEntity(
+                key=Key.REGION_INFILL_PARCELS,
+                feature_class_configuration=FeatureClassConfiguration(
+                    abstract_class=InfillParcels,
+                ),
+                feature_behavior=FeatureBehavior(
+                    behavior=get_behavior('reference'),
+                    intersection=AttributeIntersection()
+                ),
+                _categories=[Category(key=DbEntityCategoryKey.KEY_CLASSIFICATION, value=DbEntityCategoryKey.REFERENCE)]
+            )),
             update_or_create_db_entity(config_entity, DbEntity(
                 key=Key.REGION_ZONING_PARCELS,
                 feature_class_configuration=FeatureClassConfiguration(
@@ -382,17 +407,19 @@ class ScagDmRegionFixture(RegionFixture):
                 ),
                 _categories=[Category(key=DbEntityCategoryKey.KEY_CLASSIFICATION, value=DbEntityCategoryKey.REFERENCE)]
             )),
-            # update_or_create_db_entity(config_entity, DbEntity(
-            #     key=Key.BIKE_LANE,
-            #     feature_class_configuration=FeatureClassConfiguration(
-            #         abstract_class=BikeLane,
-            #     ),
-            #     feature_behavior=FeatureBehavior(
-            #         behavior=get_behavior('reference_layers_editable_attribute'),
-            #         intersection=GeographicIntersection.polygon_to_centroid
-            #     ),
-            #     _categories=[Category(key=DbEntityCategoryKey.KEY_CLASSIFICATION, value=DbEntityCategoryKey.REFERENCE)]
-            # )),
+
+            update_or_create_db_entity(config_entity, DbEntity(
+                key=Key.BIKE_LANES,
+                feature_class_configuration=FeatureClassConfiguration(
+                    abstract_class=BikeLanes
+                ),
+                feature_behavior=FeatureBehavior(
+                    behavior=get_behavior('reference_layers_editable_attribute'),
+                    intersection=GeographicIntersection.polygon_to_centroid
+                ),
+                _categories=[Category(key=DbEntityCategoryKey.KEY_CLASSIFICATION, value=DbEntityCategoryKey.REFERENCE)]
+            )),
+
             update_or_create_db_entity(config_entity, DbEntity(
                 key=Key.SEA_LEVEL_RISE,
                 feature_class_configuration=FeatureClassConfiguration(

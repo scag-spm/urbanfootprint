@@ -272,9 +272,17 @@ FootprintScagDm.ScagEntitlementParcelFeature = Footprint.Feature.extend({
     }.observes('.approval_status', '.status'),
 });
 
+FootprintScagDm.ScagInfillParcelFeature = Footprint.Feature.extend({
+    scaguid16: SC.Record.attr(String),
+    apn: SC.Record.attr(String),
+    inf_index: SC.Record.attr(String),
+    city: SC.Record.attr(String),
+    county: SC.Record.attr(String),
+    notes: SC.Record.attr(String),
+});
+
 FootprintScagDm.ScagJurisdictionBoundary = Footprint.Feature.extend({
     city: SC.Record.attr(String),
-    city_id: SC.Record.attr(String),
     county: SC.Record.attr(String),
     pop16: SC.Record.attr(Number),
     pop20: SC.Record.attr(Number),
@@ -317,21 +325,28 @@ FootprintScagDm.ScagTier2TazFeature = Footprint.Feature.extend({
 
 FootprintScagDm.ScagScenarioPlanningZones = Footprint.Feature.extend({
     spzid: SC.Record.attr(String),
-    t2aid: SC.Record.attr(String),
+    t2id: SC.Record.attr(String),
     county: SC.Record.attr(String),
     city: SC.Record.attr(String),
     notes: SC.Record.attr(String),
 });
 
-//FootprintScagDm.ScagBikeLaneFeature = Footprint.Feature.extend({
-//    id: SC.Record.attr(String),
-//    name: SC.Record.attr(String),
-//    status: SC.Record.attr(String),
-//    type: SC.Record.attr(String),
-//    classname: SC.Record.attr(String),
-//    // year: SC.Record.attr(Number),
-//    notes: SC.Record.attr(String),
-//});
+FootprintScagDm.ScagBikeLanesFeature = Footprint.Feature.extend({
+    name: SC.Record.attr(String),
+    status: SC.Record.attr(String),
+    bike_class: SC.Record.attr(Number),
+    length: SC.Record.attr(Number),
+    city: SC.Record.attr(String),
+    county: SC.Record.attr(String),
+    notes: SC.Record.attr(String),
+});
+
+FootprintScagDm.ScagTruckRoutesFeature = Footprint.Feature.extend({
+    name: SC.Record.attr(String),
+    city: SC.Record.attr(String),
+    county: SC.Record.attr(String),
+    notes: SC.Record.attr(String),
+});
 
 FootprintScagDm.ScagCensusTractsFeature = Footprint.Feature.extend({
     geoid10: SC.Record.attr(String),
@@ -355,7 +370,6 @@ FootprintScagDm.ScagFarmlandFeature = Footprint.Feature.extend({
 	fmmp_type: SC.Record.attr(String),
 	county: SC.Record.attr(String),
 	acres: SC.Record.attr(String),
-	year: SC.Record.attr(String),
     notes: SC.Record.attr(String),
 });
 
@@ -389,8 +403,7 @@ FootprintScagDm.ScagEndangeredSpeciesFeature = Footprint.Feature.extend({
 
 FootprintScagDm.ScagHabitatConservationAreasFeature = Footprint.Feature.extend({
 	name: SC.Record.attr(String),
-	hcp: SC.Record.attr(String),
-	nccp: SC.Record.attr(String),
+	type: SC.Record.attr(String),
 	stage: SC.Record.attr(String),
 	acres: SC.Record.attr(Number),
 	notes: SC.Record.attr(String),
@@ -401,15 +414,11 @@ FootprintScagDm.ScagCpadHoldingsFeature = Footprint.Feature.extend({
 	county: SC.Record.attr(String),
 	agency_lev: SC.Record.attr(String),
 	mng_agency: SC.Record.attr(String),
-	own_type: SC.Record.attr(String),
 	site_name: SC.Record.attr(String),
-	hold_notes: SC.Record.attr(String),
 	city: SC.Record.attr(String),
-	desg_agncy: SC.Record.attr(String),
-	desg_nat: SC.Record.attr(String),
 	layer: SC.Record.attr(String),
 	layer_scag: SC.Record.attr(String),
-	year: SC.Record.attr(String),
+    scag_acres: SC.Record.attr(Number),
 	notes: SC.Record.attr(String),
 });
 
@@ -424,25 +433,18 @@ FootprintScagDm.ScagSeaLevelRiseFeature = Footprint.Feature.extend({
 });
 
 FootprintScagDm.ScagTransitPriorityAreasFeature = Footprint.Feature.extend({
-	city: SC.Record.attr(String),
-	county: SC.Record.attr(String),
+	name: SC.Record.attr(String),
 	notes: SC.Record.attr(String),
 });
 
 FootprintScagDm.ScagMajorTransitStopsFeature = Footprint.Feature.extend({
-	city: SC.Record.attr(String),
-	county: SC.Record.attr(String),
 	notes: SC.Record.attr(String),
 });
 
 FootprintScagDm.ScagHighQualityTransitAreasFeature = Footprint.Feature.extend({
-	city: SC.Record.attr(String),
-	county: SC.Record.attr(String),
 	notes: SC.Record.attr(String),
 });
 
 FootprintScagDm.ScagHighQualityTransitCorridorsFeature = Footprint.Feature.extend({
-	city: SC.Record.attr(String),
-	county: SC.Record.attr(String),
 	notes: SC.Record.attr(String),
 });

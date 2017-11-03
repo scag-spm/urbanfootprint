@@ -19,9 +19,8 @@ __author__ = 'calthorpe_analytics'
 
 class CityBoundary(Feature):
 
-    city = models.CharField(max_length=50, null=True)
-    city_id = models.CharField(max_length=50, null=True)
-    county = models.CharField(max_length=50, null=True)
+    city = models.CharField(max_length=30, null=True)
+    county = models.CharField(max_length=15, null=True)
     pop16 = models.IntegerField(null=True, blank=True)
     pop20 = models.IntegerField(null=True, blank=True)
     pop30 = models.IntegerField(null=True, blank=True)
@@ -37,7 +36,7 @@ class CityBoundary(Feature):
     emp30 = models.IntegerField(null=True, blank=True)
     emp35 = models.IntegerField(null=True, blank=True)
     emp45 = models.IntegerField(null=True, blank=True)
-    acres = models.IntegerField(null=True, blank=True)
+    acres = models.DecimalField(max_digits=14, decimal_places=2, null=True)
     year = models.IntegerField(null=True, blank=True)
     notes = models.CharField(max_length=1024, null=True, blank=True)
 

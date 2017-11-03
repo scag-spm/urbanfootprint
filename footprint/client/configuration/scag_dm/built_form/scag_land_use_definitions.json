@@ -982,6 +982,15 @@
     },
     {
         "fields": {
+            "land_use_description": "1890: Off Street Trail",
+            "land_use_type": "Open Space and Recreation",
+            "land_use": 1890
+        },
+        "model": "main.scagdmlandusedefinition",
+        "pk": 1890
+    },
+    {
+        "fields": {
             "land_use_description": "2000: Agriculture",
             "land_use_type": "Agriculture",
             "land_use": 2000
