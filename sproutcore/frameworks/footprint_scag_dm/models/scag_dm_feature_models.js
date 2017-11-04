@@ -355,17 +355,6 @@ FootprintScagDm.ScagCensusTractsFeature = Footprint.Feature.extend({
 });
 
 FootprintScagDm.ScagFarmlandFeature = Footprint.Feature.extend({
-
-    farmland_definition: SC.Record.toOne('Footprint.ClientFarmlandDefinition', {
-        isMaster: YES
-    }),
-
-    farmlandDefinitionObserver: function() {
-        if ((this.get('status') & SC.Record.READY) && (this.getPath('farmland_definition.status') & SC.Record.READY)) {
-           this.setIfChanged('scag_type', this.getPath('farmland_definition.farmland_code'));
-       }
-    }.observes('.farmland_definition', '*farmland_definition.status', '.status'),
-
 	scag_type: SC.Record.attr(String),
 	fmmp_type: SC.Record.attr(String),
 	county: SC.Record.attr(String),

@@ -230,12 +230,6 @@ class ScagDmRegionFixture(RegionFixture):
                 key=Key.FARMLAND,
                 feature_class_configuration=FeatureClassConfiguration(
                     abstract_class=Farmland,
-                    related_fields=dict(farmland_definition=dict(
-                        single=True,
-                        related_class_name='footprint.client.configuration.scag_dm.built_form.scag_dm_farmland_definition.ScagDmFarmlandDefinition',
-                        related_class_join_field_name='farmland_code',
-                        source_class_join_field_name='scag_type')
-                    )
                 ),
                 feature_behavior=FeatureBehavior(
                     behavior=get_behavior('reference_layers_editable_attribute'),
@@ -414,7 +408,7 @@ class ScagDmRegionFixture(RegionFixture):
                     abstract_class=BikeLanes
                 ),
                 feature_behavior=FeatureBehavior(
-                    behavior=get_behavior('reference_layers_editable_attribute'),
+                    behavior=get_behavior('reference'),
                     intersection=GeographicIntersection.polygon_to_centroid
                 ),
                 _categories=[Category(key=DbEntityCategoryKey.KEY_CLASSIFICATION, value=DbEntityCategoryKey.REFERENCE)]

@@ -39,5 +39,4 @@ from footprint.client.configuration.scag_dm.base.tier2_taz import Tier2Taz
 from footprint.client.configuration.scag_dm.base.transit_priority_areas import TransitPriorityAreas
 from footprint.client.configuration.scag_dm.built_form.scag_dm_land_use import ScagDmLandUse
 from footprint.client.configuration.scag_dm.built_form.scag_dm_land_use_definition import ScagDmLandUseDefinition
-from footprint.client.configuration.scag_dm.built_form.scag_dm_farmland_definition import ScagDmFarmlandDefinition
 

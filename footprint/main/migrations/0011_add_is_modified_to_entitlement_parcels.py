@@ -835,16 +835,6 @@ class Migration(SchemaMigration):
             'land_use_description': ('django.db.models.fields.CharField', [], {'max_length': '100', 'null': 'True', 'blank': 'True'}),
             'land_use_type': ('django.db.models.fields.CharField', [], {'max_length': '100', 'null': 'True', 'blank': 'True'})
         },
-        'main.scagdmfarmlanddefinition': {
-            'Meta': {'object_name': 'ScagDmFarmlandDefinition'},
-            u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'farmland_code': (
-            'django.db.models.fields.CharField', [], {'max_length': '10', 'null': 'True', 'blank': 'True'}),
-            'farmland_description': (
-            'django.db.models.fields.CharField', [], {'max_length': '100', 'null': 'True', 'blank': 'True'}),
-            'farmland_type': (
-            'django.db.models.fields.CharField', [], {'max_length': '100', 'null': 'True', 'blank': 'True'})
-        },
         'main.scenario': {
             'Meta': {'object_name': 'Scenario', '_ormbases': ['main.ConfigEntity']},
             u'configentity_ptr': ('django.db.models.fields.related.OneToOneField', [], {'to': "orm['main.ConfigEntity']", 'unique': 'True', 'primary_key': 'True'}),

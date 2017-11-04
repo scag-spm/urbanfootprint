@@ -13,7 +13,7 @@
 
 
 sc_require('views/info_views/editable_text_field_view');
-sc_require('views/info_views/attribute_editing/editable_attribute_group_field_views');
+//sc_require('views/info_views/attribute_editing/editable_attribute_group_field_views');
 sc_require('views/info_views/attribute_editing/editable_layer_info_view');
 
 
