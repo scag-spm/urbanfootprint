@@ -1,7 +1,7 @@
 # coding=utf-8
 
 # UrbanFootprint v1.5
-# Copyright (C) 2017 Calthorpe Analytics
+# Copyright (C) 2016 Calthorpe Analytics
 #
 # This file is part of UrbanFootprint version 1.5
 #
@@ -87,6 +87,7 @@ class UserForm(forms.ModelForm):
     raw_new_password = forms.CharField(required=False, widget=forms.PasswordInput())
     confirm_new_password = forms.CharField(required=False, widget=forms.PasswordInput())
     email = forms.CharField(max_length=75, widget=forms.TextInput(attrs={'size': '40', 'class': 'form-control'}))
+    is_active = forms.BooleanField(required=False)
 
     class Meta:
         model = get_user_model()

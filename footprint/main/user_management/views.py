@@ -1,7 +1,7 @@
 # coding=utf-8
 
 # UrbanFootprint v1.5
-# Copyright (C) 2017 Calthorpe Analytics
+# Copyright (C) 2016 Calthorpe Analytics
 #
 # This file is part of UrbanFootprint version 1.5
 #
@@ -343,6 +343,7 @@ def user(request, user_id):
             first_name=form.cleaned_data.get('first_name'),
             last_name=form.cleaned_data.get('last_name'),
             api_key=None,
+            is_active=str(form.cleaned_data.get('is_active')),
             groups=get_group_names_from_formset(group_formset)
         )
 
@@ -390,17 +391,17 @@ def add_user(request):
     group_formset = group_formset_class(request.POST or None)
 
     if form.is_valid() and group_formset.is_valid():
+        groups = str(get_group_names_from_formset(group_formset)[0]).split('__')
+        seq_id = len(Group.objects.get(name=get_group_names_from_formset(group_formset)[0]).user_set.all()) + 1
+        new_user = '{}_{}_{}'.format(groups[-2], groups[-1], seq_id)
 
         update_or_create_user(
-            # TODO:
-            #  Unfortunately, it appears that changing the length of the username in Django get complicated
-            #  quickly so we're leaving this to 30 characters for now.
-            #  See http://stackoverflow.com/questions/2610088/can-djangos-auth-user-username-be-varchar75-how-could-that-be-done
-            username=form.cleaned_data.get('email')[:30],
+            username= new_user,
             password=form.cleaned_data.get('password'),
             email=form.cleaned_data.get('email'),
             first_name=form.cleaned_data.get('first_name'),
             last_name=form.cleaned_data.get('last_name'),
+            is_active=str(form.cleaned_data.get('is_active')),
             api_key=None,
             groups=get_group_names_from_formset(group_formset)
         )

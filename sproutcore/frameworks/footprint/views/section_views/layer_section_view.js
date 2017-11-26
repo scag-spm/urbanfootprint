@@ -131,7 +131,7 @@ Footprint.LayerSectionView = Footprint.SectionView.extend({
         layout: {height: 24},
         escapeHTML: NO,
         backgroundColor: '#d0dae3',
-        value: '<a target="_blank" style="text-decoration:none; color:#4a4a4a; font-family:Helvetica, sans-serif; font-weight:bold; font-size:12px" href="http://scagspapp3:2222/Pages/Transit-Supportive-Toolkit.aspx"> &nbsp;&nbsp; Transit Supportive Policies </a>'
+        value: '<a target="_blank" style="text-decoration:none; color:#4a4a4a; font-family:Helvetica, sans-serif; font-weight:bold; font-size:12px" href="http://scagrtpscs.net/Pages/Transit-Supportive-Measures.aspx"> &nbsp;&nbsp; Transit Supportive Policies </a>'
     }),
 
     addDataView: SC.View.design({

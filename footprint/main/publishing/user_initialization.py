@@ -1,6 +1,6 @@
 
 # UrbanFootprint v1.5
-# Copyright (C) 2017 Calthorpe Analytics
+# Copyright (C) 2016 Calthorpe Analytics
 #
 # This file is part of UrbanFootprint version 1.5
 #
@@ -69,7 +69,7 @@ def update_or_create_group(name, config_entity=None, superiors=None):
         group_hierarchy.superiors.add(superior_group)
     return group
 
-def update_or_create_user(username=None, password=None, email=None, api_key=None, groups=None, is_super_user=False, first_name=None, last_name=None):
+def update_or_create_user(username=None, password=None, email=None, api_key=None, groups=None, is_super_user=False, first_name=None, last_name=None, is_active=True):
     """
         Update/Create the user matching the username
     :param username: the User.username
@@ -104,6 +104,10 @@ def update_or_create_user(username=None, password=None, email=None, api_key=None
         user.last_name = last_name
     if is_super_user:
         user.is_superuser = True
+    if is_active == 'f' or is_active == 'False' or is_active == False:
+        user.is_active = False
+    else:
+        user.is_active = True
 
     user.save()
 
