@@ -408,7 +408,7 @@ class ScagDmRegionFixture(RegionFixture):
                     abstract_class=BikeLanes
                 ),
                 feature_behavior=FeatureBehavior(
-                    behavior=get_behavior('reference'),
+                    behavior=get_behavior('editable_feature'),
                     intersection=GeographicIntersection.polygon_to_centroid
                 ),
                 _categories=[Category(key=DbEntityCategoryKey.KEY_CLASSIFICATION, value=DbEntityCategoryKey.REFERENCE)]
