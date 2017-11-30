@@ -22,7 +22,7 @@ Footprint.DefaultDelegate = SC.Object.extend({
     dbEntityKeyToFeatureRecordType: function() {
         return SC.Object.create({
             base_feature: Footprint.BaseFeature,
-            cpad_holdings: Footprint.CpadHoldingsFeature,
+            // cpad_holdings: Footprint.CpadHoldingsFeature,
             scenario_increment: Footprint.IncrementsFeature,
             scenario_end_state: Footprint.EndStateFeature,
             base_agriculture_canvas: Footprint.BaseAgricultureFeature,
@@ -46,4 +46,5 @@ Footprint.DefaultDelegate = SC.Object.extend({
     loadingRegionStateClass: function() {
         return null;
     }.property().cacheable()
+
 });

@@ -1,7 +1,7 @@
 # coding=utf8
 
 # UrbanFootprint v1.5
-# Copyright (C) 2017 Calthorpe Analytics
+# Copyright (C) 2016 Calthorpe Analytics
 #
 # This file is part of UrbanFootprint version 1.5
 #
@@ -153,7 +153,7 @@ def client():
     sproutcore_path = "sproutcore/frameworks/footprint/resources/images"
     with cd('/srv/calthorpe/urbanfootprint'):
         run('if [ -e {client_path}/login_page_logo.png ]; then cp -f {client_path}/login_page_logo.png {sproutcore_path}/client_login_page_logo.png; fi'.format(client_path=client_path, sproutcore_path=sproutcore_path))
-        run('if [ -e {client_path}/login_page_logo_lower.png ]; then cp -f {client_path}/login_page_logo.png {sproutcore_path}/client_login_page_logo_lower.png; fi'.format(client_path=client_path, sproutcore_path=sproutcore_path))
+        run('if [ -e {client_path}/login_page_logo_lower.png ]; then cp -f {client_path}/login_page_logo_lower.png {sproutcore_path}/client_login_page_logo_lower.png; fi'.format(client_path=client_path, sproutcore_path=sproutcore_path))
 
 @task
 def setup_tilestache_user():
@@ -360,6 +360,10 @@ def deploy_data(build_type='prod'):
 @task
 def directory_permissions(build_type='prod'):
     media_root = get_django_setting(build_type, 'MEDIA_ROOT')
+
+    downloadable_root = get_django_setting(build_type, 'SENDFILE_ROOT')
+    sudo('mkdir -p {0}'.format(downloadable_root))
+
     sudo('chown {user}:www-data {media} -R'.format(user=env.deploy_user,
                                                    media=media_root))
     sudo('chmod 777 {media} -R'.format(media=media_root))
@@ -443,7 +447,6 @@ def switch_to_prod(reverse=False):
     sudo('ln -sf {ROOT_PATH}/conf/etc/supervisor/conf.d/calthorpe.supervisor.{build_type} '
          ' /etc/supervisor/conf.d/calthorpe.conf'.format(ROOT_PATH=root_path,
                                                          build_type=build_type))
-
     sudo('supervisorctl stop all')
     sudo('sleep 15')
     sudo('service supervisor restart')

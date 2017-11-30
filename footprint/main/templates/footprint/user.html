@@ -1,6 +1,6 @@
 <!--
     UrbanFootprint v1.5
-    Copyright (C) 2017 Calthorpe Analytics
+    Copyright (C) 2016 Calthorpe Analytics
 
     This file is part of UrbanFootprint version 1.5
 
@@ -85,11 +85,21 @@ $(document).ready(function(){
                         </tr>
 
                         {% for group_form in group_formset %}
-                            <tr>
-                                <td><label for="{{ group_form.config_entity.id_for_label }}">Project:</label></td>
-                                <td>{{ group_form.config_entity }}
-                                {{ group_form.config_entity.errors }}</td>
-                            </tr>
+                            {% if requesting_user_role == 'superadmin' or requesting_user_role == 'admin' %}
+                                <tr>
+                                    <td><label for="{{ group_form.config_entity.id_for_label }}">Project:</label></td>
+                                    <td>{{ group_form.config_entity }}
+                                        {{ group_form.config_entity.errors }}</td>
+                                </tr>
+                            {% else %}
+                                {% if group_form.config_entity.value != None %}
+                                    <tr>
+                                        <td><label for="{{ group_form.config_entity.id_for_label }}">Project:</label></td>
+                                        <td>{{ group_form.config_entity }}
+                                            {{ group_form.config_entity.errors }}</td>
+                                    </tr>
+                                {% endif %}
+                            {% endif %}
                         {% endfor %}
 
                         <tr>

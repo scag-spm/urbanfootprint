@@ -1,6 +1,6 @@
 
 # UrbanFootprint v1.5
-# Copyright (C) 2017 Calthorpe Analytics
+# Copyright (C) 2016 Calthorpe Analytics
 #
 # This file is part of UrbanFootprint version 1.5
 #
@@ -11,3 +11,4 @@
 # Public License v3 for more details; see <http://www.gnu.org/licenses/>.
 
 import scenario_updater_tool
+import sed_updater_tool

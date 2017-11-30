@@ -1,6 +1,6 @@
 
 # UrbanFootprint v1.5
-# Copyright (C) 2017 Calthorpe Analytics
+# Copyright (C) 2016 Calthorpe Analytics
 #
 # This file is part of UrbanFootprint version 1.5
 #
@@ -145,3 +145,4 @@ class AnalysisToolKey(Keys):
     MERGE_UPDATER_TOOL = 'merge_updater_tool'
     PUBLIC_HEALTH_UPDATER_TOOL = 'public_health_updater_tool'
     AGRICULTURE_ANALYSIS_UPDATER_TOOL = 'agriculture_analysis_updater_tool'
+    SED_UPDATER_TOOL = 'sed_updater_tool'

@@ -1,6 +1,6 @@
 /*
  * UrbanFootprint v1.5
- * Copyright (C) 2017 Calthorpe Analytics
+ * Copyright (C) 2016 Calthorpe Analytics
  *
  * This file is part of UrbanFootprint version 1.5
  *
@@ -28,7 +28,7 @@ window.FootprintScagDm = SC.Object.create(
   NAMESPACE: 'FootprintScagDm',
   VERSION: '0.1.0',
 
-  logoPath: sc_static('images/logo.png'),
+  logoPath: sc_static('images/logo_2016.png'),
 
   STATIC: sc_static('images/logo.png').replace('images/logo.png', '%@')
 

@@ -1,6 +1,6 @@
 
 # UrbanFootprint v1.5
-# Copyright (C) 2017 Calthorpe Analytics
+# Copyright (C) 2016 Calthorpe Analytics
 #
 # This file is part of UrbanFootprint version 1.5
 #
@@ -49,6 +49,10 @@ class DefaultBehaviorFixture(DefaultMixin, BehaviorFixture):
                 parents=[]
             ),
             Behavior(
+                key=key('reference_layers_editable_attribute'),
+                parents=[]
+            ),
+            Behavior(
                 key=key('tool'),
                 parents=[]
             ),
@@ -85,6 +89,10 @@ class DefaultBehaviorFixture(DefaultMixin, BehaviorFixture):
             Behavior(
                     key=key('scenario_editor_tool'),
                     parents=['editor_tool']
+            ),
+            Behavior(
+                key=key('sed_editor_tool'),
+                parents=['editor_tool']
             ),
             # agriculture_editor_tool is a parent so that this DbEntity with this behavior will run the
             # agriculture module when its features are updated

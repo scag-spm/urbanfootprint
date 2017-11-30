@@ -1,7 +1,7 @@
 # coding=utf-8
 
 # UrbanFootprint v1.5
-# Copyright (C) 2017 Calthorpe Analytics
+# Copyright (C) 2016 Calthorpe Analytics
 #
 # This file is part of UrbanFootprint version 1.5
 #
@@ -20,15 +20,14 @@ __author__ = 'calthorpe_analytics'
 
 class ExistingLandUseParcel(Feature, BuiltFormFeature):
 
-    # land_use_definition is added dynamically
-    apn = models.CharField(max_length=100, null=True, blank=True)
-    fips = models.IntegerField(null=True, blank=True)
-    scaguid = models.CharField(max_length=100, null=True, blank=True)
-    city = models.CharField(max_length=100, null=True, blank=True)
-    county = models.CharField(max_length=100, null=True, blank=True)
-    scag_lu = models.IntegerField(null=True, blank=True)
-    acres = models.DecimalField(null=True, max_digits=14, decimal_places=2)
+    scaguid16 = models.CharField(max_length=10, null=True, blank=True)
+    apn = models.CharField(max_length=15, null=True, blank=True)
+    scag_lu16 = models.IntegerField(null=True, blank=True)
     scag_lu_secondary = models.IntegerField(null=True, blank=True)
+    scag_lu12 = models.IntegerField(null=True, blank=True)
+    acres = models.DecimalField(null=True, max_digits=14, decimal_places=2)
+    city = models.CharField(max_length=30, null=True, blank=True)
+    county = models.CharField(max_length=15, null=True, blank=True)
     notes = models.CharField(max_length=1024, null=True, blank=True)
 
     class Meta(object):

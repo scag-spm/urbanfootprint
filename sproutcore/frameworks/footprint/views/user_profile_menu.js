@@ -1,6 +1,6 @@
 /*
  * UrbanFootprint v1.5
- * Copyright (C) 2017 Calthorpe Analytics
+ * Copyright (C) 2016 Calthorpe Analytics
  *
  * This file is part of UrbanFootprint version 1.5
  *
@@ -58,7 +58,7 @@ Footprint.UserProfileMenu = SC.View.extend({
                     classNames: ['menu-item'],
                     body: '<span class="value ellipsis">Documentation</span>',
                     escapeHTML: false,
-                    href: 'https://urbanfootprint-v1.readthedocs.io/',
+                    href: 'http://scag-spm-documentation.readthedocs.io/',
                 })],
             }),
         }),
@@ -71,7 +71,7 @@ Footprint.UserProfileMenu = SC.View.extend({
                     classNames: ['menu-item'],
                     body: '<span class="value ellipsis">Support</span>',
                     escapeHTML: false,
-                    href: 'https://urbanfootprint-v1.readthedocs.io/en/latest/user_support/',
+                    href: 'http://scag-spm-documentation.readthedocs.io/en/latest/user_support/',
                 })],
             }),
         }),

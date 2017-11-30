@@ -1,6 +1,6 @@
 /*
  * UrbanFootprint v1.5
- * Copyright (C) 2017 Calthorpe Analytics
+ * Copyright (C) 2016 Calthorpe Analytics
  *
  * This file is part of UrbanFootprint version 1.5
  *
@@ -75,7 +75,7 @@ Footprint.ApprovalTopSectionView = SC.View.extend({
         selectionBinding: '.parentView.selection',
 
         nowShowing: function () {
-            if (this.getPath('activeViewProperty') && this.get('activeLayerBehavior') == 'behavior__editable_feature') {
+            if ((this.getPath('activeViewProperty') && this.get('activeLayerBehavior') == 'behavior__editable_feature') || (this.getPath('activeViewProperty') && this.get('activeLayerBehavior') == 'behavior__sed_editor_tool')) {
                 return '%@'.fmt(this.getPath('activeViewProperty'));
             }
             return 'Footprint.NoApprovalView';

@@ -22,6 +22,7 @@ sc_require('views/remove_button_view');
  * Adds the attributes of selected join tables
  */
 Footprint.QueryFilterView = Footprint.SelectAttributeInfoView.extend({
+
     // In addition to the SelectOrAddView of the contentView,
     // we add a SelectOrAddView for three more lists
     childViews: ['contentView', 'attributesOverlayView', 'equalitySymbolsView', 'conjunctionsView'],
@@ -51,33 +52,32 @@ Footprint.QueryFilterView = Footprint.SelectAttributeInfoView.extend({
      */
     removeMenu: function() {
 //      TODO For SCAG pilot the categoricalValuesView has been removed
-//      ['contentView.labelSelectView', 'equalitySymbolsView', 'categoricalValuesView', 'conjunctionsView'].forEach(function(view)
-        ['contentView.labelSelectView', 'equalitySymbolsView', 'conjunctionsView'].forEach(function(view) {
+      ['contentView.labelSelectView', 'equalitySymbolsView', 'categoricalValuesView', 'conjunctionsView'].forEach(function(view) {
             this.getPath(view).removeMenu();
         }, this);
     },
 
-    /***
-     * Override to support multiple popups.
-     */
-    handleDownKey: function() {
-        // TODO Turning off 'AUTO COMPLETE' functionality for SCAG pilot
-        return;
-
-        // Iterate through our LabelSelectViews and enable the one that has a searchString
-        // The logic on each view makes it that only 0 or 1 will match what the user is typing along with context
-        // and thus only one will have a searchString assigned to it
-        ['contentView.labelSelectView', 'equalitySymbolsView', 'categoricalValuesView', 'conjunctionsView'].forEach(function(view) {
-            var labelSelectView = this.getPath(view);
-            if (labelSelectView.get('matchesSearchClause')) {
-                labelSelectView.makeMenuContentFirstResponder();
-                labelSelectView.selectFirstMenuItem();
-            }
-            else {
-                labelSelectView.removeMenu();
-            }
-        }, this);
-    },
+//    /***
+//     * Override to support multiple popups.
+//     */
+//    handleDownKey: function() {
+//        // TODO Turning off 'AUTO COMPLETE' functionality for SCAG pilot
+//        return;
+//
+//        // Iterate through our LabelSelectViews and enable the one that has a searchString
+//        // The logic on each view makes it that only 0 or 1 will match what the user is typing along with context
+//        // and thus only one will have a searchString assigned to it
+//        ['contentView.labelSelectView', 'equalitySymbolsView', 'categoricalValuesView', 'conjunctionsView'].forEach(function(view) {
+//            var labelSelectView = this.getPath(view);
+//            if (labelSelectView.get('matchesSearchClause')) {
+//                labelSelectView.makeMenuContentFirstResponder();
+//                labelSelectView.selectFirstMenuItem();
+//            }
+//            else {
+//                labelSelectView.removeMenu();
+//            }
+//        }, this);
+//    },
 
     /***
      * Monitors the loading of the joined TemplateFeature
@@ -95,6 +95,7 @@ Footprint.QueryFilterView = Footprint.SelectAttributeInfoView.extend({
      * types (e.g. < will show < or <=)
      */
     equalitySymbolsView: Footprint.LabelSelectForTextInputView.extend({
+        keepSelectionAfterChoosing: NO,
         layout: {left: 175, bottom: 6, height: 16, width: 45},
         classNames: ['equality-symbols-view'],
         isEnabledBinding: SC.Binding.oneWay('.parentView.isEnabled'),
@@ -153,7 +154,12 @@ Footprint.QueryFilterView = Footprint.SelectAttributeInfoView.extend({
         toolTip: 'The available equality and comparison operators',
 
         // This will append the item to the input field
-        selectionAction: 'doPickSelection'
+        selectionAction: 'doPickSelection',
+
+        title: function () {
+             return this.nullTitle;
+        }.property('selectedItem', 'selectedItemValue', 'itemTitleKey', 'resolvedNullTitle').cacheable(),
+
     }),
 
     // TODO, left out for SCAG Pilot Release
@@ -238,6 +244,7 @@ Footprint.QueryFilterView = Footprint.SelectAttributeInfoView.extend({
     }),
 
     conjunctionsView: Footprint.LabelSelectForTextInputView.extend({
+        keepSelectionAfterChoosing: NO,
         layout: {left: 235, bottom: 6, height: 16, width: 60},
         classNames: ['conjunctions-view'],
         nullTitle: 'AND',
@@ -298,6 +305,11 @@ Footprint.QueryFilterView = Footprint.SelectAttributeInfoView.extend({
         targetInputViewBinding: SC.Binding.oneWay('.parentView.inputView'),
         toolTip: 'Use AND or OR to combine field tests. AND means that items on both sides of AND must be true to make the whole entity true. OR means either can be true to make the whole entity true. Or ( ) to group clauses like in a math formula.',
         // This will append the item to the input field
-        selectionAction: 'doPickSelection'
+        selectionAction: 'doPickSelection',
+
+        title: function () {
+            return 'AND OR ()';
+        }.property('selectedItem', 'selectedItemValue', 'itemTitleKey', 'resolvedNullTitle').cacheable(),
+
     })
 });

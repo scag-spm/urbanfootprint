@@ -1,6 +1,6 @@
 /*
  * UrbanFootprint v1.5
- * Copyright (C) 2017 Calthorpe Analytics
+ * Copyright (C) 2016 Calthorpe Analytics
  *
  * This file is part of UrbanFootprint version 1.5
  *
@@ -15,10 +15,27 @@
 sc_require('views/info_views/attribute_editing/scag_existing_land_use_parcels_editor_view');
 sc_require('views/info_views/attribute_editing/scag_tier2_taz_editor_view');
 sc_require('views/info_views/attribute_editing/scag_general_plan_parcels_editor_view');
+sc_require('views/info_views/attribute_editing/scag_specific_plan_parcels_editor_view');
+sc_require('views/info_views/attribute_editing/scag_infill_parcels_editor_view');
+sc_require('views/info_views/attribute_editing/scag_zoning_parcels_editor_view.js');
 sc_require('views/info_views/attribute_editing/scag_city_boundary_editor_view');
 sc_require('views/info_views/attribute_editing/scag_scenario_planning_zones_editor_view');
+sc_require('views/info_views/attribute_editing/scag_truck_routes_editor_view');
+sc_require('views/info_views/attribute_editing/scag_bike_lanes_editor_view');
+sc_require('views/info_views/attribute_editing/scag_farmland_editor_view');
+sc_require('views/info_views/attribute_editing/scag_region_sphere_of_influence_editor_view');
+sc_require('views/info_views/attribute_editing/scag_endangered_species_editor_view');
+sc_require('views/info_views/attribute_editing/scag_habitat_conservation_areas_editor_view');
+sc_require('views/info_views/attribute_editing/scag_cpad_holdings_editor_view');
+sc_require('views/info_views/attribute_editing/scag_flood_zones_editor_view');
+sc_require('views/info_views/attribute_editing/scag_sea_level_rise_editor_view');
+sc_require('views/info_views/attribute_editing/scag_transit_priority_areas_editor_view');
+sc_require('views/info_views/attribute_editing/scag_major_transit_stops_editor_view');
+sc_require('views/info_views/attribute_editing/scag_high_quality_transit_corridors_editor_view');
+sc_require('views/info_views/attribute_editing/scag_existing_land_use_parcels_2012_editor_view');
 sc_require('views/info_views/attribute_editing/default_editor_view');
 sc_require('views/overlay_view');
+
 
 Footprint.EditSectionView = SC.View.extend({
     classNames: ['footprint-edit-section-view', 'footprint-map-overlay-section'],
@@ -209,15 +226,27 @@ Footprint.EditSectionView = SC.View.extend({
                 layout: {left: 5, height: 16, top: 5, width: 25},
                 value: 'User:'
             }),
+
+            userBinding: SC.Binding.oneWay('Footprint.userController.content.firstObject'),
+            userTitle: function() {
+                var first_name = this.getPath('user.first_name');
+                var last_name = this.getPath('user.last_name');
+                if (first_name) {
+                    if (last_name) {
+                        return '%@ %@'.fmt(first_name, last_name);
+                    }
+                    return first_name;
+                }
+
+                return this.getPath('user.username');
+            }.property('user').cacheable(),
+
             userNameView: SC.LabelView.extend({
                 classNames: ['footprint-editable-9font-title-view'],
                 layout: {left: 30, height: 16, top: 5, width: 70},
-                valueBinding: SC.Binding.oneWay('Footprint.userController.content.firstObject.username').transform(function (user) {
-                    if (user) {
-                        return user.capitalize();
-                    }
-                }),
+                valueBinding: SC.Binding.oneWay('.parentView.userTitle'),
             }),
+
         }),
 
         recordsView: SC.View.extend({

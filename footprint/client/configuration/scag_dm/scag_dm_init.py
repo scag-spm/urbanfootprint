@@ -1,6 +1,6 @@
 
 # UrbanFootprint v1.5
-# Copyright (C) 2017 Calthorpe Analytics
+# Copyright (C) 2016 Calthorpe Analytics
 #
 # This file is part of UrbanFootprint version 1.5
 #
@@ -15,6 +15,7 @@ from django.core.management import call_command
 from django.conf import settings
 from footprint.client.configuration.fixture import InitFixture
 from footprint.client.configuration.scag_dm.built_form.scag_dm_land_use_definition import ScagDmLandUseDefinition
+
 import logging
 logger = logging.getLogger(__name__)
 

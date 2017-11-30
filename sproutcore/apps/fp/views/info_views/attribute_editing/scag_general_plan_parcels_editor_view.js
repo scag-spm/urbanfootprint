@@ -16,8 +16,8 @@ sc_require('views/info_views/select_info_view');
 sc_require('views/info_views/editable_text_field_view');
 
 Footprint.GeneralPlanParcelsEditorView = SC.View.extend({
-    classNames: ['footprint-general-plane-editor-view'],
-    childViews: ['zoneCodeView', 'gpCodeView', 'existingLandUseView', 'secondaryLandUseView',
+    classNames: ['footprint-general-plan-editor-view'],
+    childViews: ['gpCodeView', 'existingLandUseView', 'secondaryLandUseView',
                 'densityRangeView', 'yearAdoptView', 'commentView'],
 
     activeLayer: null,
@@ -51,6 +51,7 @@ Footprint.GeneralPlanParcelsEditorView = SC.View.extend({
             titleClassNames: ['footprint-editable-9font-title-view'],
             contentValueKey: 'density',
             value: Footprint.pluralContentValueProperty,
+            isNumber: YES,
             significantDigits: 2
         }),
 
@@ -78,25 +79,13 @@ Footprint.GeneralPlanParcelsEditorView = SC.View.extend({
             titleClassNames: ['footprint-editable-9font-title-view'],
             contentValueKey: 'high',
             value: Footprint.pluralContentValueProperty,
+            isNumber: YES,
             significantDigits: 2
         })
     }),
 
-    zoneCodeView: Footprint.EditableTextFieldView.extend({
-        layout: {left: 10, width: 100, top: 105, height: 40},
-        title: 'Zone Code',
-        isEditable:YES,
-        contentBinding: SC.Binding.oneWay('.parentView.content'),
-        titleViewLayout: { height: 16 },
-        editableContentViewLayout: { top: 17 },
-        titleClassNames: ['footprint-bold-title-white-view'],
-        contentValueKey: 'zone_code',
-        value: Footprint.pluralContentValueProperty,
-        backgroundColor: '#3366CC'
-    }),
-
     yearAdoptView: Footprint.EditableTextFieldView.extend({
-        layout: {left: 120, right: 30, top: 105, height: 40},
+        layout: {left: 10, width: 100, top: 105, height: 40},
         title: 'Year Adopted',
         isEditable:YES,
         contentBinding: SC.Binding.oneWay('.parentView.content'),
@@ -110,13 +99,13 @@ Footprint.GeneralPlanParcelsEditorView = SC.View.extend({
 
     gpCodeView: Footprint.EditableTextFieldView.extend({
         layout: {left: 10, right: 30, top: 165, height: 40},
-        title: 'City GP Code (city_gp_code)',
+        title: '2016 City GP Code',
         isEditable:YES,
         contentBinding: SC.Binding.oneWay('.parentView.content'),
         titleViewLayout: { height: 16 },
         editableContentViewLayout: { top: 17 },
         titleClassNames: ['footprint-bold-title-white-view'],
-        contentValueKey: 'city_gp_code',
+        contentValueKey: 'city_gp_code16',
         value: Footprint.pluralContentValueProperty,
         backgroundColor: '#3366CC'
     }),
@@ -131,7 +120,7 @@ Footprint.GeneralPlanParcelsEditorView = SC.View.extend({
             textAlign: SC.ALIGN_CENTER,
             backgroundColor: '#3366CC',
             layout: {height: 16},
-            value: 'SCAG Land Use (scag_gp_code)'
+            value: '2016 SCAG Land Use'
         }),
 
         landUseSelectView: Footprint.SelectInfoView.extend({
@@ -170,7 +159,7 @@ Footprint.GeneralPlanParcelsEditorView = SC.View.extend({
             textAlign: SC.ALIGN_CENTER,
             backgroundColor: '#3366CC',
             layout: {height: 16},
-            value: 'Secondary Land Use'
+            value: '2016 SCAG Secondary Land Use'
         }),
 
         landUseSelectView: Footprint.SelectInfoView.extend({

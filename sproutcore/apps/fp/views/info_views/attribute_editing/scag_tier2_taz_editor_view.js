@@ -18,8 +18,8 @@ sc_require('views/info_views/attribute_editing/editable_layer_info_view');
 
 Footprint.Tier2TazEditorView = SC.View.extend({
     classNames: ['footprint-tier2-taz-editor-view'],
-    childViews: ['basic12DemographicsView', 'basic20DemographicsView', 'basic35DemographicsView',
-        'basic40DemographicsView', 'multipleRecordsView', 'commentView'],
+    childViews: ['t2idView', 'basic16DemographicsView', 'basic20DemographicsView', 'basic35DemographicsView',
+    'basic45DemographicsView', 'multipleRecordsView', 'commentView'],
 
     activeLayer: null,
     activeLayerBinding: SC.Binding.oneWay('Footprint.layerActiveController.content'),
@@ -34,19 +34,36 @@ Footprint.Tier2TazEditorView = SC.View.extend({
         }
     }.property('content').cacheable(),
 
-    basic12DemographicsView: Footprint.EditablePopHhEmpAttributeGroupView.extend({
-        childViews: ['titleView', 'popView', 'hhView', 'empView'],
-        layout: {height: 65, left: 10, right: 30, top: 20},
+
+    t2idView: Footprint.EditableTextFieldView.extend({
+        layout: {left: 10, right: 30, height: 45, top: 20},
+        title: 'SCAG Tier2TAZ ID',
+        titleClassNames: ['footprint-bold-title-white-view'],
+        titleBackgroundColor: '#3366CC',
+        titleViewLayout: { height: 17, top: 0 },
+        isTextArea: YES,
+        isEditable:NO,
         contentBinding: SC.Binding.oneWay('.parentView.content'),
-        popKey: 'pop12',
-        hhKey: 'hh12',
-        empKey: 'emp12',
-        groupTitle: 2012
+        editableContentViewLayout: { top: 17, bottom: 0 },
+        contentValueKey: 'tier2',
+        refreshValue: null,
+        refreshValueBinding: SC.Binding.oneWay('Footprint.featuresEditController.recordsDidUpdate'),
+        value: Footprint.pluralContentValueProperty
+    }),
+
+    basic16DemographicsView: Footprint.EditablePopHhEmpAttributeGroupView.extend({
+        childViews: ['titleView', 'popView', 'hhView', 'empView'],
+        layout: {height: 65, left: 10, right: 30, top: 80},
+        contentBinding: SC.Binding.oneWay('.parentView.content'),
+        popKey: 'pop16',
+        hhKey: 'hh16',
+        empKey: 'emp16',
+        groupTitle: 2016
     }),
 
     basic20DemographicsView: Footprint.EditablePopHhEmpAttributeGroupView.extend({
         childViews: ['titleView', 'popView', 'hhView', 'empView'],
-        layout: {height: 65, left: 10, right: 30, top: 100},
+        layout: {height: 65, left: 10, right: 30, top: 160},
         contentBinding: SC.Binding.oneWay('.parentView.content'),
         popKey: 'pop20',
         hhKey: 'hh20',
@@ -56,7 +73,7 @@ Footprint.Tier2TazEditorView = SC.View.extend({
 
     basic35DemographicsView: Footprint.EditablePopHhEmpAttributeGroupView.extend({
         childViews: ['titleView', 'popView', 'hhView', 'empView'],
-        layout: {height: 65, left: 10, right: 30, top: 180},
+        layout: {height: 65, left: 10, right: 30, top: 240},
         contentBinding: SC.Binding.oneWay('.parentView.content'),
         popKey: 'pop35',
         hhKey: 'hh35',
@@ -64,18 +81,18 @@ Footprint.Tier2TazEditorView = SC.View.extend({
         groupTitle: 2035
     }),
 
-    basic40DemographicsView: Footprint.EditablePopHhEmpAttributeGroupView.extend({
+    basic45DemographicsView: Footprint.EditablePopHhEmpAttributeGroupView.extend({
         childViews: ['titleView', 'popView', 'hhView', 'empView'],
-        layout: {height: 65, left: 10, right: 30, top: 260},
+        layout: {height: 65, left: 10, right: 30, top: 320},
         contentBinding: SC.Binding.oneWay('.parentView.content'),
-        popKey: 'pop40',
-        hhKey: 'hh40',
-        empKey: 'emp40',
-        groupTitle: 2040
+        popKey: 'pop45',
+        hhKey: 'hh45',
+        empKey: 'emp45',
+        groupTitle: 2045
     }),
 
     commentView: Footprint.EditableTextFieldView.extend({
-        layout: {left: 10, right: 30, height: 100, top: 340},
+        layout: {left: 10, right: 30, height: 100, top: 400},
         title: 'Notes',
         titleClassNames: ['footprint-bold-title-white-view'],
         titleBackgroundColor: '#3366CC',
@@ -92,7 +109,7 @@ Footprint.Tier2TazEditorView = SC.View.extend({
     }),
 
     multipleRecordsView: SC.View.extend({
-        layout: {height: 32, right: 30, top: 470, left: 10},
+        layout: {height: 32, right: 30, top: 530, left: 10},
         classNames: ['footprint-mulitiple-records-view'],
         childViews: ['titleView', 'imageView'],
         content: null,

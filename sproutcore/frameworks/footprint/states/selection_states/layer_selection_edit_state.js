@@ -1,6 +1,6 @@
 /*
  * UrbanFootprint v1.5
- * Copyright (C) 2017 Calthorpe Analytics
+ * Copyright (C) 2016 Calthorpe Analytics
  *
  * This file is part of UrbanFootprint version 1.5
  *
@@ -14,6 +14,9 @@
 
 Footprint.LayerSelectionEditState = SC.State.extend({
     initialSubstate: 'choicepointState',
+
+    activeTopView: null,
+    activeTopViewBinding: SC.Binding.oneWay('Footprint.topSectionVisibleViewController.view'),
 
     /***
      * Responds to the Footprint.topSectionVisibleViewController.topSectionIsVisible changing
@@ -53,12 +56,12 @@ Footprint.LayerSelectionEditState = SC.State.extend({
 
     doCloseTopSection: function(context) {
         var activeView = Footprint.topSectionVisibleViewController.get('view');
-
         if (activeView == 'Footprint.ApprovalTopSectionView') {
             //explicity exit the approval state when the top panel is closed
             Footprint.statechart.sendAction('exitApprovalState', context);
         }
         Footprint.topSectionVisibleViewController.setIfChanged('topSectionIsVisible', NO);
+        Footprint.topSectionVisibleViewController.setIfChanged('view', null);
         return YES;
     },
 

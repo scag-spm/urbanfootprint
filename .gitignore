@@ -87,3 +87,6 @@ newrelic.ini
 # needs Buildfile for sproutcore's build/serve
 sproutcore/frameworks/bower_components/*/*
 !sproutcore/frameworks/bower_components/*
+
+# source DB
+imperial_dm_source.tar

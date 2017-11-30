@@ -1,6 +1,6 @@
 
 # UrbanFootprint v1.5
-# Copyright (C) 2017 Calthorpe Analytics
+# Copyright (C) 2016 Calthorpe Analytics
 #
 # This file is part of UrbanFootprint version 1.5
 #
@@ -39,17 +39,18 @@ class ScagDmResultConfigurationFixtures(ResultConfigurationFixture):
                     source_db_entity_key=ScagDmDbEntityKey.CITY_BOUNDARY,
 
                     name='Population By Year',
-                    attributes=['pop12', 'pop20', 'pop35', 'pop40'],
+                    attributes=['pop16', 'pop20', 'pop30', 'pop35', 'pop45'],
                     db_column_lookup=dict(
-                        pop12='pop12',
+                        pop16='pop16',
                         pop20='pop20',
+                        pop30='pop30',
                         pop35='pop35',
-                        pop40='pop40'
+                        pop45='pop45'
                     ),
-                    labels=['pop12', 'pop20', 'pop35', 'pop40'],
+                    labels=['pop16', 'pop20', 'pop30', 'pop35', 'pop45'],
                     stackable=False,
                     is_stacked=False,
-                    create_query=lambda result_config: 'SELECT SUM(pop12) as pop12__sum, SUM(pop20) as pop20__sum, SUM(pop35) as pop35__sum, SUM(pop40) as pop40__sum FROM %({0})s'.format(ScagDmDbEntityKey.CITY_BOUNDARY),
+                    create_query=lambda result_config: 'SELECT SUM(pop16) as pop16__sum, SUM(pop20) as pop20__sum, SUM(pop30) as pop30__sum, SUM(pop35) as pop35__sum, SUM(pop45) as pop45__sum FROM %({0})s'.format(ScagDmDbEntityKey.CITY_BOUNDARY),
                     sort_priority=ResultSort.BASE
                 ),
 
@@ -60,17 +61,18 @@ class ScagDmResultConfigurationFixtures(ResultConfigurationFixture):
                     source_db_entity_key=ScagDmDbEntityKey.CITY_BOUNDARY,
 
                     name='Households By Year',
-                    attributes=['hh12', 'hh20', 'hh35', 'hh40'],
+                    attributes=['hh16', 'hh20', 'hh30', 'hh35', 'hh45'],
                     db_column_lookup=dict(
-                        hh12='hh12',
+                        hh16='hh16',
                         hh20='hh20',
+                        hh30='hh30',
                         hh35='hh35',
-                        hh40='hh40'
+                        hh45='hh45'
                     ),
-                    labels=['hh12', 'hh20', 'hh35', 'hh40'],
+                    labels=['hh16', 'hh20', 'hh30', 'hh35', 'hh45'],
                     stackable=False,
                     is_stacked=False,
-                    create_query=lambda result_config: 'SELECT SUM(hh12) as hh12__sum, SUM(hh20) as hh20__sum, SUM(hh35) as hh35__sum, SUM(hh40) as hh40__sum FROM %({0})s'.format(ScagDmDbEntityKey.CITY_BOUNDARY),
+                    create_query=lambda result_config: 'SELECT SUM(hh16) as hh16__sum, SUM(hh20) as hh20__sum, SUM(hh30) as hh30__sum, SUM(hh35) as hh35__sum, SUM(hh45) as hh45__sum FROM %({0})s'.format(ScagDmDbEntityKey.CITY_BOUNDARY),
                     sort_priority=ResultSort.BASE
                 ),
 
@@ -81,17 +83,18 @@ class ScagDmResultConfigurationFixtures(ResultConfigurationFixture):
                     source_db_entity_key=ScagDmDbEntityKey.CITY_BOUNDARY,
 
                     name='Employment By Year',
-                    attributes=['emp12', 'emp20', 'emp35', 'emp40'],
+                    attributes=['emp16', 'emp20', 'emp30', 'emp35', 'emp45'],
                     db_column_lookup=dict(
-                        emp12='emp12',
+                        emp16='emp16',
                         emp20='emp20',
+                        emp30='emp30',
                         emp35='emp35',
-                        emp40='emp40'
+                        emp45='emp45'
                     ),
-                    labels=['emp12', 'emp20', 'emp35', 'emp40'],
+                    labels=['emp16', 'emp20', 'emp30', 'emp35', 'emp45'],
                     stackable=False,
                     is_stacked=False,
-                    create_query=lambda result_config: 'SELECT SUM(emp12) as emp12__sum, SUM(emp20) as emp20__sum, SUM(emp35) as emp35__sum, SUM(emp40) as emp40__sum FROM %({0})s'.format(ScagDmDbEntityKey.CITY_BOUNDARY),
+                    create_query=lambda result_config: 'SELECT SUM(emp16) as emp16__sum, SUM(emp20) as emp20__sum, SUM(emp30) as emp30__sum, SUM(emp35) as emp35__sum, SUM(emp45) as emp45__sum FROM %({0})s'.format(ScagDmDbEntityKey.CITY_BOUNDARY),
                     sort_priority=ResultSort.BASE
                 )
             ])

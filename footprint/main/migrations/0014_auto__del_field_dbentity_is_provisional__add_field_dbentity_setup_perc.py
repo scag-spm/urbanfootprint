@@ -812,6 +812,10 @@ class Migration(SchemaMigration):
             'Meta': {'object_name': 'ScenarioUpdaterTool', '_ormbases': ['main.AnalysisTool']},
             u'analysistool_ptr': ('django.db.models.fields.related.OneToOneField', [], {'to': "orm['main.AnalysisTool']", 'unique': 'True', 'primary_key': 'True'})
         },
+        'main.sedupdatertool': {
+            'Meta': {'object_name': 'SEDUpdaterTool', '_ormbases': ['main.AnalysisTool']},
+            u'analysistool_ptr': ('django.db.models.fields.related.OneToOneField', [], {'to': "orm['main.AnalysisTool']", 'unique': 'True', 'primary_key': 'True'})
+        },
         'main.sorttype': {
             'Meta': {'object_name': 'SortType'},
             'description': ('django.db.models.fields.TextField', [], {'null': 'True', 'blank': 'True'}),

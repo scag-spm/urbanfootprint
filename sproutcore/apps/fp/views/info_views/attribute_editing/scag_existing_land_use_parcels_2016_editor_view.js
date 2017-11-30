@@ -37,7 +37,7 @@ Footprint.ExistingLandUseParcels2016EditorView = SC.View.extend({
             textAlign: SC.ALIGN_CENTER,
             backgroundColor: '#3366CC',
             layout: {height: 16},
-            value: 'Existing Land Use 2016'
+            value: '2016 SCAG Existing Land Use'
         }),
 
         landUseSelectView: Footprint.SelectInfoView.extend({
@@ -81,7 +81,7 @@ Footprint.ExistingLandUseParcels2016EditorView = SC.View.extend({
             textAlign: SC.ALIGN_CENTER,
             backgroundColor: '#3366CC',
             layout: {height: 16},
-            value: 'Secondary Land Use'
+            value: '2016 SCAG Secondary Land Use'
         }),
 
         landUseSelectView: Footprint.SelectInfoView.extend({

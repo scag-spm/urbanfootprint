@@ -1,6 +1,6 @@
 /*
  * UrbanFootprint v1.5
- * Copyright (C) 2017 Calthorpe Analytics
+ * Copyright (C) 2016 Calthorpe Analytics
  *
  * This file is part of UrbanFootprint version 1.5
  *
@@ -24,9 +24,28 @@ FootprintScagDm.ScagDmDelegate = Footprint.DefaultDelegate.extend({
         return SC.Object.create({
             existing_land_use_parcels_2016: FootprintScagDm.ScagExistingLandUseParcelFeature,
             general_plan_parcels: FootprintScagDm.ScagGeneralPlanParcelFeature,
+            specific_plan_parcels: FootprintScagDm.ScagSpecificPlanParcelFeature,
+            zoning_parcels: FootprintScagDm.ScagZoningParcelFeature,
             tier2_taz: FootprintScagDm.ScagTier2TazFeature,
             scenario_planning_zones: FootprintScagDm.ScagScenarioPlanningZones,
-            entitlement_parcels_2016: FootprintScagDm.ScagEntitlementParcelFeature
+            entitlement_parcels_2016: FootprintScagDm.ScagEntitlementParcelFeature,
+            city_boundary: FootprintScagDm.ScagJurisdictionBoundary,
+            census_tracts: FootprintScagDm.ScagCensusTractsFeature,
+            farmland: FootprintScagDm.ScagFarmlandFeature,
+            region_sphere_of_influence: FootprintScagDm.ScagRegionSphereOfInfluenceFeature,
+            endangered_species: FootprintScagDm.ScagEndangeredSpeciesFeature,
+            habitat_conservation_areas: FootprintScagDm.ScagEndangeredSpeciesFeature,
+            cpad_holdings: FootprintScagDm.ScagCpadHoldingsFeature,
+            flood_zones: FootprintScagDm.ScagFloodZonesFeature,
+            sea_level_rise: FootprintScagDm.ScagSeaLevelRiseFeature,
+            transit_priority_areas: FootprintScagDm.ScagTransitPriorityAreasFeature,
+            major_transit_stops: FootprintScagDm.ScagMajorTransitStopsFeature,
+            high_quality_transit_areas: FootprintScagDm.ScagHighQualityTransitAreasFeature,
+            high_quality_transit_corridors: FootprintScagDm.ScagHighQualityTransitCorridorsFeature,
+            existing_land_use_parcels_2012: FootprintScagDm.ScagExistingLandUseParcelFeature,
+            infill_parcels: FootprintScagDm.ScagInfillParcelFeature,
+            truck_routes: FootprintScagDm.ScagTruckRoutesFeature,
+            bike_lanes: FootprintScagDm.ScagBikeLanesFeature,
 
         }, sc_super())
     }.property('parentDelegate').cacheable(),
@@ -40,4 +59,5 @@ FootprintScagDm.ScagDmDelegate = Footprint.DefaultDelegate.extend({
     loadingRegionStateClass: function() {
         return SC.objectForPropertyPath('FootprintScagDm.LoadingRegionScagDmState')
     }.property().cacheable()
+
 });

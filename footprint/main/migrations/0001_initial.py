@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 # UrbanFootprint v1.5
-# Copyright (C) 2017 Calthorpe Analytics
+# Copyright (C) 2016 Calthorpe Analytics
 #
 # This file is part of UrbanFootprint version 1.5
 #
@@ -413,6 +413,12 @@ class Migration(SchemaMigration):
             (u'analysistool_ptr', self.gf('django.db.models.fields.related.OneToOneField')(to=orm['main.AnalysisTool'], unique=True, primary_key=True)),
         ))
         db.send_create_signal('main', ['ScenarioUpdaterTool'])
+
+        # Adding model 'SEDUpdaterTool'
+        db.create_table(u'main_sedupdatertool', (
+            (u'analysistool_ptr', self.gf('django.db.models.fields.related.OneToOneField')(to=orm['main.AnalysisTool'], unique=True, primary_key=True)),
+        ))
+        db.send_create_signal('main', ['SEDUpdaterTool'])
 
         # Adding model 'FiscalUpdaterTool'
         db.create_table(u'main_fiscalupdatertool', (
@@ -1292,6 +1298,9 @@ class Migration(SchemaMigration):
 
         # Deleting model 'ScenarioUpdaterTool'
         db.delete_table(u'main_scenarioupdatertool')
+
+        # Deleting model 'SEDUpdaterTool'
+        db.delete_table(u'main_sedupdatertool')
 
         # Deleting model 'FiscalUpdaterTool'
         db.delete_table(u'main_fiscalupdatertool')
@@ -2334,6 +2343,11 @@ class Migration(SchemaMigration):
         'main.scenarioupdatertool': {
             'Meta': {'object_name': 'ScenarioUpdaterTool', '_ormbases': ['main.AnalysisTool']},
             u'analysistool_ptr': ('django.db.models.fields.related.OneToOneField', [], {'to': "orm['main.AnalysisTool']", 'unique': 'True', 'primary_key': 'True'})
+        },
+        'main.sedupdatertool': {
+            'Meta': {'object_name': 'SEDUpdaterTool', '_ormbases': ['main.AnalysisTool']},
+            u'analysistool_ptr': ('django.db.models.fields.related.OneToOneField', [],
+                                  {'to': "orm['main.AnalysisTool']", 'unique': 'True', 'primary_key': 'True'})
         },
         'main.sorttype': {
             'Meta': {'object_name': 'SortType'},

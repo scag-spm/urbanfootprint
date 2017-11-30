@@ -1,6 +1,6 @@
 /*
  * UrbanFootprint v1.5
- * Copyright (C) 2017 Calthorpe Analytics
+ * Copyright (C) 2016 Calthorpe Analytics
  *
  * This file is part of UrbanFootprint version 1.5
  *
@@ -20,7 +20,7 @@ Footprint.LayerSectionView = Footprint.SectionView.extend({
     classNames: ['footprint-layer-section-view'],
 
     childViewLayout: SC.View.VERTICAL_STACK,
-    childViews: ['toolbarView', 'listView', 'addDataView', 'uploadProgressView'],
+    childViews: ['toolbarView', 'listView', 'linkToUrlView', 'addDataView', 'uploadProgressView'],
     childViewLayoutOptions: {
         resizeToFit: NO
     },
@@ -63,7 +63,7 @@ Footprint.LayerSectionView = Footprint.SectionView.extend({
         expandButtonView: SC.ButtonView.extend({
             layout: { centerY: 0, right: 6, width: 26, height: 18 },
             classNames: ['theme-button-gray', 'theme-button', 'theme-button-shorter'],
-            toolTip: 'Order Layers',
+            toolTip: 'Reorder Layers',
             icon: function() {
                 if (this.get('value')) return sc_static('images/section_toolbars/pullleft.png');
                 else return sc_static('images/section_toolbars/pullright.png');
@@ -125,6 +125,13 @@ Footprint.LayerSectionView = Footprint.SectionView.extend({
                 })
             })
         })
+    }),
+
+    linkToUrlView: SC.LabelView.extend({
+        layout: {height: 24},
+        escapeHTML: NO,
+        backgroundColor: '#d0dae3',
+        value: '<a target="_blank" style="text-decoration:none; color:#4a4a4a; font-family:Helvetica, sans-serif; font-weight:bold; font-size:12px" href="http://scagrtpscs.net/Pages/Transit-Supportive-Measures.aspx"> &nbsp;&nbsp; Transit Supportive Policies </a>'
     }),
 
     addDataView: SC.View.design({

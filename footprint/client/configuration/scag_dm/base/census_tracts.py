@@ -1,6 +1,6 @@
 
 # UrbanFootprint v1.5
-# Copyright (C) 2017 Calthorpe Analytics
+# Copyright (C) 2016 Calthorpe Analytics
 #
 # This file is part of UrbanFootprint version 1.5
 #
@@ -18,11 +18,10 @@ __author__ = 'calthorpe_analytics'
 
 
 class CensusTracts(Feature):
-    county_id = models.CharField(max_length=50, null=True)
-    tractce10 = models.CharField(max_length=50, null=True)
-    geoid10 = models.CharField(max_length=50, null=True)
-    aland10 = models.DecimalField(max_digits=14, decimal_places=2, null=True)
-    awater10 = models.DecimalField(max_digits=14, decimal_places=2, null=True)
+
+    geoid10 = models.CharField(max_length=11, null=True)
+    county = models.CharField(max_length=15, null=True)
+    notes = models.CharField(max_length=1024, null=True, blank=True)
 
     class Meta(object):
         abstract = True

@@ -1,6 +1,6 @@
 
 # UrbanFootprint v1.5
-# Copyright (C) 2017 Calthorpe Analytics
+# Copyright (C) 2016 Calthorpe Analytics
 #
 # This file is part of UrbanFootprint version 1.5
 #
@@ -79,6 +79,12 @@ class OGRETL(object):
         output_file = '{dir}/{name}.{ext}'.format(name=name,
                                                   ext=self.FORMATS[output_format]['ext'],
                                                   dir=settings.SENDFILE_ROOT)
+
+        for approval_status in ['pending', 'approved', 'rejected']:
+            if approval_status in statement:
+                statement = statement.replace(approval_status, "'" + approval_status + "'")
+            else:
+                statement = statement
 
         source = "-sql {statement}".format(statement=pipes.quote(statement))
         logger.info("Exporting with sql argument %s" % source)

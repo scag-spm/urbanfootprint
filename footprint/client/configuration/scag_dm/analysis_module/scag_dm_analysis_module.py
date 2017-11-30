@@ -1,6 +1,6 @@
 
 # UrbanFootprint v1.5
-# Copyright (C) 2017 Calthorpe Analytics
+# Copyright (C) 2016 Calthorpe Analytics
 #
 # This file is part of UrbanFootprint version 1.5
 #
@@ -45,6 +45,18 @@ class ScagDmAnalysisModule(AnalysisModuleFixture):
                             behavior=get_behavior('update_tool')
                         )
                     ]
+                ),
+                dict(
+                    class_scope=Scenario,
+                    key=AnalysisModuleKey.SCENARIO_BUILDER,
+                    name='SED Updater',
+                    analysis_tools=[
+                        dict(
+                            class_name=uf_analysis_module('core_module.sed_updater_tool.SEDUpdaterTool'),
+                            key=AnalysisToolKey.SED_UPDATER_TOOL,
+                            behavior=get_behavior('sed_editor_tool')
+                        )
+                    ],
                 )
             ]).matching_scope(class_scope=config_entity and config_entity.__class__)
         )
