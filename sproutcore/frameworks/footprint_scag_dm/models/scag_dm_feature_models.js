@@ -333,7 +333,6 @@ FootprintScagDm.ScagScenarioPlanningZones = Footprint.Feature.extend({
 
 FootprintScagDm.ScagBikeLanesFeature = Footprint.Feature.extend({
     name: SC.Record.attr(String),
-    status: SC.Record.attr(String),
     bike_class: SC.Record.attr(Number),
     length: SC.Record.attr(Number),
     city: SC.Record.attr(String),
