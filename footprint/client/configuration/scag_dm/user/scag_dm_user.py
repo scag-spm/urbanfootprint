@@ -42,14 +42,29 @@ class ScagDmUserFixture(UserFixture):
             'class_scope': Project,
             # User name is [city]_manager
             'username': '%s_manager' % self.config_entity.key,
-            'password': '%s_0@spm' % self.config_entity.key,
+            'password': '%s@spm' % self.config_entity.key,
             'first_name': self.config_entity.name,
             'last_name': 'Manager',
             'email': '%s_manager@scag.ca.gov' % self.config_entity.key,
         }
 
         # A Scenario level user for each city
-        user1 = {
+        user = {
+            # Make sure to include the groups of all sibling scenarios. Even if they haven't all been
+            # created yet, the final scenario will capture all scenario groups
+            'groups': [scenario.user_group_name(UserGroupKey.USER) for
+                       scenario in self.config_entity.parent_config_entity.children()],
+            'class_scope': Scenario,
+            # User name is [city]_[i]
+            'username': '%s' % self.config_entity.parent_config_entity.name.replace(" ", "").lower(),
+            'password': '%s@uf' % self.config_entity.parent_config_entity.name.replace(" ", "").strip(),
+            'first_name': self.config_entity.parent_config_entity.name,
+            'last_name': 'Planner',
+            'email': '%s_planner@example.com' % self.config_entity.parent_config_entity.name.replace(" ", "").lower()
+        }
+        
+        # A Scenario level user for each city
+        #user1 = {
             # Make sure to include the groups of all sibling scenarios. Even if they haven't all been
             # created yet, the final scenario will capture all scenario groups
             #'groups': [scenario.user_group_name(UserGroupKey.USER) for
@@ -61,24 +76,24 @@ class ScagDmUserFixture(UserFixture):
             #'first_name': self.config_entity.parent_config_entity.name,
             #'last_name': 'Planner',
             #'email': '%s_planner@example.com' % self.config_entity.parent_config_entity.name.replace(" ", "").lower()
-            'groups': [self.config_entity.user_group_name(UserGroupKey.USER)],
-            'class_scope': Project,
-            'username': '%s_01' % self.config_entity.key,
-            'password': '%s_1@spm' % self.config_entity.key,
-            'first_name': self.config_entity.name,
-            'last_name': 'Planner 1',
-            'email': '%s_01@scag.ca.gov' % self.config_entity.key,
-        }
+        #    'groups': [self.config_entity.user_group_name(UserGroupKey.USER)],
+        #    'class_scope': Project,
+        #    'username': '%s_01' % self.config_entity.key,
+        #    'password': '%s_1@spm' % self.config_entity.key,
+        #    'first_name': self.config_entity.name,
+        #    'last_name': 'Planner 1',
+        #    'email': '%s_01@scag.ca.gov' % self.config_entity.key,
+        #}
 
-        user2 = {
-            'groups': [self.config_entity.user_group_name(UserGroupKey.USER)],
-            'class_scope': Project,
-            'username': '%s_02' % self.config_entity.key,
-            'password': '%s_2@spm' % self.config_entity.key,
-            'first_name': self.config_entity.name,
-            'last_name': 'Planner 2',
-            'email': '%s_02@scag.ca.gov' % self.config_entity.key,
-        }
+        #user2 = {
+        #    'groups': [self.config_entity.user_group_name(UserGroupKey.USER)],
+        #    'class_scope': Project,
+        #    'username': '%s_02' % self.config_entity.key,
+        #    'password': '%s_2@spm' % self.config_entity.key,
+        #    'first_name': self.config_entity.name,
+        #    'last_name': 'Planner 2',
+        #    'email': '%s_02@scag.ca.gov' % self.config_entity.key,
+        #}
 
 
 
@@ -90,6 +105,7 @@ class ScagDmUserFixture(UserFixture):
         return FixtureList([
             region_admin,
             project_manager,
-            user1, user2
+            user
+            #user1, user2
         ]).matching_scope(class_scope=self.config_entity.__class__, delete_scope_keys=True)
         #return FixtureList([]).matching_scope(class_scope=self.config_entity.__class__, delete_scope_keys=True)

@@ -163,8 +163,8 @@ class ScagDmConfigEntitiesFixture(ConfigEntitiesFixture):
                             'Unincorporated: Ventura']
 
         #jurisdictions = imperial + los_angeles + orange + riverside + san_bernardino + ventura
-        #jurisdictions = ['City_%02d' % x for x in xrange(32)]
-        jurisdictions = imperial
+        jurisdictions = ['City_%02d' % x for x in xrange(11)]
+        #jurisdictions = imperial
         
         # Create only a small subset of jurisdictions for the dev environments
         if settings.USE_SAMPLE_DATA_SETS:
