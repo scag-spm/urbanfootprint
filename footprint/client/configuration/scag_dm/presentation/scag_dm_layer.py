@@ -601,114 +601,93 @@ class ScagDmLayerConfigurationFixtures(LayerConfigurationFixture):
                             attribute='scag_type',
                             style_type=StyleTypeKey.CATEGORICAL,
                             style_value_contexts=[
-                                StyleValueContext(value='P', symbol='=', style=Style(
+                                StyleValueContext(value='Prime Farmland', symbol='=', style=Style(
                                     line_color='#594',
                                     line_width=1,
                                     polygon_fill='#8DB359',
                                     polygon_opacity=0.4
                                 )),
 
-                                StyleValueContext(value='S', symbol='=', style=Style(
+                                StyleValueContext(value='Farmland of Statewide Importance', symbol='=', style=Style(
                                     line_color='#594',
                                     line_width=1,
                                     polygon_fill='#BED984',
                                     polygon_opacity=0.4
                                 )),
 
-                                StyleValueContext(value='U', symbol='=', style=Style(
+                                StyleValueContext(value='UNIQUE FARMLAND', symbol='=', style=Style(
                                     line_color='#594',
                                     line_width=1,
                                     polygon_fill='#E2F7B0',
                                     polygon_opacity=0.4
                                 )),
 
-                                StyleValueContext(value='G', symbol='=', style=Style(
+                                StyleValueContext(value='Grazing Land', symbol='=', style=Style(
                                     line_color='#594',
                                     line_width=1,
                                     polygon_fill='#E3DBC5',
                                     polygon_opacity=0.4
                                 )),
 
-                                StyleValueContext(value='L', symbol='=', style=Style(
+                                StyleValueContext(value='Farmland of Local Importance', symbol='=', style=Style(
                                     line_color='#594',
                                     line_width=1,
                                     polygon_fill='#F9FCDE',
                                     polygon_opacity=0.4
                                 )),
 
-                                StyleValueContext(value='LP', symbol='=', style=Style(
-                                    line_color='#594',
-                                    line_width=1,
-                                    polygon_fill='#FCF6F2',
-                                    polygon_opacity=0.4
-                                )),
-
-                                StyleValueContext(value='X', symbol='=', style=Style(
+                                StyleValueContext(value='Other Land', symbol='=', style=Style(
                                     line_color='#594',
                                     line_width=1,
                                     polygon_fill='#EBECED',
                                     polygon_opacity=0.4
                                 )),
 
-                                StyleValueContext(value='CI', symbol='=', style=Style(
+                                StyleValueContext(value='Confined Animal Agriculture', symbol='=', style=Style(
                                     line_color='#594',
                                     line_width=1,
                                     polygon_fill='#B37B59',
                                     polygon_opacity=0.4
                                 )),
 
-                                StyleValueContext(value='nv', symbol='=', style=Style(
+                                StyleValueContext(value='Nonagricultural and Natural Vegetation', symbol='=', style=Style(
                                     line_color='#594',
                                     line_width=1,
                                     polygon_fill='#DBC49A',
                                     polygon_opacity=0.4
                                 )),
-                                StyleValueContext(value='V', symbol='=', style=Style(
+                                StyleValueContext(value='Vacant or Disturbed Land', symbol='=', style=Style(
                                     line_color='#594',
                                     line_width=1,
                                     polygon_fill='#D3D2D4',
                                     polygon_opacity=0.4
                                 )),
 
-                                StyleValueContext(value='R', symbol='=', style=Style(
+                                StyleValueContext(value='Rural Residential Land', symbol='=', style=Style(
                                     line_color='#594',
                                     line_width=1,
                                     polygon_fill='#F2CED3',
                                     polygon_opacity=0.4
                                 )),
 
-                                StyleValueContext(value='sAC', symbol='=', style=Style(
+                                StyleValueContext(value='Semi-Ag and Rural Commercial Land', symbol='=', style=Style(
                                     line_color='#594',
                                     line_width=1,
                                     polygon_fill='#F5D489',
                                     polygon_opacity=0.4
                                 )),
 
-                                StyleValueContext(value='D', symbol='=', style=Style(
+                                StyleValueContext(value='Urban and Built-up Land', symbol='=', style=Style(
                                     line_color='#594',
                                     line_width=1,
                                     polygon_fill='#F29DAA',
                                     polygon_opacity=0.4
                                 )),
 
-                                StyleValueContext(value='W', symbol='=', style=Style(
+                                StyleValueContext(value='Water', symbol='=', style=Style(
                                     line_color='#594',
                                     line_width=1,
                                     polygon_fill='#96D0D6',
-                                    polygon_opacity=0.4
-                                )),
-
-                                StyleValueContext(value='I', symbol='=', style=Style(
-                                    line_color='#594',
-                                    line_width=1,
-                                    polygon_fill='#ACC7A5',
-                                    polygon_opacity=0.4
-                                )),
-
-                                StyleValueContext(value='N', symbol='=', style=Style(
-                                    line_color='#594',
-                                    line_width=1,
-                                    polygon_fill='#F0F0C2',
                                     polygon_opacity=0.4
                                 )),
 

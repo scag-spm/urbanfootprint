@@ -29,7 +29,7 @@ Footprint.FarmlandEditorView = SC.View.extend({
     farmlandView: Footprint.EditableTextFieldView.extend({
         layout: {left: 10, right: 30, top: 20, height: 40},
         title: 'SCAG Farmland Type',
-        isEditable:YES,
+        isEditable:NO,
         contentBinding: SC.Binding.oneWay('.parentView.content'),
         titleViewLayout: { height: 16 },
         editableContentViewLayout: { top: 17 },
