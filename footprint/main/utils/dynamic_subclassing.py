@@ -204,7 +204,8 @@ def create_tables_for_dynamic_classes(*model_classes):
                 if string.find(db.deferred_sql[i], 'CREATE INDEX') == 0:
                     subs = db.deferred_sql[i]
                     # Truncate the index name. This could be done more elegantly
-                    db.deferred_sql[i] = subs[0:14] + subs[14:string.index(subs, '" ON')][-63:] + subs[string.index(subs, '" ON'):]
+                    # db.deferred_sql[i] = subs[0:14] + subs[14:string.index(subs, '" ON')][-63:] + subs[string.index(subs, '" ON'):]
+                    db.deferred_sql[i] = subs[0:14] + table + '_' + re.findall(r'"([^"]*)"', subs)[1] + subs[string.index(subs, '" ON'):]
 
         try:
             db.execute_deferred_sql()
